@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="input" enctype="multipart/form-data">
+      사용자 아이디:
+      <input type="text" name="user" placeholder="ID" /><br />
+      이메일 : <input type="email" required /><br />
+      전화번호 :
+      <input type="tel" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" required />
+      <input type="reset" value="초기화" />
+      <br /><br />
+      <input type="file" accept=".hwp" />
+      <input type="hidden" value="hiddenValue" />
+      <input type="submit" value="제출" />
+    </form>
+    <hr />
+
+    <button onclick="alert('안녕하세요?')">눌러보세요!</button>
+    <br /><br />
+    고객의 의견<br />
+    <textarea name="feedback" rows="2" cols="30"></textarea>
+  </body>
+</html>
