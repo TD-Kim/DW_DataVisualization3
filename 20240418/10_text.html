@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>text</title>
+  </head>
+  <style>
+    p.date {
+      text-align: right;
+      color: indigo;
+      height: 100px;
+      background-color: yellow;
+      line-height: 3;
+    }
+    p.poet {
+      color: blue;
+      /* letter-spacing: 10px; */
+      word-spacing: -10px;
+    }
+    p.indent {
+      text-indent: 30px;
+    }
+    div {
+      text-align: center;
+      color: green;
+    }
+    #dir {
+      background-color: black;
+      color: yellow;
+      direction: rtl;
+    }
+    h1.deco {
+      /* text-decoration: overline; */
+      /* text-decoration: line-through dotted blue; */
+      text-decoration: underline wavy blue;
+    }
+    p.transform {
+      /* text-transform: uppercase; */
+      /* text-transform: lowercase; */
+      text-transform: capitalize;
+    }
+    p.shadow {
+      font-size: 3rem;
+      text-shadow: 5px 5px 10px orange;
+    }
+  </style>
+  <body>
+    <h1>CSS 텍스트 정렬 예제</h1>
+    <p class="date">2024년 4월 18일<br />2024년 4월 19일</p>
+    <p class="poet">삶이 그대를 속일지라도 슬퍼하거나 노여워하지 말라</p>
+    <p class="indent">참고 푸시킨의 시</p>
+    <div>
+      <span>정렬이 될까요?</span>
+    </div>
+    <!-- <p id="dir">4321</p> -->
+    <h1 class="deco">텍스트 장식의 예입니다.</h1>
+    <!-- <p class="transform">text_transform is uppercase.</p> -->
+    <p class="transform">text_transform IS uppercase.</p>
+    <p class="shadow">Text-shadow 처리!!!</p>
+  </body>
+</html>

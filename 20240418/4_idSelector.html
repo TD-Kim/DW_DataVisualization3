@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #special {
+      color: blue;
+    }
+    p {
+      background-color: yellow;
+      color: red;
+    }
+  </style>
+  <body>
+    <!-- 
+        스타일 적용 우선순위
+        1. important (99999999999점)
+        2. inline style (1000점)
+        3. ID 선택자 (100점)
+        4. Class 선택자 (10점)
+        5. Tag(타입) 선택자 (1점)
+        6. *(전체) 선택자 (0점)
+     -->
+    <p id="special">id가 special인 단락입니다.</p>
+    <p>id가 없는 단락입니다.</p>
+  </body>
+</html>

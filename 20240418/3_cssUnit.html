@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    html {
+      font-size: 6.25%;
+    }
+    p {
+      font-size: 32px;
+    }
+    span {
+      font-size: 3em;
+      color: red;
+    }
+    em {
+      font-size: 1.5em;
+      color: blue;
+    }
+  </style>
+  <body>
+    <!-- 
+        CSS 단위
+        길이나 크기 등을 다룰 때 사용하는 단위로 px, em, rem, vw, vh, %...
+        
+        px: 
+        픽셀은 절대 단위이고 css 에서 가장 기본적인 단위이다.
+        스크린의 픽셀을 기준으로 한다.
+
+        em:
+        배수 단위이며 해당 글꼴(font)의 기본 크기
+        (부모요소에 font-size가 없다면 웹브라우저의 기본 font-size를 기준으로 함)
+        를 1em으로 놓고, 그에 대한 상대적인 크기를 설정한다.
+        
+        %:
+        100% = 1em
+
+        rem:
+        em은 상속관계가 복잡해지면 값을 계산하기 어렵다는 단점이 있다. 그래서 기준값을 고정한
+        상대단위가 나왔는데, 그것이 root em -> rem 이다.
+        rem은 루트 요소(html)의 폰트 크기를 기준으로 한다.
+
+        vw, vh:
+        viewport width, viewport height의 약어로, 각각 뷰포트의 너비와 높이를 100등분한 단위이다.
+        style="width: 10vw; heigth: 10vh;"
+     -->
+    <div>
+      <p>
+        하우스 로스팅 원두의 <span>신선한 커피</span>를 맛보세요!
+        <em>공인 1급 Barista</em>가 최고급 원두만을 직접 엄선하여 사용합니다.
+      </p>
+    </div>
+    <strong>기본 font-size 가 적용된 텍스트입니다.</strong>
+  </body>
+</html>

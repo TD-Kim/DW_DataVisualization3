@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'YEONGJUSeonbiTTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403@1.0/YEONGJUSeonbiTTF.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+p {
+  /* 
+    글꼴
+    serif : 문자 삐침이 있는 글꼴
+    sans-serif : 문자 삐침이 없는 글꼴
+    monospace : 동일한 너비의 글꼴
+    cursive : 손으로 쓴 것 같은 글꼴
+    fantasy : 화려한 글꼴
+  */
+  font-family: YEONGJUSeonbiTTF;
+  color: black;
+}
+span {
+  font-size: 2em;
+  color: red;
+}
+em {
+  font-size: 1.5em;
+  color: blue;
+}
+h1 {
+  border-bottom: 1px solid gray;
+  color: red;
+}
+body {
+  font-size: large;
+  background-color: white;
+}

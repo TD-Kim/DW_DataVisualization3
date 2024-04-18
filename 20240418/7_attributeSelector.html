@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>attributeSelector</title>
+  </head>
+  <style>
+    a[target='_blank'] {
+      font-size: 2rem;
+    }
+    a[target='_self'] {
+      background-color: yellow;
+    }
+    div > a[target='_self'] {
+      background-color: orange;
+    }
+    [title] {
+      font-weight: 800;
+    }
+  </style>
+  <body>
+    <div>
+      <a href="2_coffee.html" target="_self">현재탭이 전환됩니다.</a>
+    </div>
+    <a href="2_coffee.html" target="_blank">새로운 탭으로 열립니다.</a>
+    <a href="2_coffee.html" target="_self" title="coffee"
+      >현재탭이 전환됩니다.</a
+    >
+
+    <p title="title입니다.">title이 있는 p태그 입니다.</p>
+    <p title="">title이 없는 p태그 입니다.</p>
+  </body>
+</html>
