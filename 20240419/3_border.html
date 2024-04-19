@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>border</title>
+  </head>
+  <style>
+    p.width {
+      border-style: solid;
+      /* border-width: 10px 3px; */
+      border-width: thin;
+    }
+    div.radius {
+      width: 300px;
+      height: 300px;
+      border: 5px solid red;
+      /* border-radius: 50%; */
+      border-radius: 40px 20px 40px 20px / 20px 40px 20px 40px;
+    }
+    div.shadow {
+      width: 300px;
+      height: 100px;
+      background-color: aqua;
+      /* box-shadow: offset-x offset-y blur spread color inset */
+      box-shadow: 20px 10px 5px #666666 inset;
+    }
+  </style>
+  <body>
+    <p style="border-style: none">none.</p>
+    <p style="border-style: dotted">dotted</p>
+    <p style="border-style: dashed">dashed</p>
+    <p style="border-style: solid">solid</p>
+    <p style="border-style: double">double</p>
+    <p style="border-style: groove">groove</p>
+    <p style="border-style: ridge">ridge</p>
+    <p style="border-style: inset">inset</p>
+    <p style="border-style: outset">outset</p>
+
+    <p class="width">border-width 확인</p>
+    <div class="radius">border-radius 확인</div>
+    <div class="shadow"></div>
+  </body>
+</html>

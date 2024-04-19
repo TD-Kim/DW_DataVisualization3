@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>boxModel</title>
+  </head>
+  <style>
+    * {
+      /* 
+            box-sizing 속성
+            content-box: 정해준 width, height 값은 화면상에서 그대로 표현되지 않고
+            padding과 border 영역을 포함해서 화면에 표현된다. (default)
+            border-box: 정해준 width, height 값이 화면상에 그대로 표현된다.
+        */
+      box-sizing: content-box;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    body {
+      margin: 0;
+    }
+    div {
+      /* div 는 블록 요소이므로 width, height 값을 조정할 수 있다. */
+      width: 490px;
+      height: 490px;
+      border: 5px solid red;
+      /* padding: 15px; */
+      margin: 15px;
+    }
+  </style>
+  <body>
+    <div></div>
+  </body>
+</html>
