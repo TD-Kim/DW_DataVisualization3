@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex 축약형</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    ul {
+      display: flex;
+      list-style-type: none;
+      border: 5px solid red;
+      padding: 0;
+      font-size: 48px;
+      height: 500px;
+    }
+    li {
+      background-color: beige;
+    }
+    li:nth-child(2n) {
+      background-color: coral;
+    }
+    li:nth-child(2) {
+      flex-grow: 2; /* flex-grow 의 기본값은 0 이다. */
+      flex-shrink: 2;
+    }
+    li:nth-child(3) {
+      flex-grow: 1; /* flex-shrink 의 기본값은 1 이다. */
+      flex-shrink: 3;
+    }
+    li:nth-child(4) {
+      flex-basis: 200px;
+    }
+    li:nth-child(5) {
+      flex: 1 3 200px;
+    }
+  </style>
+  <body>
+    <ul>
+      <li>거북이</li>
+      <li>호랑이</li>
+      <li>다람쥐</li>
+      <li>고라니</li>
+      <li>코끼리</li>
+    </ul>
+  </body>
+</html>

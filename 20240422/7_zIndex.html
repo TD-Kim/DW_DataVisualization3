@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>z-index</title>
+  </head>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+    }
+    #box1 {
+      background: blue;
+      position: absolute;
+      z-index: 200;
+    }
+    #box2 {
+      background: yellow;
+      position: absolute;
+      top: 100px;
+      left: 100px;
+    }
+    #box3 {
+      background: red;
+      position: absolute;
+      top: 200px;
+      left: 200px;
+      z-index: -5;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      /* 
+        opacity: 불투명도 
+        0 ~ 1 사이의 값을 조정하여 요소의 불투명도를 선택한다.
+        0 : 투명
+        1 : 불투명
+      */
+      opacity: 0.4;
+    }
+  </style>
+  <body>
+    <!-- <div id="box1">box #1</div>
+    <div id="box2">box #2</div>
+    <div id="box3">box #3</div> -->
+    <img src="../resources/img/시바견.png" width="200" height="200" />
+    <p>img 요소의 z-index가 -1이므로 다른 요소의 뒤에 위치한다.</p>
+  </body>
+</html>

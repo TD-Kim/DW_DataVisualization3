@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex direction</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    ul {
+      display: flex;
+      list-style-type: none;
+      /* flex-direction: row-reverse; */
+      flex-direction: column-reverse;
+    }
+    #container {
+      display: flex;
+      background-color: greenyellow;
+      /* 
+        flex-wrap
+        nowrap : 기본값. 부모 넓이에 맞게 요소들의 넓이를 강제 축소
+        wrap : 부모 넓이보다 요소들의 총 넓이가 크다면 나머지 요소들을 다음줄로 줄바꿈
+        wrap-reverse : 줄바꿈 하는 요소들을 역순으로 배치
+      */
+      flex-wrap: wrap;
+    }
+    #container > div {
+      width: 200px;
+      height: 50px;
+      background-color: orange;
+      padding: 5px;
+      margin: 5px;
+    }
+  </style>
+  <body>
+    <ul>
+      <li>거북이</li>
+      <li>호랑이</li>
+      <li>다람쥐</li>
+      <li>고라니</li>
+      <li>코끼리</li>
+    </ul>
+
+    <div id="container">
+      <div>FLEX1</div>
+      <div>FLEX2</div>
+      <div>FLEX3</div>
+      <div>FLEX4</div>
+      <div>FLEX5</div>
+      <div>FLEX6</div>
+      <div>FLEX7</div>
+      <div>FLEX8</div>
+      <div>FLEX9</div>
+      <div>FLEX0</div>
+    </div>
+  </body>
+</html>

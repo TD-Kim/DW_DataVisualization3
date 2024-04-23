@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex justify</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    ul {
+      display: flex;
+      list-style-type: none;
+      border: 5px solid red;
+      padding: 0;
+      font-size: 48px;
+
+      flex-direction: column;
+      height: 800px;
+      /* justify-content: flex-start; */
+      /* justify-content: flex-end; */
+      /* justify-content: center; */
+      /* justify-content: space-between; */
+      /* justify-content: space-around; */
+      justify-content: space-evenly;
+    }
+  </style>
+  <body>
+    <ul>
+      <li>거북이</li>
+      <li>호랑이</li>
+      <li>다람쥐</li>
+      <li>고라니</li>
+      <li>코끼리</li>
+    </ul>
+  </body>
+</html>

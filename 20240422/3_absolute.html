@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>absolute</title>
+  </head>
+  <style>
+    /* #zero {
+      position: relative;
+    } */
+    #one {
+      background-color: cyan;
+      width: 800px;
+      height: 400px;
+      position: absolute;
+      left: 100px;
+      top: 100px;
+    }
+    #two {
+      background-color: yellow;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      /* left: 1px;
+      top: 1px; */
+    }
+    #three {
+      background-color: lightgreen;
+      width: 300px;
+      height: 100px;
+      position: absolute;
+      left: 200px;
+      top: 200px;
+    }
+  </style>
+  <body>
+    <!-- <div id="zero"> -->
+    <div id="one">
+      <div id="two">block #2<br />position: absolute;</div>
+    </div>
+    <div id="three"></div>
+    <!-- </div> -->
+  </body>
+</html>
