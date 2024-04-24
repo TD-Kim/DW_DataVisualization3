@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 페이지</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+      background-color: #1f2029;
+      /* color: #c4c3ca; */
+    }
+    #wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #main {
+      width: 500px;
+      height: 500px;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+    }
+    h3 {
+      margin: 50px;
+      text-align: center;
+    }
+    #input-section {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #input-section div {
+      width: 90%;
+      position: relative;
+    }
+    #input-section input:not([type='submit']) {
+      width: 100%;
+      padding: 2% 6%;
+    }
+    #input-section > div {
+      margin-top: 2%;
+    }
+    #input-section input[type='submit'] {
+      margin-top: 2%;
+      width: 100px;
+      height: 30px;
+      background-color: yellow;
+      border-radius: 10px;
+    }
+    .icon {
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      top: 25%;
+      left: 5px;
+    }
+    #forgetPassword {
+      height: 10%;
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div id="main">
+        <h3>Log In</h3>
+        <form id="input-section">
+          <div>
+            <i class="fas fa-wifi icon"></i>
+            <input type="text" placeholder="Your Email" />
+          </div>
+          <div>
+            <i class="fas fa-wifi icon"></i>
+            <input type="password" placeholder="Your Password" />
+          </div>
+          <input type="submit" value="SUBMIT" />
+        </form>
+        <div id="forgetPassword">
+          <a href="#">Forget your password?</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

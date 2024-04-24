@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>쇼핑몰</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* wrapper 스타일 시작 */
+    #wrapper {
+      border: 2px solid orange;
+      display: flex;
+      flex-direction: column;
+    }
+    /* wrapper 스타일 끝 */
+
+    /* header 스타일 시작 */
+    #header {
+      background-color: #ffd65c;
+      height: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #header > img {
+      width: 100px;
+      height: 100px;
+    }
+    #header > span {
+      font-size: 2em;
+      font-weight: 900;
+      color: #53188b;
+    }
+    /* header 스타일 끝 */
+
+    /* nav 스타일 시작 */
+    #nav {
+      background-color: #d1b3e0;
+      height: 10%;
+      margin: 0;
+      padding: 0;
+    }
+    /* nav 스타일 끝 */
+
+    /* main 스타일 시작 */
+    #main {
+      background-color: aqua;
+      height: 70%;
+      display: flex;
+    }
+    .aside {
+      background-color: #faebeb;
+      width: 15%;
+    }
+    #content {
+      background-color: #fafafa;
+      width: 70%;
+    }
+    /* main 스타일 끝 */
+
+    /* footer 스타일 시작 */
+    #footer {
+      background-color: #ccccf2;
+      height: 10%;
+    }
+    /* footer 스타일 끝 */
+  </style>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <img src="../resources/img/시바견.png" />
+        <span>SIBA shopping</span>
+      </div>
+      <ul id="nav">
+        <li>HOME</li>
+        <li>SHOPPING ABOUT</li>
+        <li>NEWS</li>
+        <li>MY ACCOUNT</li>
+        <li>C</li>
+      </ul>
+      <div id="main">
+        <div class="aside"></div>
+        <div id="content"></div>
+        <div class="aside"></div>
+      </div>
+      <div id="footer"></div>
+    </div>
+  </body>
+</html>
