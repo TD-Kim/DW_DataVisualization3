@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid layout</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    #wrapper {
+      display: grid;
+      grid-template-rows: 1fr 3fr 1fr;
+      gap: 10px;
+    }
+    #header {
+      background-color: yellow;
+    }
+    #content {
+      /* background-color: pink; */
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+      gap: 10px;
+    }
+    #nav {
+      background-color: pink;
+    }
+    #main {
+      background-color: beige;
+    }
+    #footer {
+      background-color: purple;
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div id="header"></div>
+      <div id="content">
+        <div id="nav"></div>
+        <div id="main"></div>
+      </div>
+      <div id="footer"></div>
+    </div>
+  </body>
+</html>
