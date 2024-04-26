@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 
+        transition
+        CSS 프로퍼티의 값이 변화할 때, 프로퍼티 값의 변화가 일정시간(duration)에 걸쳐
+        일어나도록 하는 것이다.
+        상태 변화에 동반하여 변경되는 CSS 프로퍼티값에 의한 표시의 변화를 부드럽게 하기 위해
+        애니메이션 속도를 조절한다.
+
+        모든 CSS 프로퍼티가 transition의 대상이 될 수는 없다.
+        예를 들어 width, font-size, background-color 처럼 하나의 범주안에서 크기나 색상의 값이
+        변화가 가능하지만 display 프로퍼티 등의 범주가 애매한 속성들은 적용할 수 없다.
+    */
+    div {
+      /* 초기 상태 */
+      width: 200px;
+      height: 100px;
+      background-color: red;
+
+      /* transition-property: width, background-color; */
+      /* transition-duration: 2s, 2s; */
+      /* transition-delay: 2s; */
+      /* ease: 기본값. 느리게 시작하여 점점 빨라졌다가 느려지면서 종료 */
+      /* transition-timing-function: ease; */
+
+      /* linear: 시작부터 종료까지 일정함 */
+      /* transition-timing-function: linear; */
+
+      /* ease-in: 느리게 시작한 후 일정한 속도에 다다르면 그 상태로 종료 */
+      /* transition-timing-function: ease-in; */
+
+      /* ease-out: 일정한 속도로 시작해서 점점 느려지면서 종료 */
+      /* transition-timing-function: ease-out; */
+
+      /* ease-in-out: ease와 비슷하게 느리게 시작하여 느려지면서 종료 */
+      /* transition-timing-function: ease-in-out; */
+
+      /* transition: property(all) duration(0) function(ease) delay(0) */
+
+      transition: all 2s linear;
+    }
+
+    div:hover {
+      /* 마우스를 올렸을 때 적용될 상태 */
+      width: 400px;
+      background-color: blue;
+    }
+  </style>
+  <body>
+    <div></div>
+  </body>
+</html>

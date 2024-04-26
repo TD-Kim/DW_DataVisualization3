@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    img {
+      transition: all 3s linear;
+    }
+    img:hover {
+      /* blur: 이미지에 흐림 효과를 적용한다. */
+      /* filter: blur(50px); */
+
+      /* brightness: 이미지의 밝기를 조정한다. */
+      /* filter: brightness(150%); */
+
+      /* contrast: 이미지의 대비를 조정한다. */
+      /* filter: contrast(150%); */
+
+      /* 
+        drop-shadow: 이미지에 그림자 효과를 적용한다. 
+        drop-shadow(h-shadow v-shadow blur spread color);
+        h-shadow - 필수, 가로 그림자의 픽셀값(음수값은 그림자의 위치가 왼쪽)
+        v-shadow - 필수, 세로 그림자의 픽셀값(음수값은 그림자의 위치가 위쪽)
+        blur - 선택, 흐림정도의 픽셀값(음수값 비허용)
+        spread - 선택, 번짐정도의 픽셀값(음수값 허용)
+        color - 선택, 그림자의 색상
+      */
+      /* filter: drop-shadow(10px 10px 10px orange); */
+      /* -webkit-filter: drop-shadow(10px 10px 10px orange);
+      -o-filter: drop-shadow(10px 10px 10px orange);
+      -ms-filter: drop-shadow(10px 10px 10px orange);
+      -f-filter: drop-shadow(10px 10px 10px 10px orange); */
+
+      /* grayscale: 이미지를 회색조로 변환한다. */
+      /* filter: grayscale(100%); */
+
+      /* sepia: 이미지를 세피아로 변환한다. */
+      /* filter: sepia(100%); */
+
+      /* hue-rotate: 이미지 색조 회전을 적용한다. */
+      filter: hue-rotate(240deg);
+    }
+  </style>
+  <body>
+    <img src="https://picsum.photos/500/500" />
+  </body>
+</html>

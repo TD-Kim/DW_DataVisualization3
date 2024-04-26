@@ -25,6 +25,10 @@
     }
     #header {
       background-color: yellow;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     #content {
       /* background-color: pink; */
@@ -34,9 +38,31 @@
     }
     #nav {
       background-color: pink;
+      font-size: 2rem;
+      padding: 0 15%;
+    }
+    #nav a {
+      color: yellow;
+      text-decoration: none;
+    }
+    #nav a:hover {
+      color: white;
     }
     #main {
       background-color: beige;
+      display: grid;
+      align-content: space-evenly;
+      /* font-size: 2rem; */
+      /* grid-template-columns: 1fr; */
+      grid-template-rows: 1fr 1fr;
+      padding: 2%;
+      gap: 5%;
+    }
+    .section {
+      padding: 1% 2%;
+      background-color: #9ed7c2;
+      border-style: dotted;
+      font-size: 1.5rem;
     }
     #footer {
       background-color: purple;
@@ -44,12 +70,42 @@
   </style>
   <body>
     <div id="wrapper">
-      <div id="header"></div>
-      <div id="content">
-        <div id="nav"></div>
-        <div id="main"></div>
+      <div id="header">
+        <h1>My blog Page</h1>
+        <p>DIV와 flex로 만들어진 페이지입니다.</p>
       </div>
-      <div id="footer"></div>
+      <div id="content">
+        <div id="nav">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="#">w3schools</a></li>
+            <li><a href="#">Naver</a></li>
+            <li><a href="#">Daum</a></li>
+          </ul>
+          <img src="../resources/img/시바견.png" width="100%" />
+        </div>
+        <div id="main">
+          <div class="section">
+            <h3>Semantic Tags</h3>
+            <p>
+              시멘틱 요소(Semantic elements)들은 브라우저에게 요소의 의미나
+              목적을 명확하게 알려주는 요소이다. 레이아웃을 만들때 쓰는 것.
+              의미가 있는 요소라면 div보다 시멘틱 태그를 사용한다.
+            </p>
+          </div>
+          <div class="section">
+            <h3>div와 span</h3>
+            <p>
+              div는 "divide"의 약자로서 페이지를 논리적인 섹션으로 분리하는데
+              사용되는 태그이다. span 요소는 인라인 요소로서 텍스트를 위한
+              컨테이너로 사용될 수 있다.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <p>Copyright (c) 2024 Kim</p>
+      </div>
     </div>
   </body>
 </html>

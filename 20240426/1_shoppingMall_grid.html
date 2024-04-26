@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    #wrapper {
+      display: grid;
+      grid-template-rows: repeat(
+        1,
+        1fr minmax(65px, auto) 6fr minmax(65px, auto)
+      );
+      gap: 1%;
+    }
+    #header {
+      background-color: #ffd65c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2%;
+    }
+    #header div {
+      width: 10%;
+      height: 100%;
+    }
+    #header span {
+      font-size: 2rem;
+      font-weight: 800;
+      color: rgb(90, 6, 168);
+    }
+    #nav {
+      background-color: #d1b3e0;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(10%, auto));
+      align-items: center;
+      justify-items: center;
+      justify-content: space-evenly;
+    }
+    li {
+      color: white;
+      font-weight: 600;
+    }
+    li a {
+      color: inherit;
+      text-decoration: none;
+    }
+    #main {
+      display: grid;
+      grid-template-columns: 1fr 4fr 1fr;
+      gap: 1%;
+    }
+    .aside {
+      background-color: #faebeb;
+      padding: 5%;
+    }
+    #category {
+      background-color: #e6b3b3;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    #category li {
+      padding: 5%;
+      border-bottom: 1px solid #d1a3a3;
+      cursor: pointer;
+    }
+    #category li:hover {
+      background-color: #a17f7f;
+    }
+    #category li:nth-child(1) {
+      border-top: 1px solid #d1a3a3;
+    }
+    #content {
+      background-color: #fafafa;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(150px, auto));
+      padding: 3%;
+      gap: 1%;
+    }
+    .item {
+      border: 1px solid #e5e5e5;
+      padding: 5%;
+      display: grid;
+      grid-template-rows: 5fr 4fr 1fr;
+      gap: 1%;
+      /* align-items: center; */
+    }
+    .item a {
+      color: black;
+      text-decoration: none;
+    }
+    .item a:hover {
+      text-decoration: underline;
+    }
+    .item-desc {
+      align-self: center;
+    }
+    .item button {
+      width: 100%;
+      height: 100%;
+    }
+    #footer {
+      background-color: #ccccf2;
+    }
+  </style>
+  <body>
+    <!-- div*5 -->
+    <!-- div>div*3 -->
+    <!-- div>(div>div*3)+div>div*5 -->
+
+    <div id="wrapper">
+      <div id="header">
+        <div
+          style="
+            background-image: url(../resources/img/시바견.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          "
+        ></div>
+        <span>SIBA Shopping</span>
+      </div>
+      <ul id="nav">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">SHOPPING ABOUT</a></li>
+        <li><a href="#">NEWS</a></li>
+        <li><a href="#">MY ACCOUNT</a></li>
+        <li><a href="#">CONTACTS</a></li>
+      </ul>
+      <div id="main">
+        <div id="aside1" class="aside">
+          <h3>카테고리</h3>
+          <ul id="category">
+            <li><a href="#">데스크탑</a></li>
+            <li><a href="#">노트북</a></li>
+            <li><a href="#">모니터</a></li>
+            <li><a href="#">마우스</a></li>
+            <li><a href="#">키보드</a></li>
+            <li><a href="#">스피커</a></li>
+            <li><a href="#">책상</a></li>
+          </ul>
+        </div>
+        <div id="content">
+          <div class="item">
+            <div
+              style="
+                background-image: url(../resources/img/한성컴퓨터.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+              "
+            ></div>
+            <div class="item-desc">
+              <a href="#"
+                >한성컴퓨터 TFG AX3A707iRX3 블랙 라이젠7 7800X3D RTX4070Ti SUPER
+                게이밍컴퓨터 본체 데스크탑 PC</a
+              >
+            </div>
+            <div>
+              <button>쇼핑카트에 상품 추가하기</button>
+            </div>
+          </div>
+          <div class="item">
+            <div
+              style="
+                background-image: url(../resources/img/한성컴퓨터.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+              "
+            ></div>
+            <div class="item-desc">
+              <a href="#"
+                >한성컴퓨터 TFG AX3A707iRX3 블랙 라이젠7 7800X3D RTX4070Ti SUPER
+                게이밍컴퓨터 본체 데스크탑 PC</a
+              >
+            </div>
+            <div>
+              <button>쇼핑카트에 상품 추가하기</button>
+            </div>
+          </div>
+          <div class="item">
+            <div
+              style="
+                background-image: url(../resources/img/한성컴퓨터.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+              "
+            ></div>
+            <div class="item-desc">
+              <a href="#"
+                >한성컴퓨터 TFG AX3A707iRX3 블랙 라이젠7 7800X3D RTX4070Ti SUPER
+                게이밍컴퓨터 본체 데스크탑 PC</a
+              >
+            </div>
+            <div>
+              <button>쇼핑카트에 상품 추가하기</button>
+            </div>
+          </div>
+        </div>
+        <div id="aside2" class="aside">
+          <h3>Shopping Cart</h3>
+          <p>현재 쇼핑카트에 물품이 없습니다.</p>
+          <a href="#">쇼핑카트 보기</a>
+          <br /><br />
+          <h3>Log In</h3>
+          <span>아이디</span>
+          <form>
+            <p><input type="text" /></p>
+            <span>비밀번호</span>
+            <p><input type="password" /></p>
+            <input type="submit" value="로그인" />
+            <input type="reset" value="초기화" />
+          </form>
+          <br />
+          <a href="#">회원가입</a>
+          <a href="#">비밀번호 분실</a>
+        </div>
+      </div>
+      <div id="footer"></div>
+    </div>
+  </body>
+</html>
