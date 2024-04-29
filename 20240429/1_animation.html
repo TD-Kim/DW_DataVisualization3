@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 
+        animation
+        html 요소에 애니메이션 효과를 적용시킨다. 애니메이션을 적용하기 위해서
+        특별한 속성이 쓰여지는데 이를 @keyframes 라 한다.
+        애니메이션은 하나의 줄거리(keyframes)를 구성하여 줄거리 내부에서 세부 움직임을
+        시간 흐름 단위로 제어하여 요소의 움직임을 표현한다.
+
+        transition vs animation
+        1. 일반적으로 transition 효과는 요소 프로퍼티값이 다른 값으로 변화할 때 주로 사용하며
+        요소의 로드와 함께 자동으로 발동되지 않는다.
+        2. animation 프로퍼티는 keyframes 를 사용할 수 있고, 전체 줄거리의 재생과 정지,
+        반복까지 제어할 수 있다.
+    */
+
+    @keyframes move {
+      /* 애니메이션 시작 시점 */
+      /* from {
+        left: 0;
+      } */
+      /* 애니메이션 종료 시점 */
+      /* to {
+        left: 300px;
+      } */
+
+      0% {
+        left: 0;
+      }
+      50% {
+        left: 100px;
+      }
+      100% {
+        left: 300px;
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    @keyframes changeColor {
+      from {
+        background-color: red;
+      }
+      to {
+        background: blue;
+      }
+    }
+
+    @keyframes myAnimation {
+      0% {
+        background-color: red;
+        left: 0px;
+        top: 0px;
+      }
+      25% {
+        background-color: yellow;
+        left: 200px;
+        top: 0px;
+      }
+      50% {
+        background-color: blue;
+        left: 200px;
+        top: 200px;
+      }
+      75% {
+        background-color: green;
+        left: 0px;
+        top: 200px;
+      }
+      100% {
+        background-color: red;
+        left: 0px;
+        top: 0px;
+      }
+    }
+
+    div#asdfasdf {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: red;
+
+      /* animation-name: move, fadeOut, changeColor; */
+      animation-name: myAnimation;
+      animation-duration: 8s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease;
+      /* 
+        animation-direction: 애니메이션이 종료된 이후 반복될 때 진행하는 방향을 지정한다. 
+        normal : 기본값으로 from(0%)에서 to(100%) 방향으로 진행한다.
+        reverse : to에서 from방향으로 진행한다.
+        alternate : 홀수번째는 normal로, 짝수번째는 reverse로 진행한다.
+        alternate-reverse : 홀수번째는 reverse로, 짝수번째는 normal로 진행한다.
+      */
+      animation-direction: alternate;
+    }
+
+    @keyframes myAnimation2 {
+      0% {
+        left: 0px;
+        background-color: yellow;
+      }
+      100% {
+        left: 400px;
+        background-color: blue;
+      }
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      font-size: 1em;
+      text-align: center;
+      color: white;
+      background-color: red;
+      margin-bottom: 10px;
+      position: relative;
+
+      animation-name: myAnimation2;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+      animation-delay: 2s;
+      /* animation: name, duration, timing-function, delay, iteration-count, direction fill mode, play state
+           기본값         
+      */
+
+      /* animation-play-state: paused, running; */
+
+      animation: myanimation2 2s linear 2s;
+
+      /* 
+        animation-fill-mode: 애니메이션 미실행 시(대기 또는 종료) 요소의 스타일을 지정한다.
+    */
+    }
+
+    div:nth-of-type(1) {
+      animation-fill-mode: none;
+    }
+    div:nth-of-type(2) {
+      animation-fill-mode: none;
+    }
+    div:nth-of-type(3) {
+      animation-fill-mode: none;
+    }
+    div:nth-of-type(4) {
+      animation-fill-mode: none;
+    }
+  </style>
+  <body>
+    <div>none</div>
+    <p>대기 : 시작 프레임(from)에 설정한 스타일을 적용하지 않고 대기한다.</p>
+    <p>
+      종료 : 애니메이션 실행 전 상태로 애니메이션 요소의 프로퍼티값을 되돌리고
+      종료한다.
+    </p>
+    <div>forwards</div>
+    <p>대기 : 시작 프레임(from)에 설정한 스타일을 적용하지 않고 대기한다.</p>
+    <p>종료 : 종료 프레임(to)에 설정한 스타일을 적용하고 종료한다.</p>
+    <div>backwards</div>
+    <p>대기 : 시작 프레임(from)에 설정한 스타일을 적용하고 대기한다.</p>
+    <p>
+      종료 : 애니메이션 실행 전 상태로 애니메이션 요소의 프로퍼티값을 되돌리고
+      종료한다.
+    </p>
+    <div>both</div>
+    <p>대기 : 시작 프레임(from)에 설정한 스타일을 적용하고 대기한다.</p>
+    <p>종료 : 종료 프레임(to)에 설정한 스타일을 적용하고 종료한다.</p>
+  </body>
+</html>

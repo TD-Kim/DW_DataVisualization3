@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    #wrapper {
+      padding: 1rem;
+    }
+    a {
+      display: inline-block;
+      font-size: 22px;
+      padding: 20px 60px;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .btn-3d {
+      position: relative;
+      /* text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15); */
+    }
+    .btn-3d.green {
+      background-color: #82c8a0;
+      box-shadow: 0 0 0 1px #82c8a0 inset,
+        0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+        0 8px 0 0 rgba(126, 194, 155, 0.7), 0 8px 0 1px rgba(0, 0, 0, 0.4),
+        0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    }
+    .btn-3d.green:hover {
+      background-color: #80c49d;
+    }
+    .btn-3d.green:active {
+      box-shadow: 0 0 0 1px #82c8a0 inset,
+        0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+    }
+    .btn-3d:active {
+      top: 9px;
+    }
+
+    .orange {
+      background-color: #ffaa40;
+    }
+    .btnFade.orange:hover {
+      transition: all 0.2s;
+      background-color: #ff8300;
+    }
+
+    .purple {
+      background-color: #a74982;
+    }
+    .btnBorder.purple {
+      box-shadow: 0 0 0 0 #6d184b;
+    }
+    .btnBorder.purple:hover {
+      transition: all 0.2s;
+      box-shadow: 0 0 0 5px #6d184b;
+    }
+
+    .skyblue {
+      background-color: #4ec0e9;
+    }
+    .clickMe {
+      animation: clickMe 4s infinite;
+    }
+    @keyframes clickMe {
+      5% {
+        transform: scale(1);
+      }
+      10% {
+        transform: scale(0.9);
+      }
+      15% {
+        transform: scale(1.15);
+      }
+      20% {
+        transform: scale(1.15) rotate(-5deg);
+      }
+      25% {
+        transform: scale(1.15) rotate(5deg);
+      }
+      30% {
+        transform: scale(1.15) rotate(-3deg);
+      }
+      35% {
+        transform: scale(1.15) rotate(2deg);
+      }
+      40% {
+        transform: scale(1.15) rotate(0);
+      }
+      50% {
+        transform: scale(1);
+      }
+    }
+
+    .purpleBlue {
+    }
+    .gradient {
+      background-color: #e0e5ec;
+      position: relative;
+    }
+    .gradient::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div class="content">
+        <h2>3D button</h2>
+        <a href="#" class="btn-3d green">Button</a>
+      </div>
+      <div class="content">
+        <h2>Fade button</h2>
+        <a href="#" class="btnFade orange">Fade</a>
+      </div>
+      <div class="content">
+        <h2>Border button</h2>
+        <a href="#" class="btnBorder purple">Border</a>
+      </div>
+      <div class="content">
+        <h2>click me button</h2>
+        <a href="#" class="clickMe skyblue">Click me</a>
+      </div>
+      <div class="content">
+        <h2>gradient button</h2>
+        <a href="#" class="gradient purpleBlue">Gradient</a>
+      </div>
+    </div>
+  </body>
+</html>
