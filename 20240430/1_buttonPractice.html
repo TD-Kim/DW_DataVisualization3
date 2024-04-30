@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>버튼연습</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    #wrapper {
+      padding: 1rem;
+    }
+    a {
+      display: inline-block;
+      font-size: 22px;
+      padding: 20px 60px;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .fillUpBtn {
+      border: 2px solid #4dbde5;
+      color: #4dbde5;
+      position: relative;
+      transition: 0.3s;
+      overflow: hidden;
+    }
+
+    .fillUpBtn::before {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      height: 200%;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      background-color: #4dbde5;
+      transform: scaleY(0);
+      transition: 0.3s;
+    }
+
+    .fillUpBtn:hover {
+      color: white;
+    }
+
+    .fillUpBtn:hover::before {
+      transform: scaleY(1);
+    }
+
+    .pulseBtn {
+      border: 2px solid #4dbde5;
+      color: white;
+      background-color: #4dbde5;
+      transition: 0.3s;
+      box-shadow: 5px 5px 2px 0 gray;
+    }
+
+    .lineBtn {
+      color: #4dbde5;
+      transition: 0.3s;
+      position: relative;
+    }
+    .lineBtn::before,
+    .lineBtn::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #4dbde5;
+      opacity: 0;
+      transform: scaleX(0);
+      transition: 0.4s ease-in-out;
+    }
+    .lineBtn::before {
+      top: 0;
+    }
+    .lineBtn::after {
+      bottom: 0;
+    }
+    .lineBtn:hover {
+      letter-spacing: 5px;
+      color: #4dbde5;
+      background: transparent;
+    }
+    .lineBtn:hover::before,
+    .lineBtn:hover::after {
+      opacity: 1;
+      transform: scaleX(1.2);
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div class="content">
+        <h2>Fill Up Button</h2>
+        <a href="#" class="fillUpBtn">Fill Up</a>
+      </div>
+      <div class="content">
+        <h2>Pulse Button</h2>
+        <a href="#" class="pulseBtn">Pulse</a>
+      </div>
+      <div class="content">
+        <h2>Line Button</h2>
+        <a href="#" class="lineBtn">Line</a>
+      </div>
+    </div>
+  </body>
+</html>
