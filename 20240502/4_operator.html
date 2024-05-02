@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연산자</title>
+  </head>
+  <body>
+    <script>
+      // 수학 연산자
+      // +(덧셈), -(뺄셈), *(곱셈), /(나눗셈), 나머지(%)
+      let result = 0;
+
+      let a = 5;
+      let b = 10;
+
+      result = a + b / 2;
+
+      result = b % 3;
+
+      // 문자열 연산
+      let str1 = 'my';
+      let str2 = ' string';
+      let checked = true;
+
+      // 문자열과 다른 자료형을 + 연산 하면 다른 자료형은 문자열로 변환되어 연산된다.
+      result = str1 + str2 + checked;
+
+      result = '1' + a;
+      result = `1${a}`;
+
+      result = a - '2';
+      result = +'2' + a;
+
+      // 비교 연산자
+      result = a >= b;
+      result = a != b; // !: 부정연산자
+      result = !checked;
+
+      result = '2' < 1; // 문자형이 숫자형으로 형변환된다.
+      result = '01' == 1;
+
+      // truthy 한 값들은 1로 변형되고, falsy 한 값들은 0으로 변형된다.
+      result = true == 1; // true
+      result = false == 0; // true
+
+      result = '0' == 0; // true
+      result = '0' !== 0; // === 일 때는 값과 타입까지 동일해야 true가 된다.
+
+      // null, undefined 비교
+      // ==, != : 동등 비교 연산
+      // ===, !== : 일치 비교 연산
+      // <, <=, >, >= : 기타 비교 연산
+      result = null > 0; // (1) false
+      result = null == 0; // (2) false
+      result = null >= 0; // (3) true
+      // 동등 연산자와 기타 비교 연산자의 동작 방식이 다르기 때문에
+      // (1)과(3) 에서는 null이 숫자형으로 변환돼 0이 된다.
+      // 그런데 동등 연산자는 피연산자가 undefined 이거나 null 일 때 형변환을 하지 않는다.
+      // undefined와 null 을 비교하는 경우에만 true를 반환하고 그 외의 경우에는 false를 반환한다.
+
+      // 증감 연산자
+      let counter = 2;
+      //   console.log(counter);
+      //   counter = counter + 1;
+      //   console.log(counter);
+      //   counter += 1;
+      result = counter;
+      // 후위형 : 증가, 감소 전의 기존 값을 반환한다.
+      counter++;
+      counter--;
+      // 전위형 : 증가, 감소 후의 새로운 값을 반환한다.
+      ++counter;
+      --counter;
+
+      let c = counter++;
+      result = c;
+
+      //   console.log('문자열' + 1 + true + false + 2);
+      //   console.log(a + b + 3);
+      //   console.log(str1 + " number is ");
+      //   console.log("my number is " + a);
+
+      /*
+        "" + 1 + 0      // 10
+        "" - 1 + 0      // -1
+        true + false    // 1
+        6 / "3"         // 2
+        "2" * "3"       // 6
+      */
+
+      console.log(`result : ${result}`);
+    </script>
+  </body>
+</html>

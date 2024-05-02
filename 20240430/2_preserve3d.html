@@ -22,12 +22,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      /* perspective: 150px; */
     }
     .card {
       width: 300px;
       height: 500px;
-      background-color: gray;
+      /* background-color: gray; */
       position: relative;
+      transform-style: preserve-3d;
+      transition: all 1.5s;
     }
     .card > div {
       width: 100%;
@@ -43,10 +46,14 @@
     }
     .card > div:nth-child(1) {
       background-color: orange;
+      transform: translateZ(150px);
     }
     .card > div:nth-child(2) {
       background-color: yellow;
-      transform: translateX(-300px) rotateY(-90deg);
+      transform: translateX(-150px) rotateY(-90deg);
+    }
+    .card:hover {
+      transform: rotateY(90deg);
     }
   </style>
   <body>

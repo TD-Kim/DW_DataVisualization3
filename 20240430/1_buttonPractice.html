@@ -65,7 +65,26 @@
       color: white;
       background-color: #4dbde5;
       transition: 0.3s;
-      box-shadow: 5px 5px 2px 0 gray;
+      /* box-shadow: 0 0 0 5px gray; */
+    }
+
+    .pulseBtn:hover {
+      animation: pulse 0.5s;
+    }
+
+    @keyframes pulse {
+      from {
+        box-shadow: 0 0 0 0 #4dbde5;
+      }
+      to {
+        box-shadow: 0 0 0 18px transparent;
+      }
+    }
+
+    .test {
+      box-shadow: 0 0 0 0 gray;
+      border: none;
+      background-image: linear-gradient(90deg, #4dbde5, white);
     }
 
     .lineBtn {
@@ -75,15 +94,15 @@
     }
     .lineBtn::before,
     .lineBtn::after {
-      position: absolute;
       content: '';
-      left: 0;
+      display: inline-block;
+      position: absolute;
       width: 100%;
-      height: 1px;
-      background: #4dbde5;
-      opacity: 0;
+      height: 3px;
+      background-color: white;
       transform: scaleX(0);
-      transition: 0.4s ease-in-out;
+      left: 0;
+      transition: 0.3s;
     }
     .lineBtn::before {
       top: 0;
@@ -93,12 +112,10 @@
     }
     .lineBtn:hover {
       letter-spacing: 5px;
-      color: #4dbde5;
-      background: transparent;
     }
     .lineBtn:hover::before,
     .lineBtn:hover::after {
-      opacity: 1;
+      background-color: #4dbde5;
       transform: scaleX(1.2);
     }
   </style>
@@ -111,6 +128,7 @@
       <div class="content">
         <h2>Pulse Button</h2>
         <a href="#" class="pulseBtn">Pulse</a>
+        <a href="#" class="pulseBtn test">Pulse</a>
       </div>
       <div class="content">
         <h2>Line Button</h2>

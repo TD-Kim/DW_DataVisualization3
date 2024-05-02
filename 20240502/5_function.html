@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수</title>
+  </head>
+  <body>
+    <!-- <h1>고길동 부장님, 둘리 차장님 환영합니다!</h1> -->
+    <script>
+      // 함수 선언
+      function showMessage(message) {
+        // 함수의 내용
+        console.log(message);
+      }
+
+      //   function alert() {
+      //     // 경고창을 띄우는 로직
+      //   }
+
+      //   alert();
+
+      //   showMessage();
+
+      function name(a, b) {
+        // a, b 는 함수의 매개변수라고 한다.
+        // 매개변수는 함수 안에서만 사용할 수 있다.
+        // console.log(`${a}부장님, ${b}차장님`);
+        document.write(`<h1>${a} 부장님, ${b} 차장님 환영합니다!</h1>`);
+      }
+
+      name('홍길동', '임꺽정');
+      name('김진용', '둘리');
+
+      function add(num1 = 0, num2 = 0) {
+        let sum = 0;
+        sum = num1 + num2;
+
+        return sum; // 반환값
+      }
+
+      let result = add(20, 17);
+      let str = name('고길동', '또치');
+      showMessage(str);
+      document.write(result);
+
+      result = add();
+      showMessage(result);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>변수</title>
+  </head>
+  <body>
+    <script>
+      // var 키워드를 사용하여 변수를 선언해 보세요.
+      var x;
+      // let 키워드를 사용하여 변수를 선언해보세요.
+      let y;
+      // const 키워드를 사용하여 변수를 선언해보세요.
+      // const 로 변수를 선언할 때는 초기화를 함께 해줘야한다.
+      const z = 0;
+
+      // 변수와 상수
+      // 변수: 변할 수 있는 값, 상수: 일정한 값
+
+      let message;
+      // 문자열: "apple" 'apple' `apple`
+      message = 'Hello World';
+      alert(message);
+      message = 'Hello Javascript';
+      alert(message);
+
+      // 변수 선언은 한 줄에 여러 변수를 선언하는 것도 가능하다.
+      let user = 'kim',
+        age = 20;
+      //   let age = 20;
+
+      let message2 = 'Hello CSS';
+
+      /* 
+        변수 명명규칙
+        1. 변수명에는 오직 문자와 숫자, 그리고 기호 $ 와 _ 만 들어갈 수 있다.
+        2. 첫 글자는 숫자가 올 수 없다.
+        3. 예약어는 변수명으로 사용할 수 없다.
+            ex) var, let, const, class, return, function ...
+      */
+
+      let $ = 5;
+      let _ = 4;
+      //   let my-name;
+      let a1 = 3;
+      let my_name;
+      let myNameIsKimjinyong;
+
+      //   let let = 0;
+      //   let return = 5;
+
+      // 상수
+      const a = 1;
+      a = 3;
+      alert('test');
+    </script>
+  </body>
+</html>
