@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for문</title>
+  </head>
+  <body>
+    <script>
+      for (let i = 0; i < 10; i++) {
+        document.write(`<h1>카운터 : ${i}</h1>`);
+      }
+      document.write(`<hr>`);
+      for (let i = 10; i >= 1; i--) {
+        document.write(`<h1>카운터 : ${i}</h1>`);
+      }
+      document.write(`<hr>`);
+      // 구구단 2단
+      // 2 X 1 = 2
+      // 2 X 2 = 4
+      // 2 X 3 = 6
+      // ...
+      // 2 X 9 = 18
+      for (let i = 1; i <= 9; i++) {
+        document.write(`<h1>2 X ${i} = ${2 * i}</h1>`);
+      }
+      document.write(`<hr>`);
+      // 1 ~ 10 까지의 합을 구하시오.
+      //   sum = sum + 2;
+      //   sum = sum + 3;
+      //   sum = sum + 4;
+      //   ...
+      //   sum = sum + 10;
+      // 1 ~ 10 까지의 합 : ${SUM}
+      let sum = 0;
+      for (let i = 1; i <= 10; i++) {
+        // sum = sum + i;
+        sum += i;
+      }
+      document.write(`<h1>1 ~ 10 까지의 합 : ${sum}</h1>`);
+
+      document.write(`<hr>`);
+      // 1 ~ 20 까지의 숫자 중에서 짝수만 출력을 하세요.
+      for (let i = 1; i <= 20; i++) {
+        // 짝수만 골라내는 조건문
+        if (i % 2 == 0) {
+          document.write(`${i}<br>`);
+        }
+      }
+
+      document.write(`<hr>`);
+      // 1 ~ 100 까지 숫자 중 홀수들의 합을 구하세요.
+      // 1 ~ 100 까지 숫자를 어떻게 만들지? 아 반복문!
+      let sum2 = 0; // 전체 합을 누적해서 저장할 변수
+      for (let i = 1; i <= 100; i++) {
+        // 홀수들의 합????
+        // 그럼 홀수를 먼저 구하자!
+        if (i % 2 == 1) {
+          // 합을 구하세요......?
+          sum2 = sum2 + i;
+        }
+      }
+      document.write(`<h1>1 ~ 100 까지의 홀수들의 합 : ${sum2}</h1>`);
+
+      // 중첩반복문(nested Loop)
+      let i = 0;
+      if (i % 2 == 0) {
+        if (i == 2) {
+          alert('i 는 2 입니다.');
+        } else {
+          alert('i는 2가 아닙니다.');
+        }
+      }
+
+      document.write(`<hr>`);
+      for (i = 0; i < 10; i++) {
+        document.write(`<h1 style="color: red;">i 반복문 ${i}회차 시작</h1>`);
+        for (let j = 0; j < 10; j++) {
+          document.write(`<h1>j 반복문 ${j}회차 시작</h1>`);
+          document.write(`<h1>j 반복문 ${j}회차 끝</h1>`);
+        }
+        document.write(`<h1 style="color: red;">i 반복문 ${i}회차 끝</h1>`);
+      }
+
+      document.write(`<hr>`);
+      // 1단 ~ 9단 ==> 9번 반복
+      // 단수 안에서 곱해지는 값 1 ~ 9 ==> 9번 반복
+      for (let i = 1; i <= 9; i++) {
+        document.write(`<h1 style="color: red;">${i}단 시작</h1>`);
+        for (let j = 1; j <= 9; j++) {
+          document.write(`<h1>${i} X ${j} = ${i * j}</h1>`);
+        }
+      }
+    </script>
+  </body>
+</html>
