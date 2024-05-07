@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>anchor 태그</title>
+  </head>
+  <style>
+    /* 링크의 기본 상태 */
+    a:link {
+      color: yellow;
+      background-color: blue;
+      cursor: pointer;
+      /* line-through: 가운데줄(취소선 느낌) */
+      text-decoration: line-through;
+    }
+    /* 방문한 경로의 상태 */
+    a:visited {
+    }
+    /* 활성화(마우스가 클릭 되어있는)된 상태 */
+    a:active {
+    }
+    /* 마우스가 올라간 상태 */
+    a:hover {
+    }
+  </style>
+  <body>
+    <!-- anchor 태그에 href 속성이 들어가야 하이퍼링크처럼 보인다. -->
+    <a href="http://www.daum.net">google 로 이동</a>
+  </body>
+</html>
