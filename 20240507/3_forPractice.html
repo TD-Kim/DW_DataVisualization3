@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>반복문 연습</title>
   </head>
+  <style>
+    * {
+      font-size: 2.5rem;
+    }
+  </style>
   <body>
     <!-- 
         *****<br>
@@ -13,12 +18,17 @@
         *****<br>
         *****<br> 
     -->
+    &nbsp;&nbsp;&nbsp;&nbsp;*<br />
+    &nbsp;&nbsp;&nbsp;**<br />
+    &nbsp;&nbsp;***<br />
+    &nbsp;****<br />
+    *****<br />
     <script>
       // 1 ~ 20 까지의 숫자 중 짝수만 출력하세요.
-      let x = 4;
-      for (let i = 2; i <= x * 5; i += 2) {
-        document.write(`<h1>${i}</h1>`);
-      }
+      //   let x = 4;
+      //   for (let i = 2; i <= x * 5; i += 2) {
+      //     document.write(`<h1>${i}</h1>`);
+      //   }
 
       // 별찍기
       // *****
@@ -26,7 +36,149 @@
       // *****
       // *****
       // *****
-      for (let i = 1; i <= 5; i++) {}
+      for (let i = 1; i <= 5; i++) {
+        for (let j = 1; j <= 5; j++) {
+          document.write(`*`);
+        }
+        document.write(`<br>`);
+      }
+
+      document.write(`<hr>`);
+      // *
+      // **
+      // ***
+      // ****
+      // *****
+      for (let i = 1; i <= 5; i++) {
+        for (let j = 1; j <= i; j++) {
+          // 1 2 3 4 5
+          document.write(`*`);
+        }
+        document.write(`<br>`);
+      }
+
+      //     *
+      //    **
+      //   ***
+      //  ****
+      // *****
+      for (let i = 1; i <= 5; i++) {
+        // 공백 4 3 2 1 0
+        //     i        k
+        //     1     4 3 2 1
+        //     2      4 3 2
+        //     3       4 3
+        //     4        4
+        //     5      false
+        for (let k = 4; k >= i; k--) {
+          document.write(`&nbsp;`);
+        }
+        for (let j = 1; j <= i; j++) {
+          // 1 2 3 4 5
+          document.write(`*`);
+        }
+        document.write(`<br>`);
+      }
+
+      // *****
+      // ****
+      // ***
+      // **
+      // *
+      document.write(`<hr>`);
+      for (let i = 1; i <= 5; i++) {
+        for (let j = 5; j >= i; j--) {
+          // 5 4 3 2 1
+          // 5 4 3 2
+          // 5 4 3
+          // 5 4
+          // 5
+          document.write(`*`);
+        }
+        document.write(`<br>`);
+      }
+
+      document.write(`<hr>`);
+
+      // *****
+      //  ****
+      //   ***
+      //    **
+      //     *
+      for (let i = 1; i <= 5; i++) {
+        for (let j = 1; j <= i - 1; j++) {
+          document.write(`&nbsp;`);
+        }
+        for (let k = 5; k >= i; k--) {
+          document.write(`*`);
+        }
+        document.write(`<br>`);
+      }
+
+      // 1부터 사용자가 입력한 숫자까지의 합을 더해서 화면에 출력하세요.
+      // 1. 사용자에게 값(숫자)을 입력받는다.
+      let range = +prompt('숫자를 입력하세요.');
+      let sum = 0; // NaN sum = sum + i;
+
+      // 2. 반복문을 사용하여 1부터 사용자가 입력한 숫자까지의 합을 계산한다.
+      let i = 0;
+      while (i <= range) {
+        sum += i;
+        // sum = sum + i;
+        i++;
+      }
+
+      // 3. 계산된 합을 화면에 출력한다.
+      //   document.write(`사용자가 입력한 숫자 : ${range}, 총 합 : ${sum}`);
+
+      //     *
+      //    ***
+      //   *****
+      //  *******
+      // *********
+      for (let i = 1; i <= 5; i++) {
+        for (let k = 4; k >= i; k--) {
+          document.write(`&nbsp;`);
+        }
+        for (let j = 1; j <= 2 * i - 1; j++) {
+          document.write(`*`);
+        }
+        // for (let j = 1; j <= i; j++) {
+        //   // 1 2 3 4 5
+        //   document.write(`*`);
+        // }
+        // for (let l = 1; l < i; l++) {
+        //   document.write(`*`);
+        // }
+
+        document.write(`<br>`);
+      }
+
+      document.write(`<hr>`);
+      // *********
+      //  *******
+      //   *****
+      //    ***
+      //     *
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < i; j++) {
+          document.write('&nbsp');
+        }
+        for (let k = 8; k >= i * 2; k--) {
+          document.write(`*`);
+        }
+        document.write('<br>');
+      }
+
+      //     *
+      //    ***
+      //   *****
+      //  *******
+      // *********
+      //  *******
+      //   *****
+      //    ***
+      //     *
     </script>
   </body>
 </html>
