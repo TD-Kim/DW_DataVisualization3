@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array 함수2</title>
+  </head>
+  <body>
+    <script>
+      // Array 관련 함수 - 원본 배열을 변형시키지 않고 참조만 하는 함수
+      const arr = [1, true, 'JavaScript', false, 'C언어'];
+
+      // 1. join() 함수 - 배열의 모든 요소를 하나의 문자열로 반환한다.
+      // 파라미터는 optional 이며, 배열 요소 사이를 구분짓는 구분자로 사용한다.
+      document.write(`<h1>join 함수</h1>`);
+      document.write(`<p>${arr.join()}</p>`);
+      document.write(`<p>${arr.join(' / ')}</p>`);
+
+      // 2. slice() 함수 - 전달받은 시작인덱스부터 종료인덱스 바로 앞까지의
+      // 모든 배열 요소를 추출하여 새로운 배열을 반환한다.
+      // 파라미터로 종료인덱스가 전달되지 않으면 마지막 배열 요소까지 모두 추출한다.
+      const sliceArr = arr.slice(2, 4);
+      document.write(`<h1>slice 함수</h1>`);
+      document.write(`<p>slice 이후 반환된 배열 : ${sliceArr}</p>`);
+      document.write(`<p>원본 배열 : ${arr}</p>`);
+
+      // 3. concat() 함수 - 배열의 뒤에 파라미터로 전달받은 배열을 합쳐서
+      // 새로운 배열을 반환한다.
+      const concatArr = arr.concat([1], [2, 3]);
+      document.write(`<h1>concat 함수</h1>`);
+      document.write(`<p>concat 이후 반환된 배열 : ${concatArr}</p>`);
+      document.write(`<p>원본 배열 : ${arr}</p>`);
+
+      // 4. toString() 함수 - 배열의 모든 요소를 하나의 문자열로 반환한다.
+      const stringArr = arr.toString();
+      document.write(`<h1>toString 함수</h1>`);
+      document.write(`<p>toString 이후 반환된 문자열 : ${stringArr}</p>`);
+      document.write(`<p>원본 배열 : ${arr}</p>`);
+    </script>
+  </body>
+</html>

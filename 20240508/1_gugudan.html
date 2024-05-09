@@ -61,5 +61,29 @@
       </tr>
     </table> -->
   </body>
-  <script></script>
+  <script>
+    for (let i = 2; i <= 9; i++) {
+      document.write(`<table>`);
+      document.write(`<tr><th>${i}단</th></tr>`);
+      for (let j = 1; j <= 9; j++) {
+        document.write(`<tr><td>${i} X ${j} = ${i * j}</td></tr>`);
+      }
+      document.write(`</table>`);
+    }
+
+    // document.write(`
+    //   <table>
+    //     <tr><th>2단</th></tr>
+    //     <tr><td>2 X 1 = 2</td></tr>
+    //     <tr><td>2 X 2 = 4</td></tr>
+    //     <tr><td>2 X 3 = 6</td></tr>
+    //     <tr><td>2 X 4 = 8</td></tr>
+    //     <tr><td>2 X 5 = 10</td></tr>
+    //     <tr><td>2 X 6 = 12</td></tr>
+    //     <tr><td>2 X 7 = 14</td></tr>
+    //     <tr><td>2 X 8 = 16</td></tr>
+    //     <tr><td>2 X 9 = 18</td></tr>
+    //   </table>
+    // `);
+  </script>
 </html>
