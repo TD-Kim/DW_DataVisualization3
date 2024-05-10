@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체형</title>
+  </head>
+  <body>
+    <script>
+      // 객체 선언 방법
+      let person = {};
+      let person2 = new Object();
+
+      // 객체 생성 후 프로퍼티 추가 방법1
+      // array.length
+      person.age = 20;
+      person.name = '홍길동';
+      person.age = 30;
+      console.log(person);
+
+      // 객체 생성 후 프로퍼티 추가 방법2
+      //   const addr = "대전광역시";
+      person['addr'] = '대전광역시 중구 선화동';
+      person['tel'] = '010-6773-3469';
+
+      // 객체 생성과 동시에 프로퍼티를 추가 하는 방법
+      let person3 = {
+        age: 25,
+        name: '둘리',
+        addr: '대전광역시 중구 대흥동',
+        tel: '010-1111-2222',
+      };
+
+      // 객체의 값을 가져오는 방법
+      console.log(person3);
+      //   console.log(person3.age2);
+      console.log(person3['addr']);
+
+      // 저의 이름은 name 이고 나이는 age 이며,
+      // 주소는 addr 입니다. 그리고 전화번호는 tel 입니다.
+      document.write(`
+        <h1>
+            저의 이름은 ${person.name} 이고 나이는 ${person.age} 이며,
+            주소는 ${person['addr']} 입니다. 그리고 전화번호는 ${person['tel']} 입니다.
+        </h1>
+        `);
+
+      // Object.keys(객체) - 객체의 key 값을 배열로 반환
+      const keys = Object.keys(person);
+      console.log(keys);
+      for (let i = 0; i < keys.length; i++) {
+        console.log(person[keys[i]]);
+      }
+
+      // Object.values(객체) - object의 value 값을 배열로 반환
+      const values = Object.values(person);
+      console.log(values);
+
+      // Object.entries(객체) - object의 key, value 쌍을 배열로 반환
+      const entries = Object.entries(person);
+      console.log(entries);
+    </script>
+  </body>
+</html>

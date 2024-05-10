@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>랜덤숫자 추출</title>
+  </head>
+  <body></body>
+  <script>
+    // random 숫자를 반환해주는 Math 객체의 random() 함수
+    // random() 함수는 0보다 크고 1보다 작은 숫자를 반환
+    document.write(`<h1>${parseInt(Math.random() * 10) + 1}</h1>`);
+    document.write(`<h1>${parseInt(Math.random() * 100) + 1}</h1>`);
+    document.write(
+      `<h1>${parseInt(Math.random() * (250 - 150 + 1)) + 150}</h1>`
+    );
+  </script>
+</html>
