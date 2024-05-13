@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+  </head>
+  <style>
+    div {
+      width: 300px;
+      height: 600px;
+      border: 2px solid #c5c5c5;
+      position: absolute;
+      top: 100px;
+      left: 200px;
+      padding: 0 10px;
+      border-radius: 10px;
+      overflow: auto;
+      scrollbar-gutter: stable both-edges;
+    }
+    /* 
+        ::-webkit-scrollbar : 스크롤바 전체
+        ::-webkit-scrollbar-thumb : 드래그 가능한 스크롤 핸들 막대
+        ::-webkit-scrollbar-track : 스크롤바 트랙(스크롤이 움직이는 영역)
+        ::-webkit-scrollbar-track-piece : 스크롤 핸들 막대 부분을 제외한 남은 빈 공간
+        ::-webkit-scrollbar-button : 스크롤바의 방향 버튼
+        ::-webkit-scrollbar-corner : 수평/수직 스크롤 막대가 만나는 스크롤 막대의 하단 모서리
+        ::-webkit-scrollbar-resizer : 스크롤바 코너에 나타나는 크기 조정 핸들
+    */
+    div::-webkit-scrollbar {
+      /* 
+        width: 세로축 스크롤바 폭 너비 
+        height: 가로축 스크롤바 폭 너비
+      */
+      width: 1vw;
+      /* height: 14px; */
+    }
+    div::-webkit-scrollbar-thumb {
+      background-color: hsla(0, 0, 42%, 0.29);
+      border-radius: 100px;
+    }
+    /* div::-webkit-scrollbar-thumb:hover {
+      border: 4px solid transparent;
+      box-shadow: 6px 6px 0 rgba(34, 34, 34, 0.3);
+    }
+    div::-webkit-scrollbar-track {
+      box-shadow: none;
+      background-color: transparent;
+    } */
+    /* div::-webkit-scrollbar-button:vertical {
+      background-color: red;
+    } */
+    p {
+      background-color: yellow;
+      padding: 10px 5px;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <input id="input" placeholder="Add to do List" />
+    <button onclick="addTodoList()">CLICK</button>
+    <div>
+      <!-- <p>To Do List</p> -->
+    </div>
+  </body>
+  <script>
+    const input = document.querySelector('#input');
+    const div = document.querySelector('div');
+
+    function addTodoList() {
+      // 1. input 창에 입력된 값을 가져온다.
+      const inputValue = input.value; // 사용자가 입력한 값
+      // 2. p 태그 생성 후 가져온 값을 넣어준다.
+      const el = document.createElement('p');
+      el.innerHTML = inputValue; // <p>inputValue</p>
+      // 3. p 태그의 배경색상을 변경한다.
+      chgBkColor(el);
+      // 4. div 태그에 p 태그를 넣어준다.
+      div.append(el);
+      // 5. input 창을 비워준다.
+      input.value = '';
+    }
+
+    function chgBkColor(tag) {
+      // 1. 3개의 랜덤 rgb값 추출
+      const colorArr = [];
+      for (let i = 0; i < 3; i++) {
+        const randNum = parseInt(Math.random() * 256);
+        colorArr.push(randNum);
+      }
+
+      // 2. 태그에 배경색상 적용
+      tag.style.backgroundColor = `rgb(${colorArr.toString()})`;
+
+      // 3. 배경색상에 따른 폰트 색상 변경
+      // luma : #000000(검정)색일 때 luma는 0, #FFFFFF(흰색)일 때 luma는 254.99 이다.
+      // 0에 가까울수록 배경색은 어둡고, 255에 가까울수록 배경색은 밝은 색이다.
+
+      const luma =
+        0.2126 * colorArr[0] + 0.7152 * colorArr[1] + 0.0722 * colorArr[2];
+      //   if (luma <= 155) {
+      //     tag.style.color = 'white';
+      //   } else {
+      //     tag.style.color = 'black';
+      //   }
+      // 삼항연산자
+      tag.style.color = luma <= 155 ? 'white' : 'black';
+    }
+  </script>
+</html>

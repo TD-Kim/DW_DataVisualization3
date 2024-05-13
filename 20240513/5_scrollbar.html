@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스크롤바</title>
+  </head>
+  <style>
+    #one {
+      background-color: yellow;
+      width: 200px;
+      position: relative;
+    }
+    #two {
+      width: 100%;
+      height: 250px;
+      overflow-y: scroll;
+    }
+    #two::-webkit-scrollbar {
+      width: 10px;
+    }
+    #two::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    #cover-bar {
+      width: 10px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: yellow;
+      transition: all 0.5s;
+    }
+    #one:hover #cover-bar {
+      opacity: 0;
+    }
+  </style>
+  <body>
+    <div id="one">
+      <div id="two">
+        content<br />content<br />content<br />content<br />
+        content<br />content<br />content<br />content<br />
+        content<br />content<br />content<br />content<br />
+        content<br />content<br />content<br />content<br />
+        content<br />content<br />content<br />content<br />
+      </div>
+      <div id="cover-bar"></div>
+    </div>
+  </body>
+</html>

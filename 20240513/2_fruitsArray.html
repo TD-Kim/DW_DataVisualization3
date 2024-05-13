@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>과일배열</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      /* margin: 0; */
+    }
+    div {
+      height: 100px;
+      display: flex;
+      gap: 10px;
+    }
+    input {
+      padding: 20px;
+      font-size: 1.5rem;
+      height: 100%;
+    }
+    button {
+      padding: 20px;
+      font-size: 1.5rem;
+      height: 100%;
+    }
+  </style>
+  <body>
+    <div>
+      <input id="input" placeholder="과일 이름을 입력해주세요." />
+      <button onclick="clickFn()">CLICK</button>
+    </div>
+    <h1></h1>
+  </body>
+  <script>
+    const fruits = [];
+    function clickFn() {
+      // 1. input 요소를 가져온다.
+      const input = document.querySelector('#input');
+
+      // 2. 가져온 input 요소에서 사용자가 입력한 값을 꺼낸다.
+      const inputValue = input.value;
+
+      // 2.5 입력한 값을 배열에 추가한다.
+      fruits.push(inputValue);
+
+      // 3. 꺼낸 값을 h1 태그에 추가한다.
+      //   document.querySelector('h1').innerHTML += fruits.join(', ') + '<br>';
+      //   document.querySelector('h1').innerHTML += `<p>${fruits.join(', ')}</p>`;
+      const pTag = document.createElement('p');
+      pTag.innerHTML = fruits.join(', ');
+      document.querySelector('h1').append(pTag);
+
+      // 4. 입력된 input 값을 지워준다.
+      input.value = '';
+
+      // 5. input 창에 커서를 이동시킨다.
+      input.focus();
+    }
+  </script>
+</html>
