@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 1. 변수 두개를 선언하고 각각 초기값을 3, 4 로 할당하세요.
+    const a = 3;
+    const b = 4;
+
+    // 2. 위의 두 변수의 합, 차, 곱, 나누기한 값을 콘솔창에 출력해보세요.
+    // console.log(a + b);
+    // console.log(a - b);
+    // console.log(a * b);
+    // console.log(a / b);
+
+    // 3. 위 문제에서 콘솔창에 출력 할 때 결과가 어떤 연산을 했는지를 알 수 있도록
+    // 결과값 왼쪽에 연산 내용을 표시해보세요.
+    // ex) a + b = 결과
+    // console.log(`a + b = ${a + b}`);
+    // console.log(`a - b = ${a - b}`);
+    // console.log(`a * b = ${a * b}`);
+    // console.log(`a / b = ${a / b}`);
+
+    // 4. 1번에서 선언한 변수 두개의 대소 비교를 하여 어떤 변수가 큰지를
+    // alert 창으로 출력할 수 있게 작성해보세요.(조건문 사용)
+    if (a > b) {
+      alert('a가 b보다 큽니다.');
+    } else {
+      alert('b가 a보다 큽니다.');
+    }
+
+    // 5. 비어있는 객체를 하나 생성해보세요.
+    const obj = {};
+
+    // 6. 위에서 만든 객체에 num1과 num2 라는 프로퍼티를 추가하고
+    // 각각에 1번 문제에서 만든 변수를 할당해보세요.
+    // obj.num1 = a;
+    // obj.num2 = b;
+    obj['num1'] = a;
+    obj['num2'] = b;
+
+    // 7. 위에서 만든 객체의 속성을 콘솔창에 각각 출력해보세요.
+    // console.log(obj.num1);
+    // console.log(obj.num2);
+    console.log(obj['num1']);
+    console.log(obj['num2']);
+
+    // 8. 비어있는 배열을 선언하고 그 배열에 1부터 10까지 숫자를 추가해보세요.
+    //    (선언 이후에 값을 넣는 방법 사용)
+    // const arr2 = new Array();
+    const arr = [];
+    // arr[0] = 1;
+    // arr[1] = 2;
+    // arr[2] = 3;
+    // arr[3] = 4;
+    // arr[4] = 5;
+    // arr[5] = 6;
+    // arr[6] = 7;
+    // arr[7] = 8;
+    // arr[8] = 9;
+    // arr[9] = 10;
+
+    // arr.push(1);
+    // arr.push(2);
+    // arr.push(3);
+    // arr.push(4);
+    // arr.push(5);
+    // arr.push(6);
+    // arr.push(7);
+    // arr.push(8);
+    // arr.push(9);
+    // arr.push(10);
+
+    arr.push(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+    // 9. 비어있는 배열을 선언하고 1 ~ 100 까지의 숫자를 추가해보세요.(반복문 사용)
+    const arr2 = [];
+    for (let i = 1; i <= 100; i++) {
+      // arr2[i - 1] = i;
+      arr2.push(i);
+    }
+    console.log(arr2);
+
+    // 10. 비어있는 배열을 선언하고 1 ~ 100 까지의 숫자중 짝수만 추가해보세요.(반복문 사용)
+    const arr3 = [];
+    for (let i = 1; i <= 100; i++) {
+      if (i % 2 == 0) {
+        arr3.push(i);
+      }
+    }
+
+    // 11. 함수를 생성하고 함수를 호출하면 '안녕하세요!' 라는 alert 창이 출력되도록 작성해보세요.
+    function showAlert() {
+      alert('안녕하세요!');
+    }
+    showAlert();
+
+    // 12. 함수를 호출하면 body 태그에 p 태그를 추가하고 font 색상과 background-color 가
+    // 변경된 요소가 화면에 출력되는 함수를 작성하세요.
+    function createEl() {
+      // 1. p태그를 생성한다.
+      const pTag = document.createElement('p');
+
+      // 2. 생성한 p 태그의 font 색상과 background-color 프로퍼티 값을 변경해준다.
+      pTag.style.color = 'blue';
+      pTag.style.backgroundColor = 'yellow';
+      pTag.innerHTML = '생성된 p 태그입니다.';
+
+      // 3. p 태그를 body 태그에 추가한다.
+      document.querySelector('body').append(pTag);
+    }
+    createEl();
+  </script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문자열 관련 함수</title>
+  </head>
+  <body></body>
+  <script>
+    // 1. charAt() 함수
+    // 문자열에서 전달받은 인덱스에 위치한 문자나 문자 코드를 반환한다.
+    document.write(`<h1>1. charAt() 함수</h1>`);
+    const str1 = 'Javascript';
+    document.write(`<h2>0번째 인덱스 : ${str1.charAt(0)}</h2>`);
+    document.write(`<h2>5번째 인덱스 : ${str1.charAt(5)}</h2>`);
+
+    // 2. indexOf() 함수
+    // 문자열에서 특정 문자나 문자열이 처음으로 등장하는 위치(인덱스)를 반환한다.
+    document.write(`<h1>2. indexOf() 함수</h1>`);
+    const str2 = 'abcDEFabc';
+    document.write(`<h2>abc가 시작되는 인덱스 : ${str2.indexOf('abc')}</h2>`);
+    // 문자열을 비교할 때 문자의 대소문자를 구분한다.
+    document.write(`<h2>abcd가 시작되는 인덱스 : ${str2.indexOf('abcd')}</h2>`);
+    // 파라미터가 두개일 때는 두번째 파라미터가 시작인덱스 역할을 한다.
+    document.write(
+      `<h2>인덱스 3부터 abc가 시작되는 인덱스 : ${str2.indexOf('abc', 3)}</h2>`
+    );
+
+    // 3. lastIndexOf() 함수
+    // 문자열에서 특정 문자나 문자열이 마지막으로 등장하는 위치(인덱스)를 반환한다.
+    document.write(`<h1>3. lastIndexOf() 함수</h1>`);
+    document.write(
+      `<h2>abc가 마지막으로 시작되는 인덱스 : ${str2.lastIndexOf('abc')}</h2>`
+    );
+
+    // 4. trim() 함수
+    // 문자열의 양 끝에 존재하는 모든 공백과 줄바꿈 문자를 제거한 새로운 문자열을 반환한다.
+    document.write(`<h1>4. trim() 함수</h1>`);
+    const str3 = '     J a v a s c r i p t     ';
+    document.write(`<h2>trim 함수로 공백 제거 : ${str3.trim()}</h2>`);
+
+    // 5. replace(), replaceAll() 함수
+    // 문자열에서 파라미터로 전달받은 문자를 이용하여 기존 문자열의 대체작업을 수행한다.
+    document.write(`<h1>5. replace(), replaceAll() 함수</h1>`);
+    const str4 = 'Javascript is AweSome';
+    // 문자열 비교를 할 때 첫번째 문자만 대체되며, 대소문자를 구분한다.
+    document.write(
+      `<h2>s를 *로 대체(replace) : ${str4.replace('s', '*')}</h2>`
+    );
+    document.write(
+      `<h2>s를 *로 대체(replaceAll) : ${str4.replaceAll('s', '*')}</h2>`
+    );
+
+    // 6. substring() 함수
+    // 문자열에서 전달받은 시작 인덱스부터 종료 인덱스 바로 앞까지의
+    // 문자열을 추출한 새로운 문자열을 반환한다.
+    document.write(`<h1>6. substring() 함수</h1>`);
+    document.write(`<h2>substring(2, 6) : ${str2.substring(2, 6)}</h2>`);
+    document.write(`<h2>substring(4, 8) : ${str2.substring(4, 8)}</h2>`);
+    document.write(`<h2>substring(2) : ${str2.substring(2)}</h2>`);
+
+    // 7. substr() 함수
+    // 문자열에서 전달받은 시작 인덱스부터 길이만큼의 문자열을 추출한
+    // 새로운 문자열을 반환한다.
+    document.write(`<h1>7. substr() 함수</h1>`);
+    document.write(`<h2>substr(2, 6) : ${str2.substr(2, 6)}</h2>`);
+    document.write(`<h2>substr(1) : ${str2.substr(1)}</h2>`);
+
+    // 8. slice() 함수
+    // 문자열에서 전달받은 시작 인덱스부터 종료 인덱스 바로 앞까지의
+    // 문자열을 추출한 새로운 문자열을 반환한다.
+    document.write(`<h1>8. slice() 함수</h1>`);
+    document.write(`<h2>slice(2, 6) : ${str2.slice(2, 6)}</h2>`);
+
+    // 파라미터가 음수일 경우 slice는 인덱스를 거꾸로 세어 결과를 반환하고
+    // substring은 음수인 파라미터를 0으로 바꿔서 결과를 반환한다.
+    document.write(`<h2>slice(-4, -2) : ${str2.slice(-4, -2)}</h2>`);
+    document.write(`<h2>substring(-4, -2) : ${str2.substring(-4, -2)}</h2>`);
+
+    // 시작 인덱스가 종료 인덱스보다 클 경우 slice는 작동하지 않고
+    // substring은 두개의 파라미터를 바꿔서 결과를 반환한다.
+    document.write(`<h2>slice(4, 2) : ${str2.slice(4, 2)}</h2>`);
+    document.write(`<h2>substring(4, 2) : ${str2.substring(4, 2)}</h2>`);
+
+    // 9. split() 함수
+    // 문자열을 구분자를 기준으로 나눈 후, 나뉜 문자열을 배열로 반환한다.
+    document.write(`<h1>9. split() 함수</h1>`);
+    const str5 = '사과+바나나/파인애플/딸기+포도';
+    // document.write(`<h2>split 사용 : [${str5.split('/')}]</h2>`);
+    document.write(`<h2>split 사용 : [${str5.split('+')}]</h2>`);
+  </script>
+</html>

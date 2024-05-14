@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date 객체</title>
+  </head>
+  <body></body>
+  <script>
+    // Date 객체 생성
+    const now = new Date();
+    document.write(`<h1>${now}</h1>`);
+
+    // getFullYear() - 년도를 반환하는 함수
+    const year = now.getFullYear();
+    document.write(`<h1>${year}</h1>`);
+
+    // getMonth() - 달을 반환하는 함수
+    let month = now.getMonth();
+    month = month + 1;
+    // if(month < 10) {
+    //     month = "0" + month;
+    // }
+    month = month < 10 ? '0' + month : month;
+    document.write(`<h1>${month}</h1>`);
+
+    // getDate() - 일을 반환하는 함수
+    let date = now.getDate();
+    date = date < 10 ? '0' + date : date;
+    document.write(`<h1>${date}</h1>`);
+
+    document.write(`<h1>${year}-${month}-${date}</h1>`);
+
+    // getDay() - 요일 숫자를 반환하는 함수
+    // 월요일 == 1, 화요일 == 2, ... , 일요일 == 0
+    const day = now.getDay();
+    const dayArr = ['일', '월', '화', '수', '목', '금', '토'];
+    document.write(`<h1>${dayArr[day]}</h1>`);
+    document.write(`<h1>${year}-${month}-${date} (${dayArr[day]})</h1>`);
+
+    // getHours() - 시간을 반환해준다.
+    // getMinutes() - 분을 반환해준다.
+    // getSeconds() - 초를 반환해준다.
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    document.write(
+      `<h1>${year}-${month}-${date} (${dayArr[day]}) ${hours}:${minutes}:${seconds}</h1>`
+    );
+
+    // getTime() - 기준시간(1970년 1월 1일)으로부터의 경과시간을 반환한다.
+    const time = now.getTime();
+    document.write(`<h1>${time}</h1>`);
+
+    const newDate = new Date();
+    const setFullYear = newDate.setFullYear(2021);
+    document.write(
+      `<h1>newDate : ${newDate}, setFullyear : ${setFullYear}</h1>`
+    );
+
+    const setMonth = newDate.setMonth(11);
+    document.write(`<h1>newDate : ${newDate}, setMonth : ${setMonth}</h1>`);
+
+    const setDate = newDate.setDate(25);
+    document.write(`<h1>newDate : ${newDate}, setDate : ${setDate}</h1>`);
+
+    // 년,월,일 더하기/빼기
+    const date1 = new Date('2021-05-01');
+    const date2 = new Date('2021-12-30');
+    date1.setDate(date1.getDate() - 1);
+
+    // date2 ==> 2024년 11월 15일
+    const temp1 = date2.setFullYear(date2.getFullYear() + 3);
+    const temp2 = date2.setMonth(date2.getMonth() - 1);
+    const temp3 = date2.setDate(date2.getDate() - 15);
+    document.write(`<h1>date1 : ${date1}, date2 : ${date2}</h1>`);
+
+    const diff = date2 - date1;
+    console.log(diff);
+    // 111888000000 / 1000 ==> 초
+    // 111888000000 / 1000 / 60 ==> 분
+    // 111888000000 / 1000 / 60 / 60 ==> 시
+    // 111888000000 / 1000 / 60 / 60 / 24 ==> 일
+
+    let diffDay = 24 * 60 * 60 * 1000;
+    let diffMonth = diffDay * 30;
+    let diffYear = diffMonth * 12;
+    document.write(`<h1>두개의 날짜 : ${date1}, ${date2}</h1>`);
+    document.write(`<h1>일수 차이 : ${parseInt(diff / diffDay)}일</h1>`);
+    document.write(`<h1>월수 차이 : ${parseInt(diff / diffMonth)}개월</h1>`);
+    document.write(`<h1>년수 차이 : ${parseInt(diff / diffYear)}년</h1>`);
+
+    document.write(`<h1>${date1.toLocaleString()}</h1>`);
+    document.write(`<h1>${date1.toLocaleDateString()}</h1>`);
+    document.write(`<h1>${date1.toLocaleTimeString()}</h1>`);
+
+    date1.setDate(date1.getDate() + 30);
+    date1.toLocaleString(); // yyyy. mm. dd. 오전 hh:mm:ss
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      weekday: 'long',
+    };
+    document.write(`<h1>${date1.toLocaleString('ko-KR', options)}</h1>`);
+
+    document.write(`<h1>${date1.toISOString().split('T')[0]}</h1>`);
+    let dateFormatStr = date1.toISOString();
+    dateFormatStr = dateFormatStr.split('T');
+    console.log(dateFormatStr[0]);
+  </script>
+</html>
