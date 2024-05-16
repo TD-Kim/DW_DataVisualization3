@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DomTree 연습</title>
+  </head>
+  <style>
+    ul {
+      border: 3px solid teal;
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      border: 2px solid tomato;
+      background: beige;
+      padding: 10px 15px;
+    }
+  </style>
+  <body>
+    <div>
+      <h1>진행중인 과목</h1>
+      <ul id="doing-list">
+        <li>웹 HTML</li>
+        <li>반응형 CSS</li>
+        <li>인터랙티브 자바스크립트</li>
+        <li>jQuery</li>
+        <li>React</li>
+      </ul>
+      <h1>완료한 과목</h1>
+      <ul id="done-list">
+        <li>HTML 기초</li>
+        <li>웹 퍼블리싱</li>
+        <li>기초 자바스크립트</li>
+        <li>모던 자바스크립트</li>
+        <li>핵심 자바스크립트</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // 1. "웹 HTML" 이 적혀있는 li태그의 배경색상을 바꿔보세요.
+    // (id 선택자는 금지)
+    const bodyTag = document.querySelector('body');
+    bodyTag.children[0].firstElementChild.nextElementSibling.firstElementChild.style.backgroundColor =
+      'yellow';
+    // 2. "React" 가 적혀있는 li태그의 폰트색상을 바꿔보세요.
+    // (id 선택자는 금지)
+    const div = document.querySelector('div');
+    div.children[1].lastElementChild.style.color = 'blue';
+    // 3. doing-list 부터 시작하여 done-list 의 "핵심 자바스크립트"의 폰트 굵기를 바꿔보세요.
+    const doingList = document.getElementById('doing-list');
+    doingList.nextElementSibling.nextElementSibling.lastElementChild.style.fontWeight =
+      '800';
+    // doingList.closest('div').children[2]
+
+    // 4. 아래의 코드 요소부터 시작하여 "진행중인 과목" 이 적힌 h1 태그의 border 를 바꿔보세요.
+    const doneChild = document.querySelector('#done-list').children[4];
+    doneChild.closest('div').firstElementChild.style.border = '3px solid green';
+  </script>
+</html>

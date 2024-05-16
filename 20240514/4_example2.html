@@ -17,7 +17,7 @@
       padding: 20px;
       height: 100%;
     }
-    div {
+    body > div {
       display: flex;
       gap: 10px;
       height: 80px;
@@ -26,37 +26,97 @@
       width: 100px;
       height: 100%;
       border: 2px solid red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
     }
   </style>
   <body>
     <div id="birthCalc">
-      <input type="text" placeholder="출생년도를 입력하세요." />
-      <button>나이 계산</button>
+      <input
+        type="text"
+        placeholder="출생년도를 입력하세요."
+        pattern="[0-9]{4}"
+        title="출생년도 4자리 숫자"
+        required
+        oninput="this.value = this.value.replace(/[^0-9]$/g, '')"
+      />
+      <button onclick="calc()">나이 계산</button>
       <div class="result"></div>
     </div>
     <hr />
     <div id="square">
       <input type="text" placeholder="가로 너비를 입력하세요." />
       <input type="text" placeholder="세로 높이를 입력하세요." />
-      <button>사각형 넓이 계산</button>
+      <button onclick="area()">사각형 넓이 계산</button>
       <div class="result"></div>
     </div>
     <hr />
     <div id="discount">
       <input type="text" placeholder="할인 전 가격" />
       <input type="text" placeholder="할인율" />
-      <button>할인가계산</button>
+      <button onclick="discount()">할인가계산</button>
       <div class="result"></div>
     </div>
   </body>
   <script>
     // 1. 나이 계산 버튼을 누르면 사용자가 입력한 출생년도를 참고하여 나이를 계산하는
     // 함수를 작성하세요. (result div에 결과 표시)
+    function calc() {
+      // 1.1 올 해 년도 가져온다.
+      // const now = new Date();
+      // const currentYear = now.getFullYear();
+      const currentYear = new Date().getFullYear();
+
+      // 1.2 사용자가 입력한 값을 가져온다.
+      const input = document.querySelector('#birthCalc > input');
+      const inputValue = input.value;
+      //   const inputValue = document.querySelector('#birthCalc > input').value;
+
+      // 1.3 나이 계산
+      const age = currentYear - inputValue + 1;
+      if (age < 0) {
+        alert('출생년도는 현재년도보다 클 수 없습니다.');
+        input.value = '';
+        return false;
+      }
+
+      // 1.4 result div 에 결과 출력
+      document.querySelector('#birthCalc > div.result').innerHTML = age;
+    }
 
     // 2. 사각형의 가로 너비와 세로 높이를 입력하여 사각형의 넓이를 계산하는 함수를
     // 작성하세요. (result div에 결과 표시)
+    function area() {
+      // 2.1 가로 너비와 세로 높이값을 가져온다.
+      const inputs = document.querySelectorAll('#square > input');
+      const width = inputs[0].value;
+      const height = inputs[1].value;
+
+      // 2.2 사각형의 넓이를 계산한다.
+      const area = width * height;
+
+      // 2.3 결과를 화면에 출력한다.
+      document.querySelector(
+        '#square > div.result'
+      ).innerHTML = `${area}m<sup>2</sup>`;
+    }
 
     // 3. 원래 가격과 할인율을 입력하면 할인 가격을 계산해주는 함수를 작성하세요.
     // (할인된 가격은 정수로 표현하세요. result div에 결과 표시)
+    function discount() {
+      const inputs = document.querySelectorAll('#discount > input');
+      const oldPrice = inputs[0].value;
+      const dicRate = inputs[1].value;
+
+      // 할인가 계산
+      const newPrice = oldPrice * (1 - dicRate / 100);
+
+      // 할인가 화면에 출력
+      document.querySelector(
+        '#discount > div.result'
+      ).innerHTML = `${newPrice}원`;
+    }
   </script>
 </html>

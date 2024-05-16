@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window 객체</title>
+  </head>
+  <body>
+    <button onclick="openPopup()">게임하러가기</button>
+    <button onclick="closePopup()">게임창 닫기</button>
+    <p>버튼을 누르면 3초 후에 경고 박스가 화면에 표시됩니다.</p>
+    <button onclick="showAlert()">눌러보세요</button>
+    <p id="interval">버튼을 누르면 3초마다 경고 박스가 화면에 표시됩니다.</p>
+    <button onclick="startInterval()">눌러보세요</button>
+    <button onclick="stopSetInterval()">인터벌종료</button>
+    <br />
+    <button onclick="showLocation()">location</button>
+  </body>
+  <script>
+    let child;
+    function openPopup() {
+      child = window.open(
+        '../20240510/2_numberGuess.html',
+        '_blank',
+        'width=1000, height=500, top=0, left=0'
+      );
+      // location=no ==> 주소입력창 없어짐
+      // resizable=no ==> 팝업창의 크기를 조절할 수 없음
+      // toolbar=no ==> 도구모음이 없어짐
+    }
+    function closePopup() {
+      child.close();
+    }
+    function showAlert() {
+      // setTimeout("콜백함수", "지연시간");
+      //   setTimeout(function () {
+      //     alert('setTimeout()을 사용하여 3초 이후에 표시되었습니다.');
+      //   }, 3000);
+      setTimeout(delayAlert, 3000);
+    }
+    function delayAlert() {
+      alert('setTimeout()을 사용하여 3초 이후에 표시되었습니다.');
+    }
+    let start;
+    function startInterval() {
+      start = setInterval(function () {
+        const colorArr = [];
+        for (let i = 0; i < 3; i++) {
+          const randNum = parseInt(Math.random() * 256);
+          colorArr.push(randNum);
+        }
+        const pEl = document.querySelector('#interval');
+        pEl.style.backgroundColor = `rgb(${colorArr.toString()})`;
+      }, 100);
+    }
+    function stopSetInterval() {
+      clearInterval(start);
+    }
+    function showLocation() {
+      console.log(location);
+    }
+  </script>
+</html>

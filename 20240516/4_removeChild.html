@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>removeChild</title>
+  </head>
+  <body>
+    <div id="target">
+      <p id="p1">첫번째 단락</p>
+      <p id="p2">두번째 단락</p>
+      <p id="p3">세번째 단락</p>
+      <p id="p4">네번째 단락</p>
+      <p id="p5">다섯번째 단락</p>
+    </div>
+    <button onclick="deleteChild()">CLICK</button>
+  </body>
+  <script>
+    function deleteChild() {
+      const parent = document.querySelector('#target');
+      //   const p1 = document.getElementById('p1');
+      const child = parent.firstElementChild;
+      //   child.remove();
+      parent.removeChild(child);
+    }
+  </script>
+</html>

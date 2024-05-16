@@ -12,18 +12,18 @@
     const b = 4;
 
     // 2. 위의 두 변수의 합, 차, 곱, 나누기한 값을 콘솔창에 출력해보세요.
-    // console.log(a + b);
-    // console.log(a - b);
-    // console.log(a * b);
-    // console.log(a / b);
+    console.log(a + b);
+    console.log(a - b);
+    console.log(a * b);
+    console.log(a / b);
 
     // 3. 위 문제에서 콘솔창에 출력 할 때 결과가 어떤 연산을 했는지를 알 수 있도록
     // 결과값 왼쪽에 연산 내용을 표시해보세요.
     // ex) a + b = 결과
-    // console.log(`a + b = ${a + b}`);
-    // console.log(`a - b = ${a - b}`);
-    // console.log(`a * b = ${a * b}`);
-    // console.log(`a / b = ${a / b}`);
+    console.log(`a + b = ${a + b}`);
+    console.log(`a - b = ${a - b}`);
+    console.log(`a * b = ${a * b}`);
+    console.log(`a / b = ${a / b}`);
 
     // 4. 1번에서 선언한 변수 두개의 대소 비교를 하여 어떤 변수가 큰지를
     // alert 창으로 출력할 수 있게 작성해보세요.(조건문 사용)
@@ -34,7 +34,8 @@
     }
 
     // 5. 비어있는 객체를 하나 생성해보세요.
-    const obj = {};
+    // const obj = {};
+    const obj = new Object();
 
     // 6. 위에서 만든 객체에 num1과 num2 라는 프로퍼티를 추가하고
     // 각각에 1번 문제에서 만든 변수를 할당해보세요.
@@ -111,6 +112,10 @@
       pTag.innerHTML = '생성된 p 태그입니다.';
 
       // 3. p 태그를 body 태그에 추가한다.
+      // document.write(), innerHTML =
+      // ==> write 함수와 innerHTML 프로퍼티에 전달되는 값은 문자열 이어야 한다.
+
+      // document.querySelector('body').innerHTML = pTag;
       document.querySelector('body').append(pTag);
     }
     createEl();

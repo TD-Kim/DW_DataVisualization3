@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DomTree</title>
+  </head>
+  <style>
+    ul {
+      border: 3px solid teal;
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      border: 2px solid tomato;
+      background: beige;
+      padding: 10px 15px;
+    }
+  </style>
+  <body>
+    <div id="content">
+      <h1 id="title-1">과일</h1>
+      <ul id="list-1">
+        <li>사과</li>
+        <li>딸기</li>
+        <li>복숭아</li>
+        <li>포도</li>
+        <li>오렌지</li>
+      </ul>
+      <h1 id="title-2">자동차</h1>
+      <ul id="list-2">
+        <li>아반떼</li>
+        <li>소나타</li>
+        <li>그랜저</li>
+        <li>스타리아</li>
+        <li>포터</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    const ul = document.getElementById('list-1');
+    // const lis = document.querySelectorAll("#list-1 > li");
+
+    // 자식 요소
+    // console.log(document.querySelectorAll('ul'));
+    ul.children[4].style.backgroundColor = 'yellow';
+    console.log(ul.firstChild);
+    console.log(ul.firstElementChild);
+    console.log(ul.lastElementChild);
+
+    // 부모 요소
+    ul.parentElement.style.border = '5px solid blue';
+
+    // 부모 요소 & 조상 요소
+    console.log(ul.lastElementChild.closest('div#content'));
+    console.log(ul.closest('div#content'));
+    ul.parentElement.parentElement; // body
+
+    // 형제 요소
+    console.log(ul.previousElementSibling);
+    console.log(ul.nextElementSibling.nextElementSibling);
+  </script>
+</html>
