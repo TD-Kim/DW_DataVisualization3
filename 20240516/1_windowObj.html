@@ -13,6 +13,8 @@
     <p id="interval">버튼을 누르면 3초마다 경고 박스가 화면에 표시됩니다.</p>
     <button onclick="startInterval()">눌러보세요</button>
     <button onclick="stopSetInterval()">인터벌종료</button>
+    <br />
+    <button onclick="showLocation()">location</button>
   </body>
   <script>
     let child;
@@ -53,6 +55,9 @@
     }
     function stopSetInterval() {
       clearInterval(start);
+    }
+    function showLocation() {
+      console.log(location);
     }
   </script>
 </html>

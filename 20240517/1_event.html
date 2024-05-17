@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event</title>
+  </head>
+  <style>
+    p {
+      background: yellow;
+      height: 200px;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+  </style>
+  <body>
+    <p id="pTag">이벤트 리스너 테스트</p>
+    <form>
+      <input id="inputTag" type="text" class="formEl" /><br />
+      <textarea id="textareaTag" rows="5" cols="25" class="formEl"></textarea>
+      <br /><br />
+      <select class="changeTest">
+        <option>현대</option>
+        <option>기아</option>
+        <option>KG모빌리티</option>
+      </select>
+      <br />
+      <input
+        type="radio"
+        id="male"
+        name="gender"
+        class="changeTest"
+        value="male"
+      />
+      <label for="male">남자</label>
+      <input
+        type="radio"
+        id="female"
+        name="gender"
+        class="changeTest"
+        value="female"
+      />
+      <label for="female">여자</label>
+      <br />
+      <input type="checkbox" id="apple" class="changeTest" />
+      <label for="apple">사과</label>
+      <input type="checkbox" id="banana" class="changeTest" />
+      <label for="banana">바나나</label>
+      <input type="checkbox" id="grape" class="changeTest" />
+      <label for="grape">포도</label>
+      <br />
+      <input type="reset" value="초기화" id="resetBtn" />
+      <input type="submit" value="제출" id="submitBtn" />
+    </form>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  </body>
+  <script>
+    // ** 이벤트 리스너(event listener) **
+    // 이벤트 리스너란 이벤트가 발생했을 때 그 처리를 담당하는 함수를 가리키며,
+    // 이벤트 핸들러(event Handler) 라고도 한다.
+    // 지정된 타입의 이벤트가 특정 요소에서 발생하면, 그 요소에 등록된 이벤트
+    // 리스너를 실행시킨다.
+
+    // ** 이벤트 리스너 등록 방법 **
+    // 1. HTML 태그에 속성으로 등록
+    // 2. javascript 에서 프로퍼티로 등록
+
+    // addEventListener() 함수 사용
+    // 대상객체.addEventListener(이벤트명, 실행할이벤트리스너, 이벤트전파방식)
+
+    // 마우스 이벤트
+    const pTag = document.querySelector('#pTag');
+    // click
+    // pTag.addEventListener('click', function () {
+    //   alert('click 이벤트 발생');
+    // });
+
+    // dblclick
+    // pTag.addEventListener('dblclick', function () {
+    //   alert('dblclick 이벤트 발생');
+    // });
+
+    // mousedown
+    // pTag.addEventListener('mousedown', function () {
+    //   console.log('mousedown 이벤트 발생');
+    // });
+
+    // mouseup
+    // pTag.addEventListener('mouseup', function () {
+    //   console.log('mouseup 이벤트 발생');
+    // });
+
+    // mousemove
+    // pTag.addEventListener('mousemove', function () {
+    //   console.log('mousemove 이벤트 발생');
+    // });
+
+    // mouseover - 마우스를 해당 요소 바깥에서 안으로 옮겼을 때
+    // pTag.addEventListener('mouseover', function () {
+    //   alert('mouseover 이벤트 발생');
+    // });
+
+    // mouseout - 마우스를 해당 요소 안에서 바깥으로 옮겼을 때
+    // pTag.addEventListener('mouseout', function () {
+    //   alert('mouseout 이벤트 발생');
+    // });
+
+    // contextmenu - 마우스 오른쪽버튼을 눌렀을 때
+    pTag.addEventListener('contextmenu', function (event) {
+      //   alert('contextmenu 이벤트 발생');
+      event.preventDefault(); // 기존 이벤트(기능)를 막는 역할
+      alert('마우스 우클릭이 방지된 사이트입니다.');
+    });
+
+    // UI 이벤트
+    // load - 화면이 로딩됐을 때
+    // window.addEventListener('load', function () {
+    //   alert('load 이벤트 발생');
+    // });
+
+    // resize - 브라우저 창 크기를 변경했을 때
+    // window.addEventListener('resize', function () {
+    //   alert('resize 이벤트 발생');
+    // });
+
+    // scroll - 대상객체의 스크롤이 움직였을 때
+    // window.addEventListener('scroll', function () {
+    //   alert('scroll 이벤트 발생');
+    // });
+
+    // 키보드 이벤트
+    // keydown - 사용자가 키를 처음 눌렀을 때
+    const inputTag = document.getElementById('inputTag');
+    // inputTag.addEventListener('keydown', function (event) {
+    //   //   alert('keydown 이벤트 발생');
+    //   console.log(`key : ${event.key}, code : ${event.code}`);
+    // });
+
+    // keyup - 사용자가 키를 뗄 때
+    // inputTag.addEventListener('keyup', function () {
+    //   inputTag.value = inputTag.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+    // });
+
+    // keypress - 사용자가 눌렀던 키의 문자가 입력되었을 때
+    // inputTag.addEventListener('keypress', function () {
+    //   alert('keypress 이벤트 발생');
+    // });
+
+    // 포커스 이벤트
+    // focus - 요소가 포커스가 잡혀있을 때
+    // inputTag.addEventListener('focus', function () {
+    //   alert('focus 이벤트 발생');
+    // });
+    // inputTag.focus();
+
+    // blur - 요소가 포커스를 잃었을 때
+    // inputTag.addEventListener('blur', function () {
+    //   alert('blur 이벤트 발생');
+    // });
+
+    // 폼 이벤트
+    // input - input, textarea 태그의 값이 변경되었을 때
+    // 클래스로 요소 선택하기
+    const classEl = document.getElementsByClassName('formEl');
+    console.log(classEl);
+    for (let i = 0; i < classEl.length; i++) {
+      classEl[i].addEventListener('input', function () {
+        console.log(`input 이벤트 발생`);
+      });
+    }
+
+    // classEl.forEach(function (el) {
+    //   el.addEventListener('input', function () {
+    //     console.log(`input 이벤트 발생`);
+    //   });
+    // });
+
+    // change - 체크박스, 라디오 버튼, 콤보박스(셀렉트박스)의 상태가 변경되었을 때
+    const changeEl = document.querySelectorAll('.changeTest');
+    for (let i = 0; i < changeEl.length; i++) {
+      changeEl[i].addEventListener('change', function () {
+        console.log(changeEl[i].value);
+      });
+    }
+
+    // changeEl.forEach(function (el) {
+    //   el.addEventListener('change', function () {
+    //     console.log(el.value);
+    //   });
+    // });
+
+    // submit, reset
+    const submitEl = document.getElementById('submitBtn');
+    const formEl = document.forms[0];
+    // console.log(formEl);
+    formEl.addEventListener('submit', function () {
+      alert('submit 이벤트 발생');
+    });
+
+    formEl.addEventListener('reset', function () {
+      alert('reset 이벤트 발생');
+    });
+
+    // cut, copy, paste
+    const textareaEl = document.querySelector('textarea');
+    textareaEl.addEventListener('cut', function () {
+      alert('cut 이벤트 발생');
+    });
+    textareaEl.addEventListener('copy', function () {
+      alert('copy 이벤트 발생');
+    });
+    textareaEl.addEventListener('paste', function () {
+      alert('paste 이벤트 발생');
+    });
+  </script>
+</html>
