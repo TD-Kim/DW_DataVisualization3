@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>정규표현식(regular Expression)</title>
+  </head>
+  <body></body>
+  <script>
+    // ** 정규표현식 **
+    // 문자열에서 특정한 규칙을 갖는 문자열의 집합을 찾아내기 위한 검색 패턴이다.
+    // 문법 : /검색패턴/플래그
+    // 플래그 :
+    // g - 검색 패턴을 비교할 때 일치하는 모든 부분을 선택하도록 설정
+    // i - 검색 패턴을 비교할 때 대소문자를 구분하지 않도록 설정
+    // m - 검색 패턴을 비교할 때 여러줄의 입력 문자열을 그대로 여러줄로 비교하도록 설정
+    // y - 대상 문자열의 현재 위치부터 비교를 시작하도록 설정
+
+    // 특수문자(검색패턴으로 들어갈 수 있는)
+    // 단순한 패턴을 검색하고자 할 때는 찾고자 하는 문자열을 직접 나열하면 된다.
+    // 숫자만을 검색하거나, 띄어쓰기, 특수문자 등을 검색하려면 검색패턴으로
+    // 특정한 특수문자를 사용해야한다.
+    // \ : 역슬래시 다음에 나오는 특수문자는 일반 문자로 해석
+    // \d : 숫자를 검색. == /[0-9]/
+    // \D : 숫자가 아닌 문자를 검색. == /[^0-9]/
+    // \w : 언더바(_)를 포함한 영문자 및 숫자를 검색. == /[A-Za-z0-9_]/
+    // \W : 언더바(_), 영문자, 숫자가 아닌 문자를 검색. == /[^A-Za-z0-9_]/
+    // \s : 띄어쓰기, 탭, 줄바꿈 문자 등의 공백 문자를 검색
+    // \S : 띄어쓰기, 탭, 줄바꿈 문자 등의 공백 문자가 아닌 문자를 검색
+    // \b : 단어의 맨 앞이나 맨 뒤가 패턴과 일치하는지를 검색
+
+    // 전화번호 검색패턴 예 : 000-0000-0000 => /[0-9]{3}-[0-9]{3,4}-[0-9]{4}/
+    // 전화번호 검색패턴 예 : 000-0000-0000 => /\d{3}-\d{3,4}-\d{4}/
+
+    // 플래그
+    // g : 전역검색
+    let str = 'abcabc';
+    let result = str.match(/a/g);
+    console.log(result);
+
+    // m : 줄바꿈 검색
+    str = 'Hello World and\nPower Hello?\nPower Overwhelming!!';
+    result = str.match(/^Hello/); // ^ 문자는 문장 시작점을 의미
+    console.log(result);
+    result = str.match(/^Power/gm);
+    console.log(result);
+
+    // i : 대소문자 구분 없음
+    str = 'abcABC';
+    result = str.match(/a/gi);
+    console.log(result);
+
+    // y : 위치 지정
+    str = 'let varName = "value"';
+    let regexp = /\w+/y; // + 문자는 최소 하나 혹은 그 이상
+    console.log(regexp);
+    regexp.lastIndex = 3;
+    result = regexp.exec(str);
+    console.log(result);
+
+    // 이메일 검색패턴 예 : OOOOO@OOOOO.OOO => /[0-9a-zA-Z]+@[a-z]+\.[a-z]{2,}/
+    let reg = /^[0-9a-zA-Z]+@[a-z]+\.[a-z]{2,}$/;
+    const email = prompt('이메일을 입력하세요.');
+    console.log(email);
+    console.log(reg.test(email));
+
+    // 아이디 영소문자 3~8자리 + 숫자
+    reg = /^[a-z]{3,8}[0-9]+$/;
+
+    // [^문자] : 괄호안의 문자를 제외한 것
+    // [^lgEn] ==> l g E n 4개 문자를 제외
+    // ^문자열 : 특정 문자열로 시작(시작점)
+    // 문자열$ : 특정 문자열로 끝(종착점)
+    // ? : 없거나 or 최대 한개만 ==> /apple?/
+    // * : 없거나 or 있거나(여러개) ==> /apple*/
+    // + : 최소 한개 or 여러개 ==> /apple+/
+  </script>
+</html>

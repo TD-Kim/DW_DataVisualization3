@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change context</title>
+  </head>
+  <style>
+    div {
+      width: 500px;
+      height: 200px;
+      border: 3px solid orange;
+      font-weight: 600;
+    }
+  </style>
+  <body>
+    <div id="ex">무궁화 꽃이 피었습니다.</div>
+    <button onclick="get()">요소 내용 가져오기</button>
+    <button onclick="set()">요소 내용 변경하기</button>
+  </body>
+  <script>
+    function get() {
+      // div 요소의 텍스트를 가져와서 alert으로 출력
+      const divElText = document.querySelector('#ex').innerHTML;
+      alert(divElText);
+    }
+
+    function set() {
+      // 프롬프트 창을 띄워 사용자에게 입력받은 후
+      // div 요소의 텍스트 변경
+      const inputText = prompt('변경할 텍스트를 입력하세요.');
+      document.querySelector('#ex').innerHTML = inputText;
+    }
+  </script>
+</html>

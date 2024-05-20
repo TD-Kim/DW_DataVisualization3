@@ -7,7 +7,7 @@
   </head>
   <body></body>
   <script>
-    // 1. forEach() 함수
+    // 1. forEach() 함수 ⭐*3.5
     // 해당 배열의 모든 요소에 대하여 반복적으로 명시된 함수를 실행한다.
     document.write(`<h1>1. forEach() 함수</h1>`);
     const arr = [1, true, 'Javascript'];
@@ -99,16 +99,28 @@
 
     const strArr2 = ['hello', 'world', 'javascript'];
     // ["HELLO", "WORLD", "JAVASCRIPT"]; 문자열.toUpperCase();
+    const newStrArr2 = strArr2.map(function (v) {
+      return v.toUpperCase();
+    });
+    console.log(newStrArr2);
 
     const numArr2 = [10, 20, 30, 40, 50];
     // ["Index 0: 10", "Index 1: 20", "Index 2: 30", "Index 3: 40", "Index 4: 50"];
+    const newNumArr2 = numArr2.map(function (v, i) {
+      return `Index ${i}: ${v}`;
+    });
+    console.log(newNumArr2);
 
     const users2 = [
       { id: 1, name: '김덕배' },
       { id: 2, name: '최덕배' },
       { id: 3, name: '이덕배' },
     ];
-    // ["김덕배", "최덕배", "이덕배"]^ㅁ^b (●'◡'●)
+    // ["김덕배", "최덕배", "이덕배"]; ^ㅁ^b (●'◡'●)
+    const newUsers2 = users2.map(function (v) {
+      return v.name;
+    });
+    console.log(newUsers2);
 
     const users3 = [
       { id: 1, name: '김덕배', contact: { email: 'kim@gmail.com' } },
@@ -116,10 +128,96 @@
       { id: 3, name: '이덕배', contact: { email: 'lee@gmail.com' } },
     ];
     // ['kim@gmail.com', 'choi@gmail.com', 'lee@gmail.com']
+    const newUsers3 = users3.map(function (v) {
+      return v.contact.email;
+    });
+    console.log(newUsers3);
 
     // [1, 2, 3],
     // [4, 5, 6],
     // [7, 8, 9],
     // 결과 ==> [[2, 4, 6],[8, 10, 12],[14, 16, 18]]
+    const newDoubleArr = doubleArr.map(function (v) {
+      // const tempArr = [];
+      // for (let i = 0; i < v.length; i++) {
+      //   tempArr.push(v[i] * 2);
+      // }
+      // return tempArr;
+      return v.map(function (v) {
+        return v * 2;
+      });
+    });
+    console.log(newDoubleArr);
+
+    // 3. filter() 함수 ⭐⭐⭐⭐
+    // 배열의 모든 요소에 대하여 반복적으로 명시된 함수를 실행한 후,
+    // 그 결과값이 true인 요소들만을 새로운 배열로 반환한다.
+    document.write(`<h1>3. filter() 함수</h1>`);
+    const numberArr2 = [1, 2, 3, 4, 5];
+    // [4, 5]
+    let result = [];
+    // for(let i = 0; i < numberArr2.length; i++) {
+    //   if(numberArr2[i] > 3) {
+    //     result.push(numberArr2[i]);
+    //   }
+    // }
+    result = numberArr2.filter(function (v) {
+      return v > 3;
+    });
+    document.write(`<h3>numberArr2 : [${numberArr2}]</h3>`);
+    document.write(`<h3>result : [${result}]</h3>`);
+
+    const guys = [
+      { name: '덕배', money: 500000 },
+      { name: '베컴', money: 700000 },
+      { name: '홀란드', money: 600000 },
+      { name: '포든', money: 400000 },
+    ];
+    // [{ name: '베컴', money: 700000 }, { name: '홀란드', money: 600000 }]
+    const rich = guys.filter(function (v) {
+      return v.money > 500000;
+    });
+    console.log(rich);
+
+    // money > 500000, name == "홀란드"
+    const richHaaland = guys.filter(function (v) {
+      return v.money > 500000 && v.name == '홀란드';
+    });
+    console.log(richHaaland);
+
+    // 4. reduce() 함수
+    // 해당 배열의 모든 요소를 하나의 값으로 줄이기 위해,
+    // 두개의 인수를 전달받는 함수를 실행한다.
+    // 이 때, 명시된 함수에 배열의 첫번째 요소와 두번째 요소를 인수로 전달하고 실행한다.
+    // 그 결과 반환된 결과값에 세번째 요소를 다시 인수로 전달하고 실행한다.
+    document.write(`<h1>4. reduce() 함수</h1>`);
+    const numArr3 = [1, 2, 3, 4, 5];
+    const result2 = numArr3.reduce(function (x, y) {
+      return x + y;
+    }, 5);
+    // 1 + 2 + 3 + 4 + 5 = 15
+    document.write(`<h3>원본배열 : [${numArr3}]</h3>`);
+    document.write(`<h3>reduce 결과 : [${result2}]</h3>`);
+    const result3 = numArr3.reduce(function (x, y) {
+      return x - y;
+    });
+    // 1 - 2 - 3 - 4 - 5 = -13
+    document.write(`<h3>reduce 결과 : [${result3}]</h3>`);
+
+    // 1. accmulator    : 누산기, 누적값
+    // 2. currentValue  : 처리할 현재 요소
+    // 3. currentIndex  : 처리할 현재 요소의 인덱스
+    // 4. array         : 대상 배열 전체
+    // Array.reduce(function(acc, cur, idx, arr){
+
+    // }, initialValue)
+
+    // 5. reduceRight() 함수
+    // reduce() 함수와 같은 방식으로 실행되며,
+    // 배열의 마지막 요소부터 줄이기 시작한다.
+    const result4 = numArr3.reduceRight(function (x, y) {
+      return x - y;
+    });
+    document.write(`<h3>reduceRight 결과 : ${result4}</h3>`);
   </script>
 </html>

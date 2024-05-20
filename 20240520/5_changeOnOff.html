@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change on/off</title>
+  </head>
+  <style>
+    #wrapper {
+      width: 500px;
+      height: 500px;
+      border: 3px solid gray;
+      border-radius: 50%;
+      background: linear-gradient(135deg, gray, white);
+    }
+    .imgWrapper {
+      width: 80%;
+      height: 80%;
+      border: 10px solid black;
+      border-radius: 50%;
+    }
+    img {
+      width: 50%;
+      height: 50%;
+      filter: contrast(0%);
+    }
+    img:hover {
+      cursor: pointer;
+    }
+    div.on {
+      border: 20px solid black;
+    }
+    img.on {
+      filter: opacity(0.5) drop-shadow(0 0 0 red) saturate(1000%);
+    }
+    .flexBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <body>
+    <div id="wrapper" class="flexBox">
+      <div id="imgWrapper" class="imgWrapper flexBox">
+        <img src="../resources/img/전원.png" class="" />
+      </div>
+    </div>
+  </body>
+  <script>
+    const imgTag = document.querySelector('img');
+    const divTag = document.querySelector('#imgWrapper');
+    imgTag.addEventListener('click', function () {
+      const currentClass = imgTag.classList[0];
+      //   if (currentClass == 'on') {
+      //     imgTag.classList.remove('on');
+      //     divTag.classList.remove('on');
+      //   } else {
+      //     imgTag.classList.add('on');
+      //     divTag.classList.add('on');
+      //   }
+      imgTag.classList.toggle('on');
+      divTag.classList.toggle('on');
+    });
+  </script>
+</html>

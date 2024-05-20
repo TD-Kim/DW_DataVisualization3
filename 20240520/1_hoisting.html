@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>호이스팅</title>
+  </head>
+  <body></body>
+  <script>
+    const arr = [1, 2, 3, 4, 5];
+    arr.map(function (v) {
+      return v * 3;
+    });
+    arr.map((v, x) => v * 3);
+
+    // 호이스팅
+    // let a = 10;
+    // if (true) {
+    //   console.log(a);
+    //   let a = 20;
+    // }
+
+    // if (true) {
+    //   var test = true;
+    // }
+    // alert(test);
+
+    // 스코프 - 범위
+    // var ==> 블록 스코프가 없다. 전역 or 함수
+    // function varTest() {
+    //   var test = 5;
+    //   alert(test);
+    // }
+    // alert(test);
+    // ES6 ==> let, const
+    // let, const 는 블록 레벨의 스코프를 가진다.
+
+    function sayHi() {
+      var phrase;
+
+      phrase = 'Hello';
+
+      alert(phrase);
+    }
+    sayHi();
+
+    // var, let, const, function, class
+    // var은 호이스팅시 선언과 초기화가 동시에 이루어진다.
+    // let test;  // => undefined
+    console.log(foo);
+    var foo;
+
+    console.log(bar);
+    let bar;
+
+    // 변수 선언의 단계 ==> 선언단계 > 초기화단계 > 할당단계
+
+    // 자바스크립트 엔진이 실행되면서 선언 단계가 실행된다.
+    // 아직 변수가 초기화(undefined로)되지 않았다.
+
+    // for(var i = 0; i < 10; i++) {
+    //   console.log(i);
+    // }
+    // alert(i);
+
+    // 함수 선언식 vs 함수 표현식
+    // aaa();
+    // bbb();
+
+    // function aaa() {
+    //   alert('aaa 함수');
+    // }
+
+    // let bbb = function () {
+    //   alert('bbb 함수');
+    // };
+  </script>
+</html>
