@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="1_keyboard.css" />
+    <title>fake keyboard</title>
+  </head>
+  <body>
+    <input type="text" id="my-input" />
+    <div class="events">
+      <div id="keydown" class="event">keydown</div>
+      <div id="keypress" class="event">keypress</div>
+      <div id="keyup" class="event">keyup</div>
+    </div>
+    <div class="events">
+      <div id="key" class="event">key</div>
+      <div id="code" class="event">code</div>
+    </div>
+    <div id="keyboard">
+      <div class="function-keys">
+        <div id="Escape" class="key">Esc</div>
+        <div class="row">
+          <div id="F1" class="key">F1</div>
+          <div id="F2" class="key">F2</div>
+          <div id="F3" class="key">F3</div>
+          <div id="F4" class="key">F4</div>
+        </div>
+        <div class="row">
+          <div id="F5" class="key">F5</div>
+          <div id="F6" class="key">F6</div>
+          <div id="F7" class="key">F7</div>
+          <div id="F8" class="key">F8</div>
+        </div>
+        <div class="row">
+          <div id="F9" class="key">F9</div>
+          <div id="F10" class="key">F10</div>
+          <div id="F11" class="key">F11</div>
+          <div id="F12" class="key">F12</div>
+        </div>
+      </div>
+      <div class="main-keys">
+        <div class="row">
+          <div id="Backquote" class="key">`</div>
+          <div id="Digit1" class="key">1</div>
+          <div id="Digit2" class="key">2</div>
+          <div id="Digit3" class="key">3</div>
+          <div id="Digit4" class="key">4</div>
+          <div id="Digit5" class="key">5</div>
+          <div id="Digit6" class="key">6</div>
+          <div id="Digit7" class="key">7</div>
+          <div id="Digit8" class="key">8</div>
+          <div id="Digit9" class="key">9</div>
+          <div id="Digit0" class="key">0</div>
+          <div id="Minus" class="key">-</div>
+          <div id="Equal" class="key">=</div>
+          <div id="Backspace" class="key">BackSpace</div>
+        </div>
+        <div class="row">
+          <div id="Tab" class="key">Tab</div>
+          <div id="KeyQ" class="key">Q</div>
+          <div id="KeyW" class="key">W</div>
+          <div id="KeyE" class="key">E</div>
+          <div id="KeyR" class="key">R</div>
+          <div id="KeyT" class="key">T</div>
+          <div id="KeyY" class="key">Y</div>
+          <div id="KeyU" class="key">U</div>
+          <div id="KeyI" class="key">I</div>
+          <div id="KeyO" class="key">O</div>
+          <div id="KeyP" class="key">P</div>
+          <div id="BracketLeft" class="key">[</div>
+          <div id="BracketRight" class="key">]</div>
+          <div id="Backslash" class="key">\</div>
+        </div>
+        <div class="row">
+          <div id="CapsLock" class="key">CapsLock</div>
+          <div id="KeyA" class="key">A</div>
+          <div id="KeyS" class="key">S</div>
+          <div id="KeyD" class="key">D</div>
+          <div id="KeyF" class="key">F</div>
+          <div id="KeyG" class="key">G</div>
+          <div id="KeyH" class="key">H</div>
+          <div id="KeyJ" class="key">J</div>
+          <div id="KeyK" class="key">K</div>
+          <div id="KeyL" class="key">L</div>
+          <div id="Semicolon" class="key">;</div>
+          <div id="Quote" class="key">'</div>
+          <div id="Enter" class="key">Enter</div>
+        </div>
+        <div class="row">
+          <div id="ShiftLeft" class="key">Shift</div>
+          <div id="KeyZ" class="key">Z</div>
+          <div id="KeyX" class="key">X</div>
+          <div id="KeyC" class="key">C</div>
+          <div id="KeyV" class="key">V</div>
+          <div id="KeyB" class="key">B</div>
+          <div id="KeyN" class="key">N</div>
+          <div id="KeyM" class="key">M</div>
+          <div id="Comma" class="key">,</div>
+          <div id="Period" class="key">.</div>
+          <div id="Slash" class="key">/</div>
+          <div id="ShiftRight" class="key">Shift</div>
+        </div>
+        <div class="row">
+          <div id="ControlLeft" class="key">Ctrl</div>
+          <div id="MetaLeft" class="key">Win</div>
+          <div id="AltLeft" class="key">Alt</div>
+          <div id="Space" class="key">Space</div>
+          <div id="AltRight" class="key">Alt</div>
+          <div id="MetaRight" class="key">Win</div>
+          <div id="ControlRight" class="key">Ctrl</div>
+          <div class="block">
+            <div class="row">
+              <div></div>
+              <div id="ArrowUp" class="key">↑</div>
+              <div></div>
+            </div>
+            <div class="row">
+              <div id="ArrowLeft" class="key">←</div>
+              <div id="ArrowDown" class="key">↓</div>
+              <div id="ArrowRight" class="key">→</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const myInput = document.getElementById('my-input');
+    const key = document.getElementById('key');
+    const code = document.getElementById('code');
+    const keydown = document.getElementById('keydown');
+    const keypress = document.getElementById('keypress');
+    const keyup = document.getElementById('keyup');
+    const dKey = document.getElementById('KeyD');
+
+    function presskeyEvent() {
+      keypress.classList.add('check');
+
+      setTimeout(function () {
+        keypress.classList.remove('check');
+      }, 300);
+    }
+
+    function downkeyEvent(e) {
+      if (e.code == 'F1' || e.code == 'F3') {
+        e.preventDefault();
+      }
+      // 눌린 키에 대한 요소를 가져온다.
+      //   console.log(`key : ${e.key}, code : ${e.code}`);
+      const el = document.querySelector(`#${e.code}`);
+
+      // 외부 파일에 대한 엘리먼트 접근
+      colorArr = [];
+      for (let i = 0; i < 3; i++) {
+        colorArr.push(parseInt(Math.random() * 256));
+      }
+      el.style.setProperty('--main-color', `rgb(${colorArr})`);
+
+      // keydown div에 check 클래스를 추가한다.
+      keydown.classList.add('check');
+
+      // 눌린 키를 화면상에서 회색으로 변경한다.(클래스를 적용하여)
+      el.classList.add('on');
+
+      // 눌린 키의 "key"와 "code" 프로퍼티 값을 화면에 표시한다.
+      key.innerHTML = `key: ${e.key}`;
+      code.innerHTML = `code: ${e.code}`;
+
+      // check 클래스를 0.3초 이후에 제거한다.
+      setTimeout(function () {
+        keydown.classList.remove('check');
+      }, 300);
+    }
+
+    function upkeyEvent(e) {
+      console.log(`key: ${e.key}, code: ${e.code}`);
+      // 손가락을 뗏을 때의 키 요소를 가져온다.
+      const el = document.querySelector(`#${e.code}`);
+
+      // keyup 요소에 check 클래스를 추가한다.
+      keyup.classList.add('check');
+
+      // 손가락을 뗀 키를 화면상에서 다시 원상복구 시킨다.(on 클래스 삭제)
+      el.classList.remove('on');
+
+      // check 클래스를 0.3초 이후에 제거한다.
+      setTimeout(function () {
+        keyup.classList.remove('check');
+      }, 300);
+
+      if (e.code == 'AltRight') {
+        el.classList.add('on');
+        setTimeout(function () {
+          el.classList.remove('on');
+        }, 300);
+      }
+    }
+
+    myInput.addEventListener('keypress', presskeyEvent);
+    myInput.addEventListener('keydown', downkeyEvent);
+    myInput.addEventListener('keyup', upkeyEvent);
+  </script>
+</html>

@@ -21,11 +21,15 @@
   <script>
     function get() {
       // div 요소의 텍스트를 가져와서 alert으로 출력
+      const divElText = document.querySelector('#ex').innerHTML;
+      alert(divElText);
     }
 
     function set() {
       // 프롬프트 창을 띄워 사용자에게 입력받은 후
       // div 요소의 텍스트 변경
+      const inputText = prompt('변경할 텍스트를 입력하세요.');
+      document.querySelector('#ex').innerHTML = inputText;
     }
   </script>
 </html>
