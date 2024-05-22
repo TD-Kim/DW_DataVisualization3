@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="1_messenger.css" />
+    <title>DW Messenger</title>
+  </head>
+  <body>
+    <img class="background" src="../resources/img/background.png" />
+    <div class="container">
+      <!-- header : 상대방 정보 표시 및 전화(음성, 영상)통화 버튼 -->
+      <div class="header">
+        <button class="btn">
+          <img src="../resources/img/left-arrow.png" width="30" height="30" />
+        </button>
+        <img
+          class="profile-pic"
+          src="../resources/img/profile.png"
+          width="40"
+          height="40"
+        />
+        <div class="info-block">
+          <p class="username">썸남</p>
+          <p class="status">1시간 전에 활동</p>
+        </div>
+        <div class="call-box">
+          <button class="btn">
+            <img src="../resources/img/phone-call.png" width="20" height="20" />
+          </button>
+          <button class="btn">
+            <img src="../resources/img/video-call.png" width="20" height="20" />
+          </button>
+        </div>
+      </div>
+
+      <!-- 대화내용 표시부 -->
+      <div id="chat-box">
+        <div class="bubble friend-bubble">자니?</div>
+        <div class="bubble friend-bubble">자나보네..</div>
+        <div class="bubble friend-bubble">잘 자</div>
+        <!-- <div class="bubble my-bubble">왜 연락했어?</div> -->
+      </div>
+
+      <!-- 대화 작성부 -->
+      <div class="footer">
+        <textarea id="input" placeholder="메세지를 입력하세요."></textarea>
+        <button class="btn" id="sendBtn">
+          <img src="../resources/img/send.png" width="24" height="24" />
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
