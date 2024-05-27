@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filter selector</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    ul {
+      border: 3px solid teal;
+      padding: 0;
+      list-style-type: none;
+      width: 500px;
+      border-radius: 10px;
+    }
+    li {
+      border: 2px solid tomato;
+      background-color: beige;
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 32px;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      width: 300px;
+      text-align: center;
+      font-size: 32px;
+    }
+  </style>
+  <body>
+    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+      <li>four</li>
+      <li>five</li>
+      <li>six</li>
+      <li>seven</li>
+      <li>eight</li>
+      <li>nine</li>
+    </ul>
+
+    <table border="1">
+      <tr>
+        <td>이름</td>
+        <td>주소</td>
+      </tr>
+      <tr>
+        <td>홍길동</td>
+        <td>대전</td>
+      </tr>
+      <tr>
+        <td>진달래</td>
+        <td>서울</td>
+      </tr>
+      <tr>
+        <td>개나리</td>
+        <td>부산</td>
+      </tr>
+      <tr>
+        <td>무궁화</td>
+        <td>대구</td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    $('li:first').css('fontSize', '48px');
+    $('li:last').css('fontSize', '48px');
+    $('li:even').css('backgroundColor', 'yellow');
+    $('li:odd').css('backgroundColor', 'skyblue');
+    $('li:lt(4)').css('color', 'red');
+    $('li:gt(4)').css('color', 'pink');
+    $('li:eq(4)').css('color', 'blue');
+
+    $('tr:even').css('backgroundColor', '#9f9f9f');
+    $('tr:odd').css('backgroundColor', '#f9f9f9');
+    $('tr:first').css('backgroundColor', 'black').css('color', 'white');
+  </script>
+</html>

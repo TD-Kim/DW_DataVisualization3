@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>child selector</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    ul {
+      border: 3px solid teal;
+      padding: 0;
+      list-style-type: none;
+      width: 500px;
+      border-radius: 10px;
+    }
+    li {
+      border: 2px solid tomato;
+      background-color: beige;
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 32px;
+    }
+  </style>
+  <body>
+    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+      <li>four</li>
+      <li>five</li>
+    </ul>
+    <ul>
+      <li>six</li>
+      <li>seven</li>
+      <li>eight</li>
+      <li>nine</li>
+      <li>ten</li>
+    </ul>
+    <ul>
+      <li>eleven</li>
+    </ul>
+    <ul>
+      <li>eleven</li>
+    </ul>
+  </body>
+  <script>
+    $('li:first-child').css('color', 'blue');
+    $('li:first').css('color', 'yellow');
+    $('li:last-child').css('color', 'red');
+    $('li:last').css('color', 'orange');
+    $('li:only-child').css('border', '3px dotted purple');
+  </script>
+</html>

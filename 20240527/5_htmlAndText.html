@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html and text</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body>
+    <p>
+      1
+      <span>홍길동</span>
+    </p>
+    <p>
+      2
+      <span>개나리</span>
+    </p>
+    <p>
+      3
+      <span>진달래</span>
+    </p>
+  </body>
+  <script>
+    $('p').on('click', function () {
+      console.log($(this).html());
+      console.log($(this).text());
+    });
+
+    const pTags = $('p');
+    pTags.each(function (index, item) {
+      //   console.log(item.innerHTML);
+      console.log($(item).html());
+    });
+  </script>
+</html>

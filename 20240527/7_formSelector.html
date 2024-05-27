@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form 선택자 연습</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body>
+    <h1>회원가입</h1>
+    <form>
+      <fieldset>
+        <legend>필수 입력 사항</legend>
+        <div>
+          ID <input type="text" />
+          <button>버튼태그로만든 버튼</button>
+          <input type="button" value="중복확인" />
+        </div>
+        <div>비밀번호 <input type="password" /></div>
+        <div>비밀번호 확인 <input type="password" /></div>
+        <div>
+          <div>Email <input type="email" /></div>
+          <select>
+            <option>@daum.net</option>
+            <option>@naver.com</option>
+            <option>@gmail.com</option>
+            <option selected>직접입력</option>
+          </select>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>추가 정보</legend>
+        <p>프로필 사진 <input type="file" accept="image/*" /></p>
+        <p>
+          성별 :
+          <input type="radio" id="male" name="gender" />
+          <label for="male">남자</label>
+          <input type="radio" id="female" name="gender" />
+          <label for="female">여자</label>
+        </p>
+        <p>생년월일 : <input type="date" /></p>
+        <p>
+          취미<br />
+          <input type="checkbox" id="html" /> <label for="html">HTML 공부</label
+          ><br />
+          <input type="checkbox" id="css" /> <label for="css">CSS 공부</label
+          ><br />
+          <input type="checkbox" id="javascript" />
+          <label for="javascript">Javascript 공부</label><br />
+          <input type="checkbox" id="react" />
+          <label for="react">React.js 공부</label><br />
+          <input type="checkbox" id="etc" />
+          <label for="etc">기타</label> <input type="text" /><br />
+        </p>
+        <p>
+          자기소개<br />
+          <textarea rows="5" cols="50"></textarea>
+        </p>
+      </fieldset>
+      <br />
+      <input type="submit" value="회원가입" />
+      <input type="reset" value="다시입력" />
+      <input type="button" value="이전으로" onclick="history.go(-1);" />
+    </form>
+  </body>
+  <script>
+    // input 요소 테두리 lime, 배경색 핑크
+    $(':input').css({
+      border: '2px solid lime',
+      backgroundColor: 'pink',
+    });
+    // type button 인 요소 배경색 노랑
+    $(':button').css('backgroundColor', 'yellow');
+    // type submit 인 요소 배경색 초록
+    $(':submit').css('backgroundColor', 'green');
+    // type text, password, email 인 요소의 테두리 파랑
+    $(':text, :password, [type=email]').css('border', '2px solid blue');
+    // type file 인 요소의 테두리 빨강
+    $(':file').css('border', '2px solid red');
+  </script>
+</html>

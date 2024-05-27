@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change display</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body>
+    <h2>클릭하면 사라집니다1</h2>
+    <h2>클릭하면 사라집니다2</h2>
+    <h2>클릭하면 사라집니다3</h2>
+    <h2>클릭하면 사라집니다4</h2>
+    <h2>클릭하면 사라집니다5</h2>
+    <h2>클릭하면 사라집니다6</h2>
+    <h2>클릭하면 사라집니다7</h2>
+  </body>
+  <script>
+    // 순수 자바스크립트
+    // const h2 = document.getElementsByTagName('h2');
+    // for (let i = 0; i < h2.length; i++) {
+    //   h2[i].addEventListener('click', function (e) {
+    //     // h2[i].style.display = 'none';
+    //     // e.target.style.display = 'none';
+    //     this.style.display = 'none';
+    //     // h2[i] == e.target == this
+    //   });
+    // }
+
+    // jQuery
+    $('h2').on('click', function () {
+      $(this).css('display', 'none');
+    });
+  </script>
+</html>

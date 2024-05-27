@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change CSS</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <script>
+    $(document).ready(function () {
+      // 전체 배경색 변경
+      $('body').css('backgroundColor', 'yellow');
+      // h1요소의 글자색을 파란색으로 변경
+      $('h1').css('color', 'blue');
+      // id가 smTitle 인 요소의 글자색을 초록색으로 변경
+      $('#smTitle').css('color', 'green');
+      // class가 sample 인 요소의 글자색을 빨강색으로 변경
+      $('.sample').css('color', 'red');
+
+      //   const samples = document.querySelectorAll('.sample');
+      //   samples.style.color = 'red';
+      //   sample.forEach(function(el) {
+      //     el.style.color = 'red';
+      //   })
+    });
+  </script>
+  <body>
+    <h1>제목입니다</h1>
+    <h2 id="smTitle">작은 제목입니다</h2>
+    <h2 class="sample">샘플입니다</h2>
+    <h2 class="sample">샘플입니다</h2>
+  </body>
+</html>

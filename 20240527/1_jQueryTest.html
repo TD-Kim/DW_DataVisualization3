@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Test</title>
+    <!-- CDN 방식 -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.js"></script> -->
+    <!-- 외부 JS 방식 -->
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body>
+    <p id="p">jQuery 테스트용 문장입니다.</p>
+  </body>
+  <script>
+    const pTag = document.querySelector('#p');
+    // const pTag = document.getElementById("p");
+    console.log(pTag);
+
+    const pTag2 = $('#p');
+    console.log(pTag2);
+  </script>
+</html>

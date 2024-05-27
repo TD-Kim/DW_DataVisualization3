@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>context selector</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    div {
+      width: 300px;
+      height: 30px;
+      border: 2px solid green;
+    }
+  </style>
+  <body>
+    <div></div>
+    <div>
+      Hello
+      <span>오늘도 즐겁게~ 열심히!</span>
+    </div>
+    <p>Hello jQuery! <span>Thanks, jQuery!</span></p>
+    <div class="myClass">jQuery!</div>
+    <span class="notMyClass">쉬운 jQuery!</span>
+    <div></div>
+  </body>
+  <script>
+    // "jQuery" 가 포함된 span 태그의 테두리 파랑
+    $('span:contains(jQuery)').css('border', '2px solid blue');
+
+    // "jQuery" 가 포함되지 않은 span 태그의 테두리 빨강
+    $('span').not('span:contains(jQuery)').css('border', '2px solid red');
+
+    // span 태그를 갖는 div 요소의 테두리 분홍색
+    $('div:has(span)').css('border', '2px solid pink');
+
+    // 아무것도 없는 빈 div 태그의 테두리 주황색
+    $('div:empty').css('border', '2px solid orange');
+  </script>
+</html>

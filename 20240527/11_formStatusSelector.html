@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form status selector</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    * {
+      font-size: 32px;
+    }
+  </style>
+  <body>
+    <form>
+      <input type="text" name="id" /><br />
+      <input type="password" name="password" /><br />
+
+      <select name="mySelect">
+        <option>Option1</option>
+        <option>Option2</option>
+        <option selected>Option3</option>
+        <option>Option4</option>
+      </select>
+      <br />
+      <textarea name="textArea" rows="10" cols="30" disabled></textarea>
+      <br />
+
+      취 미 :
+      <input type="checkbox" name="hobby" value="여행" />여행
+      <input type="checkbox" name="hobby" value="장기" />장기
+      <input type="checkbox" name="hobby" value="바둑" />바둑
+      <input type="checkbox" name="hobby" value="독서" />독서
+      <input type="checkbox" name="hobby" value="낚시" />낚시 <br /><br />
+      <input type="submit" value="전송" />
+      <input type="button" value="확인" disabled />
+    </form>
+  </body>
+  <script>
+    $(':disabled').css('border', '4px solid red');
+    $('input:disabled').css('border', '4px solid blue');
+    $(':selected').css('backgroundColor', 'orange');
+    $(':enabled').css('border', '4px solid yellow');
+
+    $('input[type=submit]').on('click', function (e) {
+      e.preventDefault(); // submit 이벤트를 막는다.
+      $('input:checked').each(function (index, item) {
+        // console.log(item.value);
+        console.log($(item).val());
+        $(item).val(index);
+      });
+    });
+  </script>
+</html>
