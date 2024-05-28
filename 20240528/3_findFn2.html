@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>찾기 함수2</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    .wrapper * {
+      border: 2px solid lightgray;
+      color: lightgray;
+      padding: 5px;
+      margin: 15px;
+      display: block;
+    }
+    .wrapper div {
+      width: 300px;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      body div
+      <div>
+        div
+        <ul>
+          ul
+          <li>
+            li
+            <span id="span1">span</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        div
+        <ul>
+          ul
+          <li>
+            li
+            <span id="span2">span</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    // $('#span1').parent().css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+    // $('#span1').parents('div').css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+    // $('#span1').parentsUntil('div').css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+    // $('#span1').closest('div').css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+
+    // $('.wrapper > div').find('li').css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+
+    $('#span1').closest('div.wrapper').find('#span2').css({
+      color: 'red',
+      border: '2px solid red',
+    });
+
+    $('#span2').parents('.wrapper > div').siblings().find('#span1').css({
+      color: 'red',
+      border: '2px solid red',
+    });
+  </script>
+</html>

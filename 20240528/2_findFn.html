@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>찾기 함수</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    .wrapper {
+      width: 500px;
+    }
+    .wrapper * {
+      border: 2px solid lightgray;
+      color: lightgray;
+      padding: 5px;
+      margin: 15px;
+      display: block;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <ul>
+        ul
+        <li class="start">li class="start"</li>
+        <li class="my">li class="my"</li>
+        <li>li</li>
+        <li class="my">li class="my"</li>
+        <li class="stop">li class="stop"</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // $('li.start').next().css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+    // $('li.start').nextAll().css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+    // $('li.start').nextUntil('li.stop', '.my').css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+
+    // $('li.stop').prev().css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+    // $('li.stop').prevAll().css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+    // $('li.stop').prevUntil('li.start', '.my').css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+
+    // $('li.start').siblings().css({
+    // $('li.start').siblings('.my').css({
+    //   color: 'red',
+    //   border: '2px solid red',
+    // });
+
+    $('li.start').add('li.stop').css({
+      color: 'red',
+      border: '2px solid red',
+    });
+  </script>
+</html>
