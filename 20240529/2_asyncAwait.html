@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>async-await</title>
+  </head>
+  <body>
+    <h1>Authors</h1>
+    <button>posts</button>
+    <button>comments</button>
+    <button>albums</button>
+    <button>photos</button>
+    <button>users</button>
+    <button>todos</button>
+    <ul id="authors"></ul>
+  </body>
+  <script>
+    // function 키워드 앞에 붙이는 async
+    // async 를 붙이면 무조건 Promise 객체를 반환한다.
+    // await 는 async 함수 안에서만 작동한다.
+    // await 는 Promise 객체를 리턴하는 코드 앞에 붙인다.
+    // 함수 앞에 async 가 붙어 있으면 함수 안에 비동기적으로 실행되는 코드가 있다는 말이다.
+    // await 는 뒤에있는 코드의 Promise 가 fullfilled 혹은 rejected 가 될 때까지 기다린다.
+    async function fetchAndPrint() {
+      const btnText = this.innerHTML;
+      const url = `https://jsonplaceholder.typicode.com/${btnText}`;
+      const response = await fetch(url);
+      const result = await response.json();
+      const ulTag = document.getElementById('authors');
+      result.forEach((el) => {
+        const keys = Object.keys(el);
+        keys.forEach((userKey) => {
+          if (typeof el[userKey] == 'string') {
+            const liTag = document.createElement('li');
+            liTag.innerHTML = `${userKey}: ${el[userKey]}`;
+            ulTag.append(liTag);
+          }
+        });
+      });
+    }
+
+    const btns = document.querySelectorAll('button');
+    btns.forEach((el) => {
+      el.addEventListener('click', fetchAndPrint);
+    });
+  </script>
+</html>

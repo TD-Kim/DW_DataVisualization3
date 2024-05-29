@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>destructuring(구조분해)</title>
+  </head>
+  <body></body>
+  <script>
+    const newJeans = ["하니", "해린", "민지", "다니엘", "혜인"];
+
+    // ~ ES6
+    const one = newJeans[0];
+    const two = newJeans[1];
+    const three = newJeans[2];
+    const four = newJeans[3];
+    const five = newJeans[4];
+
+    const unit = [];
+    unit.push(two);
+    unit.push(three);
+    unit.push(four);
+
+    // ES6 ~
+    const [
+      unitOne,
+      unitTwo,
+      unitThree,
+      unitFour,
+      unitFive,
+      unitSix = "default",
+    ] = newJeans;
+    console.log(unitOne, unitTwo, unitThree, unitFour, unitFive, unitSix);
+
+    const fileName = "시바견.jpg";
+    // const fileNameArr = fileName.split(".");
+    const [name, extension] = fileName.split(".");
+    // const name = fileNameArr[0];
+    // const extension = fileNameArr[1];
+    // const [name, extension] = fileNameArr;
+
+    const obj = {
+      name: "홍길동",
+      age: 20,
+      addr: "대전광역시 중구 선화동",
+      weight: "80kg",
+      height: "200cm",
+    };
+
+    const { name: myName, age, addr, weight, height } = obj;
+
+    document.write(`
+        안녕하세요. 저의 이름은 ${myName} 이고,<br>
+        나이는 ${age}살 입니다.<br>
+        주소는 ${addr}이고,<br>
+        키와 몸무게는 ${height}, ${weight} 입니다.<br>
+        잘부탁드립니다.
+    `);
+
+    // ... 문법(스프레드 문법)
+    const numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const [num1, num2, ...restNum] = numArr;
+    console.log(num1, num2, restNum);
+
+    let options = {
+      title: "Menu",
+      width: 100,
+      height: 200,
+    };
+    // const rest = {
+    //     width: 100,
+    //     height: 200
+    // }
+    const { title, ...rest } = options;
+
+    options = {
+      size: {
+        width: 100,
+        height: 200,
+      },
+      items: ["Cake", "Donut"],
+      extra: true,
+    };
+
+    let {
+      size: { width, height: height2 },
+      items: [item1, item2],
+      extra,
+    } = options;
+    console.log(width, height2, item1, item2, extra);
+
+    const user = {
+      id: 1,
+      name: "Leanne Graham",
+      username: "Bret",
+      email: "Sincere@april.biz",
+      address: {
+        street: "Kulas Light",
+        suite: "Apt. 556",
+        city: "Gwenborough",
+        zipcode: "92998-3874",
+        geo: {
+          lat: "-37.3159",
+          lng: "81.1496",
+        },
+      },
+    };
+
+    let {
+      id,
+      name: graham,
+      username,
+      email,
+      address: {
+        street,
+        suite,
+        city,
+        zipcode,
+        geo: { lat, lng },
+      },
+    } = user;
+    console.log(
+      id,
+      graham,
+      username,
+      email,
+      street,
+      suite,
+      city,
+      zipcode,
+      lat,
+      lng
+    );
+  </script>
+</html>

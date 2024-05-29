@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ajax</title>
+  </head>
+  <body>
+    <h1>Authors</h1>
+    <ul id="authors"></ul>
+    <button>posts</button>
+    <button>comments</button>
+    <button>albums</button>
+    <button>photos</button>
+    <button>users</button>
+    <button>todos</button>
+  </body>
+  <script>
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+    // fetch 함수는 promise 객체를 반환
+    // promise ==> 비동기 통신에 대한 상태과 결과값을 담고 있는 객체
+    // promise state 값
+    // pending : 진행중
+    // fulfilled : 작업(통신) 성공
+    // rejected : 작업(통신) 실패
+
+    // response.json() : 응답을 JSON 형태로 파싱한다.
+    // response.text() : 응답을 읽고 string 형태로 반환한다.
+    // response.formData() : 응답을 FormData 객체 형태로 반환한다.
+    // response.blob() : 응답을 Blob(바이너리 데이터) 형태로 반환한다.
+
+    console.log('Start!!!');
+    fetch(url)
+      //   .then((response) => response.json())
+      .then((response) => response.text())
+      .then((result) => console.log(JSON.parse(result)));
+    console.log('End!!!');
+    // Start 콘솔이 먼저 찍힘
+    // fetch 를 만났는데 여기서 리턴하는 Promise의 then 함수로 콜백을 등록
+    // 뒤에 있는 두번째 then 함수도 콜백을 등록(등록만 할 뿐 실행은 하지 않음)
+    // 서버(요청한 쪽)에서 response 가 도착하면 then 함수로 등록했던 콜백들이 실행
+  </script>
+</html>
