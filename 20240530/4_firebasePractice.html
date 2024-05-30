@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파이어베이스 연습</title>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>성별</th>
+        <th>이메일</th>
+        <th>전화번호</th>
+      </tr>
+    </table>
+  </body>
+  <script type="module">
+    import { db, getMembers } from '../resources/js/firebase.js';
+    const snapshot = await getMembers();
+    const tableTag = document.querySelector('table');
+    snapshot.forEach((doc) => {
+      const { name, age, gender, tel, email } = doc.data();
+      tableTag.insertAdjacentHTML(
+        'beforeend',
+        `
+            <tr>
+                <td>${name}</td>
+                <td>${age}</td>
+                <td>${gender}</td>
+                <td>${email}</td>
+                <td>${tel}</td>
+            </tr>
+        `
+      );
+    });
+  </script>
+</html>
