@@ -17,8 +17,8 @@
     </table>
   </body>
   <script type="module">
-    import { db, getMembers } from '../resources/js/firebase.js';
-    const snapshot = await getMembers();
+    import { db, getDatas } from '../resources/js/firebase.js';
+    const snapshot = await getDatas('member');
     const tableTag = document.querySelector('table');
     snapshot.forEach((doc) => {
       const { name, age, gender, tel, email } = doc.data();

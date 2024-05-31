@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파이어베이스 연습</title>
+  </head>
+  <body>
+    <form name="joinForm">
+      <p>
+        <label>이름 : </label>
+        <input type="text" name="name" />
+      </p>
+      <p>
+        <label>나이 : </label>
+        <input type="text" name="age" />
+      </p>
+      <p>
+        <label>이메일 : </label>
+        <input type="text" name="email" />
+      </p>
+      <p>
+        <label>전화번호 : </label>
+        <input type="text" name="tel" />
+      </p>
+      <p>
+        <label>성별 : </label>
+        <input type="text" name="gender" />
+      </p>
+    </form>
+    <button id="saveBtn">데이터저장</button>
+
+    <table border="1">
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>성별</th>
+        <th>이메일</th>
+        <th>전화번호</th>
+      </tr>
+    </table>
+  </body>
+  <script type="module">
+    import { db, getDatas, addDatas } from '../resources/js/firebase.js';
+    const snapshot = await getDatas('member');
+    const tableTag = document.querySelector('table');
+    snapshot.forEach((doc) => {
+      const { name, age, gender, tel, email } = doc.data();
+      tableTag.insertAdjacentHTML(
+        'beforeend',
+        `
+            <tr>
+                <td>${name}</td>
+                <td>${age}</td>
+                <td>${gender}</td>
+                <td>${email}</td>
+                <td>${tel}</td>
+            </tr>
+        `
+      );
+    });
+
+    const btn = document.getElementById('saveBtn');
+    btn.addEventListener('click', async function () {
+      // const formEl = document.querySelector("form[name='joinForm']");
+      const formEl = document.forms[0];
+      const formElChildren = formEl.elements;
+      const formElChildrenArr = [...formElChildren];
+      //   const joinFormObj = {};
+      //   formElChildrenArr.forEach((input) => {
+      //     joinFormObj[input.name] = input.value;
+      //   });
+
+      const joinFormObj = formElChildrenArr.reduce(
+        (acc, cur) =>
+          // acc[cur.name] = cur.value;
+          // return acc;
+          // return { ...acc, [cur.name]: cur.value };
+          ({ ...acc, [cur.name]: cur.value }),
+        {}
+      );
+      console.log(joinFormObj);
+
+      const memberInfo = {
+        name: document.querySelector("input[name='name']").value,
+        age: Number(document.querySelector("input[name='age']").value),
+        tel: document.querySelector("input[name='tel']").value,
+        gender: document.querySelector("input[name='gender']").value,
+        email: document.querySelector("input[name='email']").value,
+      };
+      //   console.log(memberInfo);
+      // 파이어베이스에 데이터를 저장
+      const result = await addDatas('member', memberInfo);
+      // 저장 결과가 성공 ==> 페이지 리로딩
+      // 결과가 실패 ==> "저장을 실패했습니다." alert
+      result ? window.location.reload() : alert('저장을 실패했습니다');
+    });
+  </script>
+</html>
