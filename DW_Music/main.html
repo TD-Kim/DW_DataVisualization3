@@ -12,7 +12,7 @@
   </head>
   <body>
     <header>
-      <div class="wrap">DW Music</div>
+      <div class="wrap"><span>DW Music</span></div>
     </header>
     <section class="hero">
       <video
@@ -44,12 +44,63 @@
       </div>
     </section>
     <section class="promotion">
-        <div class="promotion-content">
-            <h2>모든 음악과 뮤직 비디오<br />3개월 내내 33% 할인</h2>
-            <p>평생 오직 한 번 뿐인 혜택</p>
-        </div>
-        <button class="promotion-button">멤버십 가입하고 혜택 받기</button>
+      <div class="promotion-content">
+        <h2>모든 음악과 뮤직 비디오<br />3개월 내내 33% 할인</h2>
+        <p>평생 오직 한 번 뿐인 혜택</p>
+      </div>
+      <button class="promotion-button">멤버십 가입하고 혜택 받기</button>
     </section>
-    <section class="wrap"></section>
+    <section class="wrap">
+      <h2 class="plans-title">요금제</h2>
+      <div class="plans">
+        <div class="card event">
+          <div class="event-badge">EVENT</div>
+          <h3>첫 구독<br />3개월 33% 할인</h3>
+          <p>월 3,500원 부터<br />(부가세 포함)</p>
+        </div>
+        <div class="card">
+          <h3>모든 음원<br />무제한 듣기</h3>
+          <p>월 5,500원 부터<br />(부가세 포함)</p>
+        </div>
+        <div class="card">
+          <h3>무제한 듣기<br />+ 다운로드</h3>
+          <p>월 8,800원 부터<br />(부가세 포함)</p>
+        </div>
+      </div>
+      <h2 class="benefits-title">멤버십 정보</h2>
+      <div class="benefits">
+        <div class="card">
+          <h3>무제한 듣기</h3>
+          <ul>
+            <li>모든 기기에서 재생</li>
+            <li>최대 40% 할인</li>
+            <li>뮤직비디오 무제한</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>다운로드</h3>
+          <ul>
+            <li>모든 기기에서 재생</li>
+            <li>데이터 없이 마음껏 재생</li>
+            <li>뮤직비디오 소장</li>
+          </ul>
+        </div>
+        <div class="card wide">
+          <h3>유의사항</h3>
+          <p class="caution">
+            3개월 동안 33% 할인된 가격으로 결제되고 3개월 후부터 매달 정상
+            가격으로 결제됩니다. 멤버십은 언제든지 해지하실 수 있고, 추가로
+            부담해야 할 금액은 없습니다. 모든 가격은 부가가치세가 포함된
+            가격입니다.
+          </p>
+        </div>
+      </div>
+    </section>
   </body>
+  <script>
+    const logo = document.querySelector('div.wrap > span');
+    logo.addEventListener('click', function () {
+      location.href = 'home3.html';
+    });
+  </script>
 </html>
