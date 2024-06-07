@@ -30,36 +30,20 @@
       </div>
     </div>
   </body>
-  <script>
+  <script type="module">
+    import { getDatas } from './resources/js/firebase.js';
     const items = document.getElementById('items');
-    const mbtiArr = [
-      { mbti: 'ENFP', code: '#efb578' },
-      { mbti: 'ENFP', code: '#8649b6' },
-      { mbti: 'ENFP', code: '#a894b2' },
-      { mbti: 'ENFJ', code: '#ecbb30' },
-      { mbti: 'INFP', code: '#c4601e' },
-      { mbti: 'ISFP', code: '#95fcc0' },
-      { mbti: 'INFP', code: '#4d74b8' },
-      { mbti: 'INTJ', code: '#40fa34' },
-      { mbti: 'ENFP', code: '#106100' },
-      { mbti: 'ESFJ', code: '#f0df32' },
-      { mbti: 'ESTJ', code: '#10e479' },
-      { mbti: 'INFP', code: '#6c84ac' },
-      { mbti: 'ENTJ', code: '#aec7cb' },
-      { mbti: 'INTJ', code: '#6746cb' },
-      { mbti: 'ISTP', code: '#ff5028' },
-      { mbti: 'INFP', code: '#36c667' },
-      { mbti: 'ESFP', code: '#4c8f9e' },
-      { mbti: 'ENFP', code: '#c88ce8' },
-      { mbti: 'ENFP', code: '#c1ffc0' },
-      { mbti: 'INFJ', code: '#5f6600' },
-    ];
-    mbtiArr.forEach((info, idx) => {
-      items.insertAdjacentHTML(
-        'afterbegin',
-        `
+
+    async function getMbtiInfo() {
+      const datas = await getDatas('mbtiColor');
+      let idx = 1;
+      datas.forEach((doc) => {
+        const info = doc.data();
+        items.insertAdjacentHTML(
+          'afterbegin',
+          `
         <li class="item">
-            <div class="item-id">${idx + 1}</div>
+            <div class="item-id">${idx}</div>
             <div class="item-mbti">${info.mbti}</div>
             <div class="item-arrow">
                 <img class="item-arrow-icon" src="resources/img/arrow.svg" />
@@ -71,7 +55,52 @@
             <div class="item-color-code">${info.code.toUpperCase()}</div>
         </li>
         `
-      );
-    });
+        );
+        idx++;
+      });
+    }
+    getMbtiInfo();
+
+    // const mbtiArr = [
+    //   { mbti: 'ENFP', code: '#efb578' },
+    //   { mbti: 'ENFP', code: '#8649b6' },
+    //   { mbti: 'ENFP', code: '#a894b2' },
+    //   { mbti: 'ENFJ', code: '#ecbb30' },
+    //   { mbti: 'INFP', code: '#c4601e' },
+    //   { mbti: 'ISFP', code: '#95fcc0' },
+    //   { mbti: 'INFP', code: '#4d74b8' },
+    //   { mbti: 'INTJ', code: '#40fa34' },
+    //   { mbti: 'ENFP', code: '#106100' },
+    //   { mbti: 'ESFJ', code: '#f0df32' },
+    //   { mbti: 'ESTJ', code: '#10e479' },
+    //   { mbti: 'INFP', code: '#6c84ac' },
+    //   { mbti: 'ENTJ', code: '#aec7cb' },
+    //   { mbti: 'INTJ', code: '#6746cb' },
+    //   { mbti: 'ISTP', code: '#ff5028' },
+    //   { mbti: 'INFP', code: '#36c667' },
+    //   { mbti: 'ESFP', code: '#4c8f9e' },
+    //   { mbti: 'ENFP', code: '#c88ce8' },
+    //   { mbti: 'ENFP', code: '#c1ffc0' },
+    //   { mbti: 'INFJ', code: '#5f6600' },
+    // ];
+    // mbtiArr.forEach((info, idx) => {
+    //   items.insertAdjacentHTML(
+    //     'afterbegin',
+    //     `
+    //     <li class="item">
+    //         <div class="item-id">${idx + 1}</div>
+    //         <div class="item-mbti">${info.mbti}</div>
+    //         <div class="item-arrow">
+    //             <img class="item-arrow-icon" src="resources/img/arrow.svg" />
+    //         </div>
+    //         <div
+    //             class="item-color-chip"
+    //             style="background-color: ${info.code}"
+    //         ></div>
+    //         <div class="item-color-code">${info.code.toUpperCase()}</div>
+    //     </li>
+    //     `
+    //   );
+    // });
   </script>
 </html>

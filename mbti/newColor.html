@@ -34,6 +34,7 @@
           <input class="color-input" type="text" value="#9441FF" />
           <span
             class="color-input-chip"
+            id="colorChip"
             style="background-color: #9441ff"
           ></span>
         </div>
@@ -41,7 +42,8 @@
       <button class="submit">컬러 등록</button>
     </div>
   </body>
-  <script>
+  <script type="module">
+    import { addDatas } from './resources/js/firebase.js';
     const mbtiOptions = document.getElementById('mbti-options');
     const mbtiArr = [
       { mbti: 'E', desc: '외향형' },
@@ -65,17 +67,78 @@
       );
     });
 
-    const mbtiOptionNodeList = document.querySelectorAll(".mbti-option");
+    const mbtiOptionNodeList = document.querySelectorAll('.mbti-option');
     mbtiOptionNodeList.forEach((option, idx) => {
-      option.addEventListener("click", function() {
-        if(option.classList.has("selected")) return false;
+      option.addEventListener('click', function () {
+        if (option.classList.contains('selected')) return false;
 
-        if(idx % 2 == 0) {
-          
-        }else {
-
+        let versusEl;
+        if (idx % 2 == 0) {
+          versusEl = this.nextElementSibling;
+        } else {
+          versusEl = this.previousElementSibling;
         }
-      })
-    })
+        // versusEl =
+        //   idx % 2 == 0 ? this.nextElementSibling : this.previousElementSibling;
+        if (versusEl.classList.contains('selected')) {
+          versusEl.classList.remove('selected');
+        }
+        this.classList.add('selected');
+      });
+    });
+
+    const colorInput = document.querySelector('.color-input');
+    const colorChip = document.getElementById('colorChip');
+    colorInput.addEventListener('change', function () {
+      const colorVal = colorInput.value;
+      if (colorVal.length == 7) {
+        colorChip.style.backgroundColor = colorVal;
+      } else {
+        alert('색상 코드는 #을 포함한 HEX 형태로 작성해야합니다.');
+      }
+    });
+
+    const randomBtn = document.querySelector('.random');
+    randomBtn.addEventListener('click', function () {
+      const colorArr = [];
+      for (let i = 0; i < 3; i++) {
+        colorArr.push(parseInt(Math.random() * 256));
+      }
+      const hexColorCode = colorArr
+        .map((rgb) => rgb.toString(16).padStart(2, '0'))
+        .join('');
+      colorInput.value = `#${hexColorCode.toUpperCase()}`;
+      colorChip.style.backgroundColor = `#${hexColorCode}`;
+      //   colorArr[0].toString(16).padStart(2, '0');
+    });
+
+    const submitBtn = document.querySelector('button.submit');
+    submitBtn.addEventListener('click', async function () {
+      // mbti 가져오기
+      const selectedArr = document.querySelectorAll('.selected > span');
+      if (selectedArr.length != 4) {
+        alert('네가지의 MBTI 를 모두 선택하셔야 합니다.');
+        return false;
+      }
+      const mbtiVal = Array.from(selectedArr).reduce((acc, cur) => {
+        return acc + cur.innerText;
+      }, '');
+      console.log(mbtiVal);
+
+      // color code 가져오기
+      const colorCode = colorInput.value.toLowerCase();
+
+      // 객체형태로 만들기
+      const addObj = { mbti: mbtiVal, code: colorCode };
+
+      // addDatas 함수 호출하기
+      const result = await addDatas('mbtiColor', addObj);
+      if (result) {
+        alert('MBTI 컬러 등록을 성공했습니다.');
+        window.location.reload();
+      } else {
+        alert('MBTI 컬러 등록을 실패했습니다. 관리자에게 문의하세요.');
+      }
+    });
   </script>
 </html>
