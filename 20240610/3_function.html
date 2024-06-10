@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수 리마인드</title>
+  </head>
+  <body>
+    <button onclick="{showMessage(this)}">showMessage 함수</button>
+    <button onclick="show()">show 함수</button>
+    <br /><br />
+    <button id="basicFn">기본함수선언</button>
+    <button id="arrowFn">화살표함수선언</button>
+
+    <br /><br />
+    <button id="loginBtn">로그인</button>
+    <button id="logoutBtn">로그아웃</button>
+    <button id="paymentBtn">결제</button>
+    <button id="deleteBtn">회원탈퇴</button>
+    <h1 id="welcomePhrase"></h1>
+  </body>
+  <script>
+    // 함수 선언식
+    // showMessage();
+    function showMessage(e) {
+      //   alert('안녕하세요!');
+      console.log(e);
+    }
+
+    const show = function (e) {
+      //   alert('함수 표현식');
+      console.log(this);
+    };
+    // show();
+
+    const basicBtn = document.getElementById('basicFn');
+    const arrowBtn = document.getElementById('arrowFn');
+
+    basicBtn.addEventListener('click', function () {
+      // const this = e.currentTarget;
+      console.log(this);
+    });
+    arrowBtn.addEventListener('click', (e) => {
+      // console.log(this);
+      console.log(e.currentTarget);
+    });
+
+    function printUserName(phrase) {
+      const welcomePhrase = document.getElementById('welcomePhrase');
+      welcomePhrase.innerHTML = phrase;
+    }
+
+    function makeSentence(userName, userCase) {
+      switch (userCase) {
+        case 'login':
+          return `${userName}님 환영합니다!!`;
+        case 'logout':
+          return `${userName}님이 로그아웃 하셨습니다.`;
+        case 'payment':
+          return `${userName}님, 결제가 완료되었습니다.`;
+        case 'delete':
+          return `${userName}님의 회원정보가 삭제되었습니다.`;
+
+        default:
+          break;
+      }
+    }
+
+    // 로그인 버튼클릭 함수
+    let userName;
+    const loginBtn = document.getElementById('loginBtn');
+    loginBtn.addEventListener('click', function () {
+      userName = prompt('이름을 입력하세요.');
+      printUserName(makeSentence(userName, 'login'));
+    });
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', function () {
+      printUserName(makeSentence(userName, 'logout'));
+      userName = '';
+    });
+
+    const paymentBtn = document.getElementById('paymentBtn');
+    paymentBtn.addEventListener('click', function () {
+      if (!userName) {
+        alert('로그인을 해주세요.');
+        return false;
+      }
+      printUserName(makeSentence(userName, 'payment'));
+    });
+
+    const deleteBtn = document.getElementById('deleteBtn');
+    deleteBtn.addEventListener('click', function () {
+      printUserName(makeSentence(userName, 'delete'));
+      userName = '';
+    });
+  </script>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스크립트 리마인드</title>
+  </head>
+  <body></body>
+  <script type="text/javascript">
+    var a;
+    let b;
+    const c = 0;
+
+    var a; // var 키워드 사용은 지양한다.
+    // let b;
+
+    // 변수는 데이터를 저장할 때 쓰이는 '이름이 붙은 저장소'이다.
+    let message; // 선언만 되어있는 변수이며, undefined 값이 할당 되어있다.
+    message = 'Hello';
+
+    alert(message);
+    console.log(message);
+
+    // 변수 명명 규칙
+    // 1. 변수명에는 문자와 숫자, 특수문자($, _)
+    // 2. 첫번째 문자는 숫자가 될 수 없다.
+    // 3. 예약어는 사용할 수 없다.
+    let $ = 3;
+    let _ = 2;
+    // let @ = 1;
+    let $content = 'text';
+    let _content = 'text';
+    let $obj = $('#id');
+    let obj = document.getElementById('id');
+    // let for = 4;
+    // let function = 5;
+    // let if = 1;
+
+    // 1. admin과 name이라는 변수를 선언하세요.
+    let admin;
+    let name;
+    // 2. name에 값으로 "John" 을 할당해 보세요.
+    name = 'John';
+    // 3. name의 값을 admin에 똑같이 넣어보세요.
+    admin = name;
+    // 4. admin의 값을 alert 창으로 뜨워보세요. "John"이 출력되어야 합니다.
+    alert(admin);
+
+    let str1 = 'Hello';
+    let str2 = 'Single quotes';
+    let str3 = `can embed another ${str1}`;
+    let str4 = str1 + str2;
+    let num1 = 1;
+    let str5 = str1 + num1; // "Hello" + 1 ==> "Hello" + "1" == "Hello1"
+    let num2 = 5;
+    let strNum = '2';
+    let sum = num2 + strNum; // "52"
+    // let numSum = num2 + parseInt(strNum);
+    // let numSum = num2 + Number(strNum);
+    let numSum = +strNum + num2;
+
+    // 조건문
+    let money = 50000;
+    let price = 40000;
+    if (price < money) {
+      alert(`장난감을 구매했습니다. 남은돈: ${money - price}원`);
+    }
+
+    let grade = +prompt('점수를 입력해주세요.');
+    // 60점 미만은 F 학점
+    // 60점 이상부터 100점까지 10점씩 구간을 나눠서
+    // D, C, B, A 학점을 주려고 한다.
+    if (grade < 60) {
+      alert('F학점 입니다.');
+    } else if (60 <= grade && grade < 70) {
+      alert('D학점 입니다.');
+    } else if (70 <= grade && grade < 80) {
+      alert('C학점 입니다.');
+    } else if (80 <= grade && grade < 90) {
+      alert('B학점 입니다.');
+    } else {
+      alert('A학점 입니다.');
+    }
+
+    // grade < 60 ? alert('F학점 입니다.') :
+    //     (60 <= grade && grade < 70) ? 참 :
+    //     (70 <= grade && grade < 80) ? 참 :
+    //     (80 <= grade && grade < 90) ? 참 :
+    //     (90 <= grade && grade <= 100) ? 참 :
+
+    // 조건식의 불린형 변환
+    // 조건문의 조건식을 평가하고 그 결과를 불린값으로 변환한다.
+    // 불린값으로 변환하기 전에 falsy한 값이냐 truthy한 값이냐를 판단한다.
+    // falsy: 0, "", null, undefined, NaN
+    if (str1) {
+      alert('참 입니다.');
+    }
+
+    // 조건부 연산자 '?'
+    let num3 = +prompt('숫자를 입력하세요.');
+    let num4 = +prompt('숫자를 입력하세요.');
+    let resultNum = 0;
+
+    // if(num3 > num4) {
+    //     resultNum = num3 - num4;
+    // }else {
+    //     resultNum = num4 - num3;
+    // }
+
+    resultNum = num3 > num4 ? num3 - num4 : num4 - num3;
+
+    alert(`두 수의 차는 ${resultNum} 입니다.`);
+
+    // nullish 병합 연산자
+    let aa;
+    let bb = 10;
+    // if(aa !== null && aa !== undefined){
+    //     alert(aa);
+    // }else {
+    //     alert(bb);
+    // }
+
+    alert(aa ?? bb);
+
+    // 반복문
+    // while(condition) {
+    //     // 반복문 본문
+    // }
+
+    // do {
+    //     // 조건을 따지지 않고 반드시 한 번은 실행된다.
+    // }while(condition);
+
+    // for(let i = 1; i <= 10; i++) {
+
+    // }
+
+    for(let i = 0; i <= 10; i = i + 2) {
+        // if(i % 2 == 0){}
+        // if(i % 2 == 1){}
+        // 3의 배수는 제외
+        if(i % 3 == 0){
+            // continue;
+            break;
+        }
+    }
+
+    outer : for(let i = 0; i < 10; i++) {
+        for(let j = 0; j < 10; j++) {
+            if(j % 3 == 0) {
+                break outer;
+            }
+        }
+    }
+
+  </script>
+</html>
