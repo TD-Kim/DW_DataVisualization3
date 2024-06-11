@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파이어베이스 리마인드</title>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
+    <script src="./firebase.js"></script>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .form-container {
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+    }
+    .form-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .form-item > .form-label {
+      width: 30%;
+    }
+    .selected {
+      background-color: yellow;
+    }
+    .active {
+      display: inline-block;
+    }
+    .noneActive {
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div>
+        <div>
+          <button id="saveBtn">회원정보저장</button>
+          <button id="updateBtn" class="active">회원정보수정</button>
+          <button id="saveUpdateBtn" class="noneActive">수정정보저장</button>
+          <button id="deleteBtn">회원정보삭제</button>
+        </div>
+        <table border="1">
+          <tr>
+            <th>이름</th>
+            <th>성별</th>
+            <th>나이</th>
+            <th>주소</th>
+            <th>전화번호</th>
+          </tr>
+        </table>
+      </div>
+      <div class="form-container">
+        <div class="form-item">
+          <div class="form-label"><span>이름</span></div>
+          <div class="form-input"><input type="text" name="name" /></div>
+        </div>
+        <div class="form-item">
+          <div class="form-label"><span>나이</span></div>
+          <div class="form-input"><input type="text" name="age" /></div>
+        </div>
+        <div class="form-item">
+          <div class="form-label"><span>성별</span></div>
+          <div class="form-input"><input type="text" name="gender" /></div>
+        </div>
+        <div class="form-item">
+          <div class="form-label"><span>이메일</span></div>
+          <div class="form-input"><input type="text" name="email" /></div>
+        </div>
+        <div class="form-item">
+          <div class="form-label"><span>전화번호</span></div>
+          <div class="form-input"><input type="text" name="tel" /></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let updateTarget;
+    async function getMembers() {
+      const querySnapshot = await getDatas('member');
+      const tableTag = document.querySelector('table');
+      querySnapshot.forEach((doc) => {
+        const { name, age, tel, gender, email } = doc.data();
+        tableTag.insertAdjacentHTML(
+          'beforeend',
+          `
+            <tr data-id=${doc.id}>
+                <td class="name">${name}</td>
+                <td class="gender">${gender}</td>
+                <td class="age">${age}</td>
+                <td class="email">${email}</td>
+                <td class="tel">${tel}</td>
+            </tr>
+        `
+        );
+      });
+    }
+
+    getMembers();
+
+    // table 에 클릭 이벤트 생성
+    const tableTag = document.querySelector('table');
+    tableTag.addEventListener('click', function (e) {
+      if (updateTarget) return false;
+      if (e.target.tagName != 'TH' && e.target.tagName != 'TABLE') {
+        e.target.parentElement.classList.toggle('selected');
+      }
+    });
+
+    // 신규 회원 정보 저장
+    const saveBtn = document.getElementById('saveBtn');
+    saveBtn.addEventListener('click', async function () {
+      if (updateTarget) {
+        alert('회원정보 수정중에는 저장할 수 없습니다.');
+        return false;
+      }
+      const inputs = document.querySelectorAll('.form-container input');
+      const inputsArr = Array.from(inputs);
+      // const addObj = inputsArr.reduce((acc, cur) => ({...acc, [cur.name]: cur.value}), {})
+      const addObj = {};
+      inputsArr.forEach((input) => {
+        addObj[input.name] = input.value;
+      });
+      const result = await addDatas('member', addObj);
+      const { name, gender, age, email, tel } = addObj;
+      tableTag.firstElementChild.insertAdjacentHTML(
+        'afterend',
+        `
+        <tr data-id=${result.id}>
+            <td class="name">${name}</td>
+            <td class="gender">${gender}</td>
+            <td class="age">${age}</td>
+            <td class="email">${email}</td>
+            <td class="tel">${tel}</td>
+        </tr>
+      `
+      );
+    });
+
+    // 회원 정보 삭제(다중 삭제 가능)
+    const deleteBtn = document.getElementById('deleteBtn');
+    deleteBtn.addEventListener('click', function () {
+      const selectedTrs = document.querySelectorAll('.selected');
+      selectedTrs.forEach(async (tr) => {
+        const docId = tr.getAttribute('data-id');
+        const result = await deleteDatas('member', docId);
+        if (result) {
+          tr.remove();
+        } else {
+          alert('삭제중 오류가 발생했습니다.');
+          return false;
+        }
+      });
+    });
+
+    // 회원 정보 수정
+    const updateBtn = document.getElementById('updateBtn');
+    const saveUpdateBtn = document.getElementById('saveUpdateBtn');
+
+    updateBtn.addEventListener('click', function () {
+      const selectedTrs = document.querySelectorAll('.selected');
+      if (selectedTrs.length > 1) {
+        alert('회원수정은 한 건씩 가능합니다.');
+        return false;
+      }
+      saveUpdateBtn.classList.remove('noneActive');
+      saveUpdateBtn.classList.add('active');
+      updateBtn.classList.remove('active');
+      updateBtn.classList.add('noneActive');
+
+      const selectedTr = document.querySelector('.selected');
+      updateTarget = selectedTr;
+      const trChildren = [...selectedTr.children];
+      trChildren.forEach((td) => {
+        td.innerHTML = `<input type="text" value="${td.innerText}" />`;
+        td.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      });
+    });
+    saveUpdateBtn.addEventListener('click', function () {
+      saveUpdateBtn.classList.remove('active');
+      saveUpdateBtn.classList.add('noneActive');
+      updateBtn.classList.remove('noneActive');
+      updateBtn.classList.add('active');
+
+      const selectedTr = document.querySelector('.selected');
+      const trChildren = [...selectedTr.children];
+      let newTdStr = '';
+      const updateObj = {};
+      trChildren.forEach((td) => {
+        const className = td.classList.value;
+        const value = td.firstElementChild.value;
+        newTdStr += `<td class="${className}">${value}</td>`;
+        updateObj[className] = value;
+      });
+      selectedTr.innerHTML = newTdStr;
+
+      const docId = selectedTr.getAttribute('data-id');
+      updateDatas('member', docId, updateObj);
+      updateTarget = undefined;
+    });
+  </script>
+</html>

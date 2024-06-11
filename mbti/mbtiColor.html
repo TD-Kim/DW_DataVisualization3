@@ -37,8 +37,18 @@
     async function getMbtiInfo() {
       const datas = await getDatas('mbtiColor');
       let idx = 1;
+      const arr = [];
       datas.forEach((doc) => {
+        const timestamp = doc._document.createTime.timestamp.seconds;
         const info = doc.data();
+        const newObj = { ...info, timestamp: timestamp };
+        arr.push(newObj);
+      });
+      arr.sort(function (a, b) {
+        return a.timestamp - b.timestamp;
+      });
+      console.log(arr);
+      arr.forEach((info) => {
         items.insertAdjacentHTML(
           'afterbegin',
           `

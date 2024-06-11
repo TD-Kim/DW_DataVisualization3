@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sort</title>
+  </head>
+  <body></body>
+  <script>
+    let arr = ['a', 'd', 'e', 'c', 'b'];
+    arr.sort();
+    console.log(arr);
+
+    arr = [100, 11, 1, 21, 3];
+    arr.sort();
+    console.log(arr);
+
+    arr.sort(function (a, b) {
+      // a, b 에 두 요소를 전달해서 a-b 로 크기를 비교한 후에
+      // a > b 이면 양수, a < b 이면 음수를 리턴하여 오름차순 정렬한다.
+      return a - b;
+    });
+    console.log(arr);
+
+    arr = [
+      [10, 2],
+      [7, 8],
+      [3, 3],
+      [-1, 3],
+      [99, 99],
+      [-10, 10],
+    ];
+    arr.sort(function (a, b) {
+      return a[1] - b[1];
+    });
+    console.log(arr);
+
+    arr = [
+      { mbti: 'ENFP', code: '#efb578', docId: 4 },
+      { mbti: 'ESFP', code: '#eab518', docId: 2 },
+      { mbti: 'INTJ', code: '#efb118', docId: 1 },
+      { mbti: 'ESTJ', code: '#dfc238', docId: 3 },
+    ];
+    arr.sort(function (a, b) {
+      return a.docId - b.docId;
+    });
+    console.log(arr);
+  </script>
+</html>
