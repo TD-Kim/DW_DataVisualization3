@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹 스토리지</title>
+  </head>
+  <body>
+    <div id="welcome">
+      <span>환영합니다!!!</span>
+    </div>
+    <button id="login">로그인</button>
+    <button id="logout">로그아웃</button>
+  </body>
+  <script>
+    const loginBtn = document.getElementById('login');
+    const logoutBtn = document.getElementById('logout');
+
+    // setItem(key, value) - 키-값 쌍을 저장한다.
+    // getItem(key) - 키에 해당하는 값을 가져온다.
+    // removeItem(key) - 키와 해당 값을 삭제한다.
+    // clear() - 모든 값을 삭제한다.
+    loginBtn.addEventListener('click', function () {
+      // 로그인 버튼 클릭 시 sessionStorage 에 정보 저장
+      // sessionStorage.setItem("id", "kjy0912");
+      localStorage.setItem('id', 'kjy0912');
+      const userObj = {
+        id: 'kjy0912',
+        name: '김진용',
+        addr: '대전광역시 중구 선화동',
+      };
+      localStorage.setItem('userInfo', JSON.stringify(userObj));
+    });
+    logoutBtn.addEventListener('click', function () {
+      localStorage.removeItem('userInfo');
+    });
+
+    const welcomeDiv = document.getElementById('welcome');
+    let userInfo = localStorage.getItem('userInfo');
+    userInfo = JSON.parse(userInfo);
+    console.log(userInfo);
+    if (userInfo) {
+      welcomeDiv.innerHTML = `<span>${userInfo}님 환영합니다!!</span>`;
+    }
+  </script>
+</html>
