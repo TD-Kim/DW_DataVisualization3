@@ -1,0 +1,20 @@
+.Hand {
+    display: inline-block;
+    width: 207px;
+    height: 207px;
+    text-align: center;
+    background-image: url(./assets/yellow.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+}
+.Hand-icon {
+    opacity: 0.87;
+    width: 70px;
+    height: 70px;
+    margin: 70px auto 0;
+    user-select: none;
+}
+.Hand.winner {
+    background-image: url(./assets/yellow-win.svg);
+}
