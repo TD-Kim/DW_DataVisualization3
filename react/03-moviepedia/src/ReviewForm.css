@@ -1,0 +1,15 @@
+.ReviewForm {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 20px;
+  padding: 10px 0;
+}
+.ReviewForm .Form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+}
+.ReviewForm .Form-container textarea {
+    flex-grow: 1;
+}
