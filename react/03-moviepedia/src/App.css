@@ -40,6 +40,9 @@
   color: #fff;
   background-color: #000;
 }
+.AppSortButton:not(.selected){
+  cursor: pointer;
+}
 .App .App-nav,
 .App .App-footer {
   flex: none;
