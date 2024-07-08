@@ -3,9 +3,8 @@ import placeholderImg from './assets/preview-placeholder.png';
 import './FileInput.css';
 import resetImg from './assets/ic-reset.png';
 
-function FileInput({ inputName, setFile, value }) {
-  const [preview, setPreview] = useState();
-  console.log(preview);
+function FileInput({ inputName, setFile, value, initialPreview }) {
+  const [preview, setPreview] = useState(initialPreview);
   const inputRef = useRef();
 
   const handleFileChange = (e) => {
@@ -15,7 +14,6 @@ function FileInput({ inputName, setFile, value }) {
 
   const handleClearClick = () => {
     const inputNode = inputRef;
-    console.log(inputNode);
     // inputNode.current.value = '';
     setFile(inputName, null);
   };
@@ -45,7 +43,7 @@ function FileInput({ inputName, setFile, value }) {
 
   return (
     <div className='FileInput'>
-      <img className='FileInput-preview' src={preview || placeholderImg} />
+      <img className={`FileInput-preview ${preview ? "selected" : ""}`} src={preview || placeholderImg} />
       <input
         className='FileInput-hidden-overlay'
         type='file'

@@ -12,6 +12,9 @@
   object-fit: cover;
   object-position: center;
 }
+.FileInput-preview.selected {
+  opacity: 0.48;
+}
 .FileInput-hidden-overlay {
   position: absolute;
   top: 0;

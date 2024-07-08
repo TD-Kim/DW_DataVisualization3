@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script>
+    /*
+        리액트 본질로 만든 element
+        리액트는 스크립트에서 만들고 HTML을 만드는 방식 ==> vanilla JS 와 반대의 방식
+    */
+   const root = document.getElementById("root");
+   const h1 = React.createElement(
+    "h1",
+    {onMouseEnter: () => console.log("mouse enter")},
+    "Hello I'm a h1"
+   );
+   const btn = React.createElement(
+    "button",
+    {onClick: () => console.log("I'm clicked")},
+    "Click me"
+   );
+   const container = React.createElement("div", null, [h1, btn]);
+   ReactDOM.render(container, root);
+  </script>
+</html>
