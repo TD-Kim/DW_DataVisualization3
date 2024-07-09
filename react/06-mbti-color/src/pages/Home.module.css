@@ -1,0 +1,152 @@
+.container {
+  display: flex;
+  width: 865px;
+  margin: 80px auto;
+  gap: 40px;
+}
+.header {
+  position: sticky;
+  top: 80px;
+  background-color: #f5f7fb;
+  padding: 80px 40px;
+  border-radius: 80px;
+  color: #464e5e;
+  text-align: right;
+}
+.header > h1 {
+  font-weight: 400;
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+.header > h1 > .accent {
+  font-weight: 800;
+}
+.header .filter {
+  background-color: #fff;
+  padding: 8px 24px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+.content {
+  flex-grow: 1;
+}
+.add-item {
+  display: block;
+  text-decoration: none;
+  color: #464e5e;
+  border: 2px dashed #dee3ec;
+  padding: 24px 48px;
+  border-radius: 8px;
+}
+.add-item:hover {
+  background-color: #f4f7fb;
+}
+.items {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.item {
+  display: flex;
+  align-items: center;
+  padding: 16px 48px;
+  color: #bfc8da;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.item:hover {
+  background-color: #f4f7fb;
+}
+.item-id {
+  flex-shrink: 0;
+  width: 76px;
+  margin-right: 40px;
+}
+.item-mbti {
+  flex-shrink: 0;
+  width: 76px;
+  background-color: #f0f2f5;
+  color: #464e5e;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  margin-right: 24px;
+}
+.item-arrow {
+  width: 100%;
+  border-bottom: 2px dashed #bfc8da;
+  position: relative;
+}
+.item-arrow-icon {
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  width: 8px;
+}
+.item-color-chip {
+  flex-shrink: 0;
+  margin: 0 16px;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e8e8e8;
+  border-radius: 8px;
+}
+.item-color-code {
+  flex-shrink: 0;
+  width: 105px;
+}
+
+@media screen and (max-width: 944px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 24px 16px;
+    gap: 24px;
+  }
+  .header-container {
+    position: sticky;
+    top: 24px;
+    z-index: 1;
+  }
+  .header {
+    padding: 32px;
+    text-align: center;
+    border-radius: 32px;
+  }
+  .header > h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .filter {
+    padding: 4px 8px;
+    gap: 8px;
+  }
+  .add-item {
+    padding: 20px 24px;
+  }
+  .item {
+    padding: 18px 16px;
+  }
+  .item-id {
+    width: 37px;
+    margin-right: 16px;
+  }
+  .item-mbti {
+    width: 54px;
+    margin-right: 16px;
+  }
+  .item-color-code {
+    width: 72px;
+  }
+  .item-color-chip {
+    margin-right: 8px;
+  }
+}
+@media screen and (max-width: 578px) {
+}

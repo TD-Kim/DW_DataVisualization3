@@ -1,0 +1,282 @@
+[
+  {
+    "colorCode": "#33A560",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 40,
+    "mbti": "ESFJ"
+  },
+  {
+    "colorCode": "#F011E5",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 39,
+    "mbti": "ISTP"
+  },
+  {
+    "colorCode": "#771880",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 38,
+    "mbti": "INFJ"
+  },
+  {
+    "colorCode": "#DB72B0",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 37,
+    "mbti": "ENTJ"
+  },
+  {
+    "colorCode": "#AAF9A3",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 36,
+    "mbti": "INFJ"
+  },
+  {
+    "colorCode": "#457E5A",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 35,
+    "mbti": "ESFP"
+  },
+  {
+    "colorCode": "#C842CA",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 34,
+    "mbti": "ENFJ"
+  },
+  {
+    "colorCode": "#4A2FE0",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 33,
+    "mbti": "ESFJ"
+  },
+  {
+    "colorCode": "#DC7970",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 32,
+    "mbti": "INTP"
+  },
+  {
+    "colorCode": "#171823",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 31,
+    "mbti": "ESTJ"
+  },
+  {
+    "colorCode": "#97CFDE",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 30,
+    "mbti": "ENTP"
+  },
+  {
+    "colorCode": "#73EF70",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 29,
+    "mbti": "ISTP"
+  },
+  {
+    "colorCode": "#7F56A2",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 28,
+    "mbti": "ISTJ"
+  },
+  {
+    "colorCode": "#8FA190",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 27,
+    "mbti": "ISTP"
+  },
+  {
+    "colorCode": "#3E3315",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 26,
+    "mbti": "ENFP"
+  },
+  {
+    "colorCode": "#A57B00",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 25,
+    "mbti": "ISTP"
+  },
+  {
+    "colorCode": "#F153DD",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 24,
+    "mbti": "ESFJ"
+  },
+  {
+    "colorCode": "#42A6FC",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 23,
+    "mbti": "ISFJ"
+  },
+  {
+    "colorCode": "#E7D882",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 22,
+    "mbti": "ESFP"
+  },
+  {
+    "colorCode": "#E23696",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 21,
+    "mbti": "ENTP"
+  },
+  {
+    "colorCode": "#EFB578",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 20,
+    "mbti": "ENFP"
+  },
+  {
+    "colorCode": "#8649B6",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 19,
+    "mbti": "ENFP"
+  },
+  {
+    "colorCode": "#A894B2",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 18,
+    "mbti": "ESFP"
+  },
+  {
+    "colorCode": "#ECBB30",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 17,
+    "mbti": "ENFJ"
+  },
+  {
+    "colorCode": "#C4601E",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 16,
+    "mbti": "INFP"
+  },
+  {
+    "colorCode": "#95FCC0",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 15,
+    "mbti": "ISFP"
+  },
+  {
+    "colorCode": "#4D74B8",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 14,
+    "mbti": "INFP"
+  },
+  {
+    "colorCode": "#40FA34",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 13,
+    "mbti": "ENTJ"
+  },
+  {
+    "colorCode": "#106100",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 12,
+    "mbti": "ENFP"
+  },
+  {
+    "colorCode": "#F0DF32",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 11,
+    "mbti": "ESFJ"
+  },
+  {
+    "colorCode": "#10E479",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 10,
+    "mbti": "ESTJ"
+  },
+  {
+    "colorCode": "#6C84AC",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 9,
+    "mbti": "INFP"
+  },
+  {
+    "colorCode": "#AEC7CB",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 8,
+    "mbti": "ENTJ"
+  },
+  {
+    "colorCode": "#6746CB",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 7,
+    "mbti": "INTJ"
+  },
+  {
+    "colorCode": "#FF5028",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 6,
+    "mbti": "ISTP"
+  },
+  {
+    "colorCode": "#36C667",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 5,
+    "mbti": "INFP"
+  },
+  {
+    "colorCode": "#4C8F9E",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 4,
+    "mbti": "ESFP"
+  },
+  {
+    "colorCode": "#C88CE8",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 3,
+    "mbti": "ENFP"
+  },
+  {
+    "colorCode": "#C1FFC0",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 2,
+    "mbti": "ENFP"
+  },
+  {
+    "colorCode": "#5F6600",
+    "createdAt": 1673250909000,
+    "updatedAt": 1673250909000,
+    "id": 1,
+    "mbti": "INFJ"
+  }
+]
