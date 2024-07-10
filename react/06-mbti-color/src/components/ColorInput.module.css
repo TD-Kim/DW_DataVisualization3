@@ -1,0 +1,28 @@
+.colorInput {
+  color: #8892a6;
+  font-size: 24px;
+  width: 100%;
+  border: 2px solid #e7ebf2;
+  border-radius: 16px;
+  padding: 26px;
+}
+.colorInput:hover {
+  background-color: #f4f7fb;
+}
+.colorInput:focus {
+  border: 2px solid #464e5e;
+  box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+.colorInputContainer {
+  position: relative;
+}
+.colorInputChip {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  border-radius: 8px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 26px;
+}

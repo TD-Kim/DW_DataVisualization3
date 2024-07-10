@@ -1,0 +1,34 @@
+.mbtiOptions {
+  margin: 16px 0;
+  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.mbtiOption {
+  border: 2px solid #e7ebf2;
+  padding: 14px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  border-radius: 16px;
+  color: #8892a6;
+  font-size: 20px;
+}
+.mbtiOption:hover {
+  background-color: #f4f7fb;
+  cursor: pointer;
+}
+.mbtiOption.selected {
+  background-color: #464e5e;
+  border: 2px solid #464e5e;
+}
+.mbtiOption.selected > .mbtiChar {
+  color: #fff;
+}
+.mbtiChar {
+  width: 20px;
+  color: #464e5e;
+  font-size: 40px;
+  text-align: center;
+}
