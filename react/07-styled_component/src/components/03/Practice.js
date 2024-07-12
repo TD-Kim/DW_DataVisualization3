@@ -20,9 +20,9 @@ export function Practice(props) {
     <Container>
       <h1>로그인</h1>
       <label htmlFor='email'>Email</label>
-      <Input id='email' />
+      <Input id='email' placeholder='styled@example.com' />
       <label htmlFor='password'>Password</label>
-      <Input id='password' />
+      <Input id='password' placeholder='password' />
     </Container>
   );
 }
