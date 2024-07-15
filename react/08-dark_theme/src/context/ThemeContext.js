@@ -17,20 +17,23 @@ function ThemeChangeProvider({ children }) {
 
   const handleLoad = async () => {
     const data = await getSunsetRiseData();
-    const {sunrise, sunset} = data;
+    const { sunrise, sunset } = data;
     const currentTime = getTimes();
     // light 테마 적용
-    if(currentTime > Number(sunrise.trim()) && currentTime < Number(sunset.trim())) {
-        setThemeMode("light");
-    }else {
-        setThemeMode("dark");
+    if (
+      currentTime > Number(sunrise.trim()) &&
+      currentTime < Number(sunset.trim())
+    ) {
+      setThemeMode('light');
+    } else {
+      setThemeMode('dark');
     }
     setLocationData(data);
-  }
+  };
 
   useEffect(() => {
     handleLoad();
-  }, [])
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ themeMode, setThemeMode }}>
