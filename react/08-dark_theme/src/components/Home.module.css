@@ -1,0 +1,36 @@
+* {
+  box-sizing: border;
+}
+html {
+  overflow-y: scroll;
+  background-color: #f9f9f9;
+}
+body {
+  margin: 0;
+}
+a,
+a:hover,
+a:active,
+a:visited {
+  color: #494949;
+  text-decoration: none;
+}
+
+/* 전역 변수선언 */
+:root {
+  --box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.05);
+}
+:global(#root) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.nav,
+.footer {
+  flex: none;
+}
+.body {
+  position: relative;
+  flex-grow: 1;
+  margin: 10px 0;
+}
