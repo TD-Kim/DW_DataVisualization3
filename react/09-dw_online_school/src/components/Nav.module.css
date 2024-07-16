@@ -1,0 +1,43 @@
+.nav {
+  position: relative;
+  padding: 15px 0;
+  box-shadow: var(--box-shadow);
+  background-color: white;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: 'TheJamsil5Bold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.logo > span {
+  background-color: #545454;
+  color: #fff;
+  padding: 0 3px;
+  margin-right: 2px;
+}
+ul.menu {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  gap: 30px;
+}
+ul.menu.dark a,
+ul.menu.dark a:hover,
+ul.menu.dark a:active {
+  color: beige;
+}
+ul.menu a:hover,
+ul.menu a:active {
+  text-decoration: underline;
+}

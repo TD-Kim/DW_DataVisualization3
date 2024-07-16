@@ -1,0 +1,36 @@
+.footer {
+  padding: 20px 0 53px;
+  color: #878787;
+  background-color: #494949;
+}
+.links {
+  color: #c4c4c4;
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  padding: 0;
+}
+.info {
+  display: flex;
+  list-style: none;
+  column-gap: 30px;
+  flex-wrap: wrap;
+  padding: 0;
+}
+.icons {
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  font-family: 'TheJamsil5Bold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.logo > span {
+  background-color: #878787;
+  color: #515151;
+}
