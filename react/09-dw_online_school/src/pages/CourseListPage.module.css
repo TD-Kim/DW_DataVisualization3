@@ -1,0 +1,46 @@
+.form {
+  height: 40px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+}
+.form input {
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1 1;
+  padding: 12px 20px;
+  border: none;
+  outline: none;
+  border-radius: 5px 0 0 5px;
+}
+.form input::placeholder {
+  color: #878787;
+}
+.form button {
+  flex: none;
+  padding: 8px 10px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #545454;
+  border: none;
+  outline: none;
+  border-radius: 0 5px 5px 0;
+}
+.form button img {
+  width: 24px;
+  height: 24px;
+}
+
+.courseList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+.emptyList {
+}
+.count {
+  margin: 20px 0;
+  font-size: 14px;
+  font-weight: 300;
+  color: #878787;
+}
