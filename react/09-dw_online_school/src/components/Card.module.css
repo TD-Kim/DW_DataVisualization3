@@ -3,4 +3,5 @@
   background-color: #fff;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
+  width: 100%;
 }

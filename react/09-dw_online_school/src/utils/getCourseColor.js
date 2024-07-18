@@ -4,7 +4,7 @@ const COLORS = {
   yellow: '#f7d16f',
 };
 
-function getCourseColor(code) {
+function getCourseColor(code = "000") {
   const firstCode = Number(code.charAt(0));
   switch (firstCode) {
     case 3:
