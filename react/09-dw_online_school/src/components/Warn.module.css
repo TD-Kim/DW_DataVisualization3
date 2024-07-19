@@ -1,0 +1,23 @@
+.warn {
+  text-align: center;
+}
+.icon {
+  display: block;
+  margin: 0 auto;
+}
+.title {
+  margin: 20px auto 3px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.big .title {
+  font-size: 24px;
+}
+.description {
+  font-weight: 500;
+  color: #878787;
+  margin: 0;
+}
+.big .description {
+  font-size: 18px;
+}

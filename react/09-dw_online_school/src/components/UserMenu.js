@@ -29,19 +29,22 @@ function UserMenu(props) {
       </button>
       {isOpen && (
         <ul className={styles.popup}>
-          <Link to='/wishlist'>
-            <li>위시리스트</li>
-          </Link>
-          <li className={styles.disabled}>회원가입</li>
-          {/* {!isLogined ? () : ()} */}
           {!isLogined ? (
-            <Link to='/login'>
-              <li>로그인</li>
-            </Link>
+            <>
+              <li className={styles.disabled}>위시리스트</li>
+              <Link to='/login'>
+                <li>로그인</li>
+              </Link>
+            </>
           ) : (
-            <Link to='/login'>
-              <li>로그아웃</li>
-            </Link>
+            <>
+              <Link to='/wishlist'>
+                <li>위시리스트</li>
+              </Link>
+              <Link to='/logout'>
+                <li>로그아웃</li>
+              </Link>
+            </>
           )}
         </ul>
       )}
