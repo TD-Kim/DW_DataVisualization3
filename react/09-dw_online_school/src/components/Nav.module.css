@@ -3,6 +3,7 @@
   padding: 15px 0;
   box-shadow: var(--box-shadow);
   background-color: white;
+  z-index: 1;
 }
 .container {
   display: flex;
