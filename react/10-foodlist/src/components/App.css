@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background-color: #f9f9f9;
+}
+.App input,
+.App textarea {
+  padding: 13px 20px;
+  border: 1px solid #dae7e3;
+  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+}
+.App textarea {
+  resize: none;
+}
+.App input:focus,
+.App textarea:focus {
+  border: 1px solid #56ca5a;
+}
+.App input::placeholder,
+.App textarea::placeholder {
+  color: #b6bab2;
+}
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.App .App-nav,
+.App .App-footer {
+  flex: none;
+}
+.App .App-container {
+  flex: 1 1;
+}
+.App-container,
+.App-footer-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+.App-nav {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #dae7e3;
+}
+.App .App-FoodForm {
+  margin: 60px 0 90px;
+  padding: 22px;
+  border-radius: 15px;
+  box-shadow: 0 0 9px 0 rgba(100, 126, 118, 0.09);
+  background-color: #fff;
+}
+.App-footer {
+  margin-top: 250px;
+  background-color: #4caf50;
+}
+.App-footer-container {
+  display: flex;
+  align-items: center;
+  padding: 28px 0 30px;
+}
+.App-footer-menu {
+  font-size: 14px;
+  margin-left: auto;
+  letter-spacing: -0.25px;
+  color: #d4fdd6;
+}

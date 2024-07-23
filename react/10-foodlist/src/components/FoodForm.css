@@ -1,0 +1,45 @@
+.FoodForm {
+  display: flex;
+  max-height: 150px;
+  gap: 20px;
+}
+.FoodForm .FoodForm-preview {
+  flex: none;
+}
+.FoodForm .FoodForm-rows {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.FoodForm-title-calorie {
+  flex: none;
+  display: flex;
+  gap: 15px;
+}
+.FoodForm-content {
+  flex: 1 1;
+}
+.FoodForm-title {
+  flex: 2 1;
+}
+.FoodForm-calorie {
+  flex: 1 1;
+}
+.FoodForm-submit-button {
+  flex: none;
+  color: #fff;
+  background-color: #2c9631;
+}
+.FoodForm-cancel-button {
+  color: #000;
+  background-color: #f9f9f9;
+}
+.FoodForm-title-calorie button {
+  padding: 13px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 16px;
+  cursor: pointer;
+}
