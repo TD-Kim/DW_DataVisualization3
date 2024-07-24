@@ -1,0 +1,98 @@
+.FoodList {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.FoodList > li {
+  padding: 22px;
+  border-radius: 15px;
+
+  background-color: #fff;
+}
+.FoodListItem {
+  display: flex;
+  gap: 15px;
+}
+.FoodListItem-preview {
+  flex: none;
+  width: 150px;
+  height: 150px;
+  border-radius: 11px;
+  object-fit: cover;
+  object-position: center;
+}
+.FoodListItem-rows {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+.FoodListItem-title-calorie {
+  flex: none;
+  margin: 0 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.FoodListItem-title {
+  font-size: 20px;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 1;
+}
+.FoodListItem-calorie {
+  padding: 6px 8px 5px;
+  border-radius: 6px;
+  background-color: #eaf3ea;
+  font-size: 15px;
+  font-weight: bold;
+  color: #4caf50;
+}
+.FoodListItem-content {
+  flex: 1 1;
+  margin: 0 0 18px;
+  font-size: 16px;
+  color: #6d7372;
+  max-height: 48px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.FoodListItem-date-buttons {
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.FoodListItem-date {
+  flex: 1 1;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  color: #c6cdc1;
+}
+.FoodListItem-buttons {
+  flex: none;
+  display: flex;
+  gap: 8px;
+}
+.FoodListItem-buttons > button {
+  background-color: transparent;
+  cursor: pointer;
+  padding: 6px 12px 4px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.FoodListItem-edit-button {
+  border: 1px solid #c8dad4;
+  color: #7f8e89;
+}
+.FoodListItem-delete-button {
+  border: 1px solid #e5cdcd;
+  color: #b18181;
+}

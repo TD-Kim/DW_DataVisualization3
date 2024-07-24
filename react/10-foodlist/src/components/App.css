@@ -57,6 +57,62 @@ body {
   box-shadow: 0 0 9px 0 rgba(100, 126, 118, 0.09);
   background-color: #fff;
 }
+.App-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.App-search {
+  position: relative;
+}
+.App-search-button {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+.App-orders {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.AppSortButton {
+  font-size: 16px;
+  color: #2b302f;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  cursor: pointer;
+}
+.AppSortButton.selected {
+  color: #2c9631;
+  position: relative;
+}
+.AppSortButton.selected::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: #2c9631;
+}
+.App-load-more-button {
+  width: 100%;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #f2f6f2;
+  font-size: 18px;
+  letter-spacing: -0.32px;
+  color: #4caf50;
+  border: none;
+  cursor: pointer;
+}
 .App-footer {
   margin-top: 250px;
   background-color: #4caf50;
