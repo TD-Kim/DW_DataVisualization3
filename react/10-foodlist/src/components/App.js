@@ -6,7 +6,14 @@ import FoodForm from './FoodForm';
 import searchImg from '../assets/ic-search.png';
 import FoodList from './FoodList';
 import { useEffect, useState } from 'react';
-import { getDatasOrderByLimit } from '../api/firebase';
+import {
+  addDatas,
+  deleteDatas,
+  getDatasOrderByLimit,
+  getSearchDatas,
+  updateDatas,
+} from '../api/firebase';
+import LocaleSelect from './LocaleSelect';
 
 function AppSortButton({ children, selected, onClick }) {
   return (
@@ -27,6 +34,7 @@ function App() {
   const [order, setOrder] = useState('createdAt');
   const [lq, setLq] = useState();
   const [hasNext, setHasNext] = useState(true);
+  const [search, setSearch] = useState('');
 
   const handleLoad = async (options) => {
     const { resultData, lastQuery } = await getDatasOrderByLimit(
@@ -50,6 +58,60 @@ function App() {
   const handleNewestClick = () => setOrder('createdAt');
   const handleCalorieClick = () => setOrder('calorie');
 
+  const handleDelete = async (docId, imgUrl) => {
+    // items 에서 docId 를 받아온다.
+    // db에서 데이터 삭제(스토리지에 있는 사진파일 삭제, database에 있는 데이터 삭제)
+    const { result, message } = await deleteDatas('food', docId, imgUrl);
+    if (!result) {
+      alert(message);
+      return;
+    }
+    // 삭제 성공시 화면에 그 결과를 반영한다.
+    setItems((prevItems) =>
+      prevItems.filter(function (item) {
+        return item.docId !== docId;
+      })
+    );
+  };
+
+  const handleAddSuccess = (resultData) => {
+    setItems((prevItems) => [resultData, ...prevItems]);
+  };
+
+  const handleUpdateSuccess = (result) => {
+    setItems((prevItems) => {
+      // 수정된 item의 index 찾기
+      const splitIdx = prevItems.findIndex(function (item) {
+        return item.id === result.id;
+      });
+      const beforeArr = prevItems.slice(0, splitIdx);
+      const afterArr = prevItems.slice(splitIdx + 1);
+      return [...beforeArr, result, ...afterArr];
+      // return [
+      //   ...prevItems.slice(0, splitIdx),
+      //   result,
+      //   ...prevItems.slice(splitIdx + 1)
+      // ]
+    });
+  };
+
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+    if (search === '') {
+      handleLoad({ fieldName: order, limits: LIMITS, lq: undefined });
+    } else {
+      const resultData = await getSearchDatas('food', {
+        limits: LIMITS,
+        search: search,
+      });
+      setItems(resultData);
+    }
+  };
+
   useEffect(() => {
     handleLoad({ fieldName: order, limits: LIMITS, lq: undefined });
   }, [order]);
@@ -61,11 +123,11 @@ function App() {
       </div>
       <div className='App-container'>
         <div className='App-FoodForm'>
-          <FoodForm />
+          <FoodForm onSubmit={addDatas} onSubmitSuccess={handleAddSuccess} />
         </div>
         <div className='App-filter'>
-          <form className='App-search'>
-            <input className='App-search-input' />
+          <form className='App-search' onSubmit={handleSearchSubmit}>
+            <input className='App-search-input' onChange={handleSearchChange} />
             <button className='App-search-button'>
               <img src={searchImg} />
             </button>
@@ -85,7 +147,12 @@ function App() {
             </AppSortButton>
           </div>
         </div>
-        <FoodList items={items} />
+        <FoodList
+          items={items}
+          onDelete={handleDelete}
+          onUpdate={updateDatas}
+          onUpdateSuccess={handleUpdateSuccess}
+        />
         {hasNext && (
           <button className='App-load-more-button' onClick={handleLoadMore}>
             더 보기
@@ -95,10 +162,7 @@ function App() {
       <div className='App-footer'>
         <div className='App-footer-container'>
           <img src={logoTextImg} />
-          <select>
-            <option>한국어</option>
-            <option>English</option>
-          </select>
+          <LocaleSelect />
           <div className='App-footer-menu'>
             서비스 이용약관 | 개인정보 처리방침
           </div>

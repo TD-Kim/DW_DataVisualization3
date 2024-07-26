@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import FileInput from './FileInput';
 import './FoodForm.css';
 import { addDatas } from '../api/firebase';
+import { useLocale } from '../contexts/LocaleContext';
+import useTranslate from '../hooks/useTranslate';
 
 const INITIAL_VALUES = {
   title: '',
@@ -20,8 +22,17 @@ function sanitize(type, value) {
   }
 }
 
-function FoodForm(props) {
-  const [values, setValues] = useState(INITIAL_VALUES);
+function FoodForm({
+  onSubmit,
+  onSubmitSuccess,
+  onCancel,
+  initialValues = INITIAL_VALUES,
+  initialPreview
+}) {
+  const [values, setValues] = useState(initialValues);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const locale = useContext(LocaleContext);
+  const t = useTranslate();
 
   const handleChange = (name, value) => {
     setValues((prevValues) => ({ ...prevValues, [name]: value }));
@@ -32,8 +43,12 @@ function FoodForm(props) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const resultData = await addDatas("food", values);
-  }
+    setIsSubmitting(true);
+    const resultData = await onSubmit('food', values);
+    onSubmitSuccess(resultData);
+    setIsSubmitting(false);
+    setValues(INITIAL_VALUES);
+  };
   return (
     <form className='FoodForm' onSubmit={handleSubmit}>
       <FileInput
@@ -41,6 +56,7 @@ function FoodForm(props) {
         onChange={handleChange}
         name='imgUrl'
         value={values.imgUrl}
+        initialPreview={initialPreview}
       />
       <div className='FoodForm-rows'>
         <div className='FoodForm-title-calorie'>
@@ -48,7 +64,7 @@ function FoodForm(props) {
             className='FoodForm-title'
             type='text'
             onChange={handleInputChange}
-            placeholder='이름을 입력해주세요.'
+            placeholder={t('title placeholder')}
             name='title'
             value={values.title}
           />
@@ -59,7 +75,20 @@ function FoodForm(props) {
             name='calorie'
             value={values.calorie}
           />
-          <button className='FoodForm-submit-button' type='submit'>
+          {onCancel && (
+            <button
+              className='FoodForm-cancel-button'
+              type='button'
+              onClick={() => onCancel(null)}
+            >
+              취소
+            </button>
+          )}
+          <button
+            className='FoodForm-submit-button'
+            type='submit'
+            disabled={isSubmitting}
+          >
             확인
           </button>
         </div>
