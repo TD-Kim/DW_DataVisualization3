@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/DW_DataVisualization3/static/css/main.0c73b8bb.css",
-    "main.js": "/DW_DataVisualization3/static/js/main.cfb0e7b0.js",
+    "main.js": "/DW_DataVisualization3/static/js/main.c14fde20.js",
     "static/media/landing.svg": "/DW_DataVisualization3/static/media/landing.4bbaee518e8f08af70e2809738254418.svg",
     "static/media/icon--computer-architecture.svg": "/DW_DataVisualization3/static/media/icon--computer-architecture.122c82b1c31a3f5fd81108ff488c239a.svg",
     "static/media/icon--deep-learning.svg": "/DW_DataVisualization3/static/media/icon--deep-learning.cb97e7d5d8acba83cca8be1b59b52491.svg",
@@ -36,10 +36,10 @@
     "static/media/search.svg": "/DW_DataVisualization3/static/media/search.8a36d7a29fe56e8c01df6f2931510f85.svg",
     "static/media/facebook.svg": "/DW_DataVisualization3/static/media/facebook.923e8d46d8ec99ef010f0699048cd7a4.svg",
     "main.0c73b8bb.css.map": "/DW_DataVisualization3/static/css/main.0c73b8bb.css.map",
-    "main.cfb0e7b0.js.map": "/DW_DataVisualization3/static/js/main.cfb0e7b0.js.map"
+    "main.c14fde20.js.map": "/DW_DataVisualization3/static/js/main.c14fde20.js.map"
   },
   "entrypoints": [
     "static/css/main.0c73b8bb.css",
-    "static/js/main.cfb0e7b0.js"
+    "static/js/main.c14fde20.js"
   ]
 }
