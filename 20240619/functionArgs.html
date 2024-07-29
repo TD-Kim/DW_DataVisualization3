@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function sum(...args) {
+      let sumValue = 0;
+      sumValue = args.reduce((acc, cur) => acc + cur, 0);
+      return sumValue;
+    }
+    const x = sum(1, 2);
+    const y = sum(1, 2, 3);
+    const z = sum(1, 2, 3, 4);
+    const w = sum(1, 2, 3, 4, 5);
+    console.log(x);
+    console.log(y);
+    console.log(z);
+    console.log(w);
+  </script>
+</html>

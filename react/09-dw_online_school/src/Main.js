@@ -12,7 +12,7 @@ import QuestionPage from './pages/QuestionPage';
 
 function Main(props) {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path='/' element={<App />}>
           <Route index element={<HomePage />} />

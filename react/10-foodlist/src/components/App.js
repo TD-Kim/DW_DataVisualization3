@@ -14,6 +14,7 @@ import {
   updateDatas,
 } from '../api/firebase';
 import LocaleSelect from './LocaleSelect';
+import useAsync from '../hooks/useAsync';
 
 function AppSortButton({ children, selected, onClick }) {
   return (
@@ -35,12 +36,17 @@ function App() {
   const [lq, setLq] = useState();
   const [hasNext, setHasNext] = useState(true);
   const [search, setSearch] = useState('');
+  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, loadingError, getDatasAsync] = useAsync(getDatasOrderByLimit);
 
   const handleLoad = async (options) => {
-    const { resultData, lastQuery } = await getDatasOrderByLimit(
-      'food',
-      options
-    );
+    // setIsLoading(true);
+    // const { resultData, lastQuery } = await getDatasOrderByLimit(
+    //   'food',
+    //   options
+    // );
+    // setIsLoading(false);
+    const {resultData, lastQuery} = await getDatasAsync("food", options);
     if (!options.lq) {
       setItems(resultData);
     } else {
@@ -154,7 +160,11 @@ function App() {
           onUpdateSuccess={handleUpdateSuccess}
         />
         {hasNext && (
-          <button className='App-load-more-button' onClick={handleLoadMore}>
+          <button
+            className='App-load-more-button'
+            onClick={handleLoadMore}
+            disabled={isLoading}
+          >
             더 보기
           </button>
         )}
