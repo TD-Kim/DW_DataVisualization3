@@ -10,7 +10,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh
 }
 .App header {
   background-color: #a9bdce;
@@ -26,21 +26,71 @@ body {
 }
 .App section {
   background-color: #b2c7d9;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  overflow: hidden;
 }
 main {
   padding: 10px;
+  flex: 1 1;
+  overflow-y: auto;
+}
+main::-webkit-scrollbar {
+  width: 0.6rem;
+}
+main::-webkit-scrollbar-track {
+  /* background-color: #fff; */
+}
+main::-webkit-scrollbar-thumb {
+  background-color: #8b9aa6;
 }
 form {
   background-color: #ffec42;
   width: 100%;
   max-width: 450px;
   font-size: 1.5rem;
+  height: 8vh;
+  flex: none;
+  display: flex;
 }
 form button {
   background-color: #ffec42;
+  width: 20%;
 }
 button {
-  
+  border: none;
+  color: gray;
+  padding: 5px 5px;
+  text-align: center;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+.sign-in {
+  color: gray;
+  background-color: #fff;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 25px;
+}
+.notice {
+  margin-top: 20px;
+  color: #72808b;
+}
+.sign-out {
+  border: none;
+  color: gray;
+  padding: 8px 15px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 25px;
+}
+.sign-out:hover {
+  color: #fff;
+  background-color: rgb(255, 85, 43);
 }
 form input {
   width: 100%;
@@ -50,4 +100,29 @@ form input {
   outline: none;
   border: none;
   padding: 0 15px;
+}
+.message {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.message img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.message p {
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-align: center;
+  color: #262626;
+}
+.message.sent {
+  flex-direction: row-reverse;
+}
+.message.sent p {
+  background-color: #ffec42;
+}
+.message.received p {
+  background-color: #fff;
 }
