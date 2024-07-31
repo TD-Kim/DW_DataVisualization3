@@ -1,0 +1,19 @@
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+.btn_default {
+  background-color: #ececec;
+  color: black;
+}
+.btn_positive {
+  background-color: #64c964;
+  color: #fff;
+}
+.btn_negative {
+  background-color: #fd565f;
+  color: #fff;
+}
