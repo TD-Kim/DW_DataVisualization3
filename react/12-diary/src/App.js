@@ -3,7 +3,15 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import NewPage from './pages/NewPage';
-import { addItem, fetchItems, initialState, reducer } from './api/itemReducer';
+import {
+  addItem,
+  fetchItems,
+  initialState,
+  reducer,
+  updateItem,
+} from './api/itemReducer';
+import DiaryPage from './pages/DiaryPage';
+import EditPage from './pages/EditPage';
 
 export const DiaryStateContext = createContext();
 export const DiaryDispatchContext = createContext();
@@ -24,6 +32,15 @@ function App() {
   };
   // READ
   // UPDATE
+  const onUpdate = async (values) => {
+    const updateObj = {
+      updatedAt: new Date().getTime(),
+      date: new Date(values.date).getTime(),
+      content: values.content,
+      emotion: values.emotion,
+    };
+    await updateItem('diary', values.docId, updateObj, dispatch);
+  };
   // DELETE
 
   useEffect(() => {
@@ -40,15 +57,15 @@ function App() {
   }, []);
   return (
     <DiaryStateContext.Provider value={state.items}>
-      <DiaryDispatchContext.Provider value={{ onCreate }}>
+      <DiaryDispatchContext.Provider value={{ onCreate, onUpdate }}>
         <BrowserRouter>
           <div className='App'>
             <Routes>
               <Route path='/'>
                 <Route index element={<HomePage />} />
                 <Route path='new' element={<NewPage />} />
-                {/* <Route path='edit' element={} /> */}
-                {/* <Route path='diary' element={} /> */}
+                <Route path='edit/:id' element={<EditPage />} />
+                <Route path='diary/:id' element={<DiaryPage />} />
               </Route>
             </Routes>
           </div>

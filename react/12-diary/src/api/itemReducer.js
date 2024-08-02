@@ -1,4 +1,4 @@
-import { addDatas, getDatas } from './firebase';
+import { addDatas, getDatas, updateDatas } from './firebase';
 
 // Action types
 const FETCH_ITEMS = 'FETCH_ITEMS';
@@ -23,7 +23,13 @@ export function reducer(state, action) {
     case ADD_ITEM:
       return { ...state, items: [...state.items, action.payload], error: null };
     case UPDATE_ITEM:
-      return;
+      return {
+        ...state,
+        items: state.items.map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        ),
+        error: null,
+      };
     case DELETE_ITEM:
       return;
     case SET_ERROR:
@@ -52,5 +58,17 @@ export const addItem = async (collectionName, addObj, dispatch) => {
     dispatch({ type: ADD_ITEM, payload: resultData });
   }
 };
-export const updateItem = async () => {};
+export const updateItem = async (
+  collectionName,
+  docId,
+  updateObj,
+  dispatch
+) => {
+  const resultData = await updateDatas(collectionName, docId, updateObj);
+  if (!resultData) {
+    dispatch({ type: SET_ERROR, payload: 'UPDATE Datas 에러!!!' });
+  } else {
+    dispatch({ type: UPDATE_ITEM, payload: resultData });
+  }
+};
 export const deleteItem = async () => {};

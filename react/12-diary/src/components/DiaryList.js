@@ -5,8 +5,8 @@ import DiaryItem from './DiaryItem';
 import { useNavigate } from 'react-router-dom';
 
 const sortOptionList = [
-  { name: '최신순', value: 'latest' },
-  { name: '오래된 순', value: 'oldest' },
+{ name: '최신순', value: 'latest' },
+{ name: '오래된 순', value: 'oldest' },
 ];
 const filterOptionList = [
   { name: '전부다', value: 'all' },
@@ -39,17 +39,31 @@ function DiaryList({ diaryList }) {
 
   const getSortedDiaryList = () => {
     // 필터링 함수
-    const getFilteredList = () => {
-      // filter state가 good 이면(emotion의 값이 3보다 작거나 같을 때)
-      // filter state가 good 이 아니면(emotion의 값이 3보다 클 때)
+    const getFilteredList = (diary) => {
+      if (filter === 'good') {
+        // filter state가 good 이면(emotion의 값이 3보다 작거나 같을 때)
+        return diary.emotion <= 3;
+      } else {
+        // filter state가 good 이 아니면(emotion의 값이 3보다 클 때)
+        return diary.emotion > 3;
+      }
     };
     // [1, 11, 21].sort((a,b) => b - a);
     // 정렬 함수
-    const getOrderedList = () => {
-      // order state가 latest 이면 b - a
-      // order state가 latest 가 아니면 a - b
+    const getOrderedList = (a, b) => {
+      if (order === 'latest') {
+        // order state가 latest 이면 b - a
+        return b.date - a.date;
+      } else {
+        // order state가 latest 가 아니면 a - b
+        return a.date - b.date;
+      }
     };
-    const filteredList = diaryList.filter((diary) => getFilteredList(diary));
+    const filteredList =
+      filter === 'all'
+        ? diaryList
+        : diaryList.filter((diary) => getFilteredList(diary));
+
     const sortedList = filteredList.sort(getOrderedList);
     return sortedList;
   };
@@ -77,7 +91,7 @@ function DiaryList({ diaryList }) {
           />
         </div>
       </div>
-      {diaryList.map((diary) => {
+      {getSortedDiaryList().map((diary) => {
         return <DiaryItem key={diary.id} {...diary} />;
       })}
     </div>
