@@ -1,4 +1,4 @@
-import { addDatas, getDatas, updateDatas } from './firebase';
+import { addDatas, deleteDatas, getDatas, updateDatas } from './firebase';
 
 // Action types
 const FETCH_ITEMS = 'FETCH_ITEMS';
@@ -31,7 +31,11 @@ export function reducer(state, action) {
         error: null,
       };
     case DELETE_ITEM:
-      return;
+      return {
+        ...state,
+        items: state.items.filter((item) => item.docId !== action.payload),
+        error: null,
+      };
     case SET_ERROR:
       return { ...state, error: action.payload };
     default:
@@ -71,4 +75,11 @@ export const updateItem = async (
     dispatch({ type: UPDATE_ITEM, payload: resultData });
   }
 };
-export const deleteItem = async () => {};
+export const deleteItem = async (collectionName, docId, dispatch) => {
+  const resultData = await deleteDatas(collectionName, docId);
+  if (!resultData) {
+    dispatch({ type: SET_ERROR, payload: 'DELETE Datas 에러!!!' });
+  } else {
+    dispatch({ type: DELETE_ITEM, payload: docId });
+  }
+};

@@ -1,0 +1,25 @@
+.login_box {
+  min-height: 50vh;
+  transform: translateY(50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.login_box button {
+  background: transparent;
+  border: 2px solid black;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+.login_box button:hover {
+  background-color: #f9f9f9;
+}

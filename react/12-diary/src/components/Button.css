@@ -17,3 +17,8 @@
   background-color: #fd565f;
   color: #fff;
 }
+.btn_login {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+}
