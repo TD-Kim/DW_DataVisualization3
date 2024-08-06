@@ -82,6 +82,7 @@ function App() {
   };
 
   const handleAddSuccess = (resultData) => {
+    console.log(resultData);
     setItems((prevItems) => [resultData, ...prevItems]);
   };
 
@@ -121,18 +122,18 @@ function App() {
 
   useEffect(() => {
     handleLoad({ fieldName: order, limits: LIMITS, lq: undefined });
-    const queryOptions = {
-      conditions: [
-        { field: '', operator: '', value: '' },
-        { field: '', operator: '', value: '' },
-      ],
-      orderBys: [
-        { field: '', direction },
-        { field: '', direction },
-      ],
-      lastQuery: 'querySnapshot 객체',
-      limits: 10,
-    };
+    // const queryOptions = {
+    //   conditions: [
+    //     { field: '', operator: '', value: '' },
+    //     { field: '', operator: '', value: '' },
+    //   ],
+    //   orderBys: [
+    //     { field: '', direction },
+    //     { field: '', direction },
+    //   ],
+    //   lastQuery: 'querySnapshot 객체',
+    //   limits: 10,
+    // };
   }, [order]);
 
   return (

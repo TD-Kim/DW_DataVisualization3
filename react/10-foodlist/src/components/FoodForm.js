@@ -28,9 +28,10 @@ function FoodForm({
   onSubmitSuccess,
   onCancel,
   initialValues = INITIAL_VALUES,
-  initialPreview
+  initialPreview,
 }) {
   const [values, setValues] = useState(initialValues);
+  console.log(values);
   // const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(onSubmit);
   // const locale = useContext(LocaleContext);
