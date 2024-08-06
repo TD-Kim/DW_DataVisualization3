@@ -6,10 +6,12 @@ import { DiaryStateContext } from './../App';
 import { emotionList } from '../util/emotion';
 import './DiaryPage.css';
 import { changeTitle } from '../util/changeTitle';
+import { useSelector } from 'react-redux';
 
 function DiaryPage() {
   const { id } = useParams();
-  const { diaryList } = useContext(DiaryStateContext);
+  // const { diaryList } = useContext(DiaryStateContext);
+  const diaryList = useSelector((state) => state.diary.items);
   const [data, setData] = useState();
   const navigate = useNavigate();
 

@@ -4,9 +4,11 @@ import * as FcIcons from 'react-icons/fc';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { DiaryStateContext } from '../App';
 import { useNavigate } from 'react-router-dom';
+import { getUserAuth } from '../api/firebase';
 
 function LoginPage() {
-  const { auth } = useContext(DiaryStateContext);
+  // const { auth } = useContext(DiaryStateContext);
+  const auth = getUserAuth();
   const navigate = useNavigate();
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();

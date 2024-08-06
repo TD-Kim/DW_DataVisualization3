@@ -40,6 +40,49 @@ function getCollection(collectionName) {
   return collection(db, collectionName);
 }
 
+function getQuery(collectionName, queryOption) {
+  // {
+  //   conditions: [
+  //     {field: "", operator: "", value: ""},
+  //     {field: "", operator: "", value: ""},
+  //   ],
+  //   orderBys: [
+  //     {field: "", direction},
+  //     {field: "", direction},
+  //   ],
+  //   lastQuery: querySnapshot 객체,
+  //   limits: 10
+  // }
+  const { conditions = [], orderBys = [], limits, lastQuery } = queryOption;
+  const collect = getCollection(collectionName);
+  let q = query(collect);
+
+  const condition = [
+    { field: 'text', operator: '==', value: 'test' },
+    { field: 'uid', operator: '==', value: 'xjdiwjKDJ2jdkxJND2J' },
+  ];
+
+  // where 조건
+  conditions.forEach((condition) => {
+    q = query(q, where(condition.field, condition.operator, condition.value));
+  });
+
+  // orderBy 조건
+  orderBys.forEach((order) => {
+    q = query(q, orderBy(order.field, order.direction || 'asc'));
+  });
+
+  // startAfter 조건
+  if (lastQuery) {
+    q = query(q, startAfter(lastQuery));
+  }
+
+  // limit 조건
+  q = query(q, limit(limits));
+
+  return q;
+}
+
 function createPath(path) {
   const uuid = crypto.randomUUID();
   return path + uuid;
@@ -91,22 +134,22 @@ async function getLastNum(collectionName, field) {
 }
 
 async function getDatasOrderByLimit(collectionName, options) {
-  const { fieldName, limits } = options;
-  let q;
-  if (!options.lq) {
-    q = query(
-      getCollection(collectionName),
-      orderBy(fieldName, 'desc'),
-      limit(limits)
-    );
-  } else {
-    q = query(
-      getCollection(collectionName),
-      orderBy(fieldName, 'desc'),
-      startAfter(options.lq),
-      limit(limits)
-    );
-  }
+  // const { fieldName, limits } = options;
+  let q = getQuery(collectionName, options);
+  // if (!options.lq) {
+  //   q = query(
+  //     getCollection(collectionName),
+  //     orderBy(fieldName, 'desc'),
+  //     limit(limits)
+  //   );
+  // } else {
+  //   q = query(
+  //     getCollection(collectionName),
+  //     orderBy(fieldName, 'desc'),
+  //     startAfter(options.lq),
+  //     limit(limits)
+  //   );
+  // }
 
   const snapshot = await getDocs(q);
   const docs = snapshot.docs;

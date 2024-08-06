@@ -3,6 +3,8 @@ import Button from './Button';
 import './DiaryList.css';
 import DiaryItem from './DiaryItem';
 import { useNavigate } from 'react-router-dom';
+import { getUserAuth } from '../api/firebase';
+import { useSelector } from 'react-redux';
 
 const sortOptionList = [
   { name: '최신순', value: 'latest' },
@@ -32,13 +34,17 @@ function ControlMenu({ optionList, value, onChange }) {
   );
 }
 
-function DiaryList({ diaryList, auth }) {
+function DiaryList({ diaryList }) {
   const [order, setOrder] = useState('latest');
   const [filter, setFilter] = useState('all');
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+
+  const auth = getUserAuth();
 
   const checkLogin = () => {
-    if (!auth.currentUser) {
+    // if (!auth.currentUser) {
+    if (!isAuthenticated) {
       alert('로그인을 해주세요.');
       navigate('/login');
     } else {
@@ -95,7 +101,8 @@ function DiaryList({ diaryList, auth }) {
         <div className='new_btn'>
           <Button text={'새 일기쓰기'} type='positive' onClick={checkLogin} />
         </div>
-        {auth.currentUser && (
+        {/* {auth.currentUser && ( */}
+        {isAuthenticated && (
           <div>
             <Button
               text={'로그아웃'}
@@ -106,7 +113,13 @@ function DiaryList({ diaryList, auth }) {
         )}
       </div>
       {getSortedDiaryList().map((diary) => {
-        return <DiaryItem key={diary.id} {...diary} />;
+        return (
+          <DiaryItem
+            key={diary.id}
+            {...diary}
+            isAuthenticated={isAuthenticated}
+          />
+        );
       })}
     </div>
   );

@@ -37,7 +37,8 @@ function App() {
   const [hasNext, setHasNext] = useState(true);
   const [search, setSearch] = useState('');
   // const [isLoading, setIsLoading] = useState(false);
-  const [isLoading, loadingError, getDatasAsync] = useAsync(getDatasOrderByLimit);
+  const [isLoading, loadingError, getDatasAsync] =
+    useAsync(getDatasOrderByLimit);
 
   const handleLoad = async (options) => {
     // setIsLoading(true);
@@ -46,7 +47,7 @@ function App() {
     //   options
     // );
     // setIsLoading(false);
-    const {resultData, lastQuery} = await getDatasAsync("food", options);
+    const { resultData, lastQuery } = await getDatasAsync('food', options);
     if (!options.lq) {
       setItems(resultData);
     } else {
@@ -120,6 +121,18 @@ function App() {
 
   useEffect(() => {
     handleLoad({ fieldName: order, limits: LIMITS, lq: undefined });
+    const queryOptions = {
+      conditions: [
+        { field: '', operator: '', value: '' },
+        { field: '', operator: '', value: '' },
+      ],
+      orderBys: [
+        { field: '', direction },
+        { field: '', direction },
+      ],
+      lastQuery: 'querySnapshot 객체',
+      limits: 10,
+    };
   }, [order]);
 
   return (
