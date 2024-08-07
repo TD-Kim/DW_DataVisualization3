@@ -31,7 +31,6 @@ function FoodForm({
   initialPreview,
 }) {
   const [values, setValues] = useState(initialValues);
-  console.log(values);
   // const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(onSubmit);
   // const locale = useContext(LocaleContext);
@@ -47,8 +46,8 @@ function FoodForm({
   const handleSubmit = async (e) => {
     e.preventDefault();
     const resultData = await onSubmitAsync('food', values);
-    onSubmitSuccess(resultData);
     setValues(INITIAL_VALUES);
+    onSubmitSuccess(resultData);
   };
   return (
     <form className='FoodForm' onSubmit={handleSubmit}>

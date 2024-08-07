@@ -15,6 +15,8 @@ import {
 } from '../api/firebase';
 import LocaleSelect from './LocaleSelect';
 import useAsync from '../hooks/useAsync';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchItems, setOrder, updateItem } from '../store/foodSlice';
 
 function AppSortButton({ children, selected, onClick }) {
   return (
@@ -31,39 +33,52 @@ function AppSortButton({ children, selected, onClick }) {
 const LIMITS = 5;
 
 function App() {
-  const [items, setItems] = useState([]);
-  const [order, setOrder] = useState('createdAt');
-  const [lq, setLq] = useState();
-  const [hasNext, setHasNext] = useState(true);
+  const dispatch = useDispatch();
+  const { items, order, lq, hasNext, isLoading } = useSelector(
+    (state) => state.food
+  );
+
+  // const [items, setItems] = useState([]);
+  // const [order, setOrder] = useState('createdAt');
+  // const [lq, setLq] = useState();
+  // const [hasNext, setHasNext] = useState(true);
   const [search, setSearch] = useState('');
   // const [isLoading, setIsLoading] = useState(false);
-  const [isLoading, loadingError, getDatasAsync] =
-    useAsync(getDatasOrderByLimit);
+  // const [isLoading, loadingError, getDatasAsync] =
+  //   useAsync(getDatasOrderByLimit);
 
   const handleLoad = async (options) => {
-    // setIsLoading(true);
-    // const { resultData, lastQuery } = await getDatasOrderByLimit(
-    //   'food',
-    //   options
-    // );
-    // setIsLoading(false);
-    const { resultData, lastQuery } = await getDatasAsync('food', options);
-    if (!options.lq) {
-      setItems(resultData);
-    } else {
-      setItems((prevItems) => [...prevItems, ...resultData]);
-    }
-    setLq(lastQuery);
-    if (!lastQuery) {
-      setHasNext(false);
-    }
+    dispatch(fetchItems({ collectionName: 'food', queryOptions: options }));
+
+    // // setIsLoading(true);
+    // // const { resultData, lastQuery } = await getDatasOrderByLimit(
+    // //   'food',
+    // //   options
+    // // );
+    // // setIsLoading(false);
+    // const { resultData, lastQuery } = await getDatasAsync('food', options);
+    // if (!options.lq) {
+    //   // setItems(resultData);
+    // } else {
+    //   // setItems((prevItems) => [...prevItems, ...resultData]);
+    // }
+    // setLq(lastQuery);
+    // if (!lastQuery) {
+    //   setHasNext(false);
+    // }
   };
   const handleLoadMore = async () => {
-    handleLoad({ fieldName: order, limits: LIMITS, lq: lq });
+    const queryOptions = {
+      conditions: [],
+      orderBys: [{ field: order, direction: 'desc' }],
+      lastQuery: lq,
+      limits: LIMITS,
+    };
+    handleLoad(queryOptions);
   };
 
-  const handleNewestClick = () => setOrder('createdAt');
-  const handleCalorieClick = () => setOrder('calorie');
+  const handleNewestClick = () => dispatch(setOrder('createdAt'));
+  const handleCalorieClick = () => dispatch(setOrder('calorie'));
 
   const handleDelete = async (docId, imgUrl) => {
     // items 에서 docId 를 받아온다.
@@ -73,34 +88,52 @@ function App() {
       alert(message);
       return;
     }
+    const queryOptions = {
+      conditions: [],
+      orderBys: [{ field: order, direction: 'desc' }],
+      lastQuery: undefined,
+      limits: LIMITS,
+    };
+    handleLoad(queryOptions);
     // 삭제 성공시 화면에 그 결과를 반영한다.
-    setItems((prevItems) =>
-      prevItems.filter(function (item) {
-        return item.docId !== docId;
-      })
-    );
+    // setItems((prevItems) =>
+    //   prevItems.filter(function (item) {
+    //     return item.docId !== docId;
+    //   })
+    // );
   };
 
   const handleAddSuccess = (resultData) => {
-    console.log(resultData);
-    setItems((prevItems) => [resultData, ...prevItems]);
+    const queryOptions = {
+      conditions: [],
+      orderBys: [{ field: order, direction: 'desc' }],
+      lastQuery: undefined,
+      limits: LIMITS,
+    };
+    handleLoad(queryOptions);
+    // setItems((prevItems) => [resultData, ...prevItems]);
+  };
+
+  const handleUpdate = (collectionName, docId, updateObj, imgUrl) => {
+    dispatch(updateItem({ collectionName, docId, updateObj, imgUrl }));
   };
 
   const handleUpdateSuccess = (result) => {
-    setItems((prevItems) => {
-      // 수정된 item의 index 찾기
-      const splitIdx = prevItems.findIndex(function (item) {
-        return item.id === result.id;
-      });
-      const beforeArr = prevItems.slice(0, splitIdx);
-      const afterArr = prevItems.slice(splitIdx + 1);
-      return [...beforeArr, result, ...afterArr];
-      // return [
-      //   ...prevItems.slice(0, splitIdx),
-      //   result,
-      //   ...prevItems.slice(splitIdx + 1)
-      // ]
-    });
+    console.log(result);
+    // setItems((prevItems) => {
+    //   // 수정된 item의 index 찾기
+    //   const splitIdx = prevItems.findIndex(function (item) {
+    //     return item.id === result.id;
+    //   });
+    //   const beforeArr = prevItems.slice(0, splitIdx);
+    //   const afterArr = prevItems.slice(splitIdx + 1);
+    //   return [...beforeArr, result, ...afterArr];
+    //   // return [
+    //   //   ...prevItems.slice(0, splitIdx),
+    //   //   result,
+    //   //   ...prevItems.slice(splitIdx + 1)
+    //   // ]
+    // });
   };
 
   const handleSearchChange = (e) => {
@@ -116,24 +149,21 @@ function App() {
         limits: LIMITS,
         search: search,
       });
-      setItems(resultData);
+      // setItems(resultData);
     }
   };
 
   useEffect(() => {
-    handleLoad({ fieldName: order, limits: LIMITS, lq: undefined });
-    // const queryOptions = {
-    //   conditions: [
-    //     { field: '', operator: '', value: '' },
-    //     { field: '', operator: '', value: '' },
-    //   ],
-    //   orderBys: [
-    //     { field: '', direction },
-    //     { field: '', direction },
-    //   ],
-    //   lastQuery: 'querySnapshot 객체',
-    //   limits: 10,
-    // };
+    // handleLoad({ fieldName: order, limits: LIMITS, lq: undefined });
+    const queryOptions = {
+      conditions: [],
+      orderBys: [{ field: order, direction: 'desc' }],
+      lastQuery: undefined,
+      limits: LIMITS,
+    };
+    // const collectionName = "food";
+    // dispatch(fetchItems({ collectionName: 'food', queryOptions }));
+    handleLoad(queryOptions);
   }, [order]);
 
   return (
@@ -170,7 +200,8 @@ function App() {
         <FoodList
           items={items}
           onDelete={handleDelete}
-          onUpdate={updateDatas}
+          // onUpdate={updateDatas}
+          onUpdate={handleUpdate}
           onUpdateSuccess={handleUpdateSuccess}
         />
         {hasNext && (
