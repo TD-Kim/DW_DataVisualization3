@@ -1,0 +1,15 @@
+@import '../../../mixins.scss';
+
+.nav {
+  ul {
+    display: flex;
+    gap: 20px;
+  }
+  li {
+    font-size: 20px;
+
+    a {
+      @include hover-effect(blue);
+    }
+  }
+}

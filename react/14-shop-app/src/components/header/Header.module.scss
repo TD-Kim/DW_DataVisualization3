@@ -1,0 +1,31 @@
+@import '../../mixins.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 3px 11px 0 rgb(0 0 0 / 15%);
+}
+.header_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.header_logo {
+  // h2 태그 margin-bottom 10px font-size 는 20px
+  h2 {
+    margin: 0 0 0 10px;
+    font-size: 20px;
+
+    // h2 태그 hover 시 color blue transition
+    // &:hover {
+    //   color: blue;
+    //   cursor: pointer;
+    //   transition: 0.3s all ease;
+    // }
+    @include hover-effect();
+  }
+}

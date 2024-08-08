@@ -1,0 +1,7 @@
+@mixin hover-effect($hover-color: blue) {
+  &:hover {
+    color: $hover-color;
+    cursor: pointer;
+    transition: 0.3s all ease;
+  }
+}

@@ -1,0 +1,19 @@
+.card_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  gap: 10px;
+
+  li {
+    border-radius: 4px;
+  }
+
+  @media (min-width: 667px) {
+    align-items: flex-start;
+  }
+  @media (min-width: 785px) {
+    justify-content: flex-start;
+  }
+}
