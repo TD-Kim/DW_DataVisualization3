@@ -3,11 +3,12 @@ import styles from './CardList.module.scss';
 import CardItem from './card-item/CardItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../../store/products/productsSlice';
+import CardSkeleton from '../card-skeleton/CardSkeleton';
 
 function CardList() {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.productsSlice);
-  const category = '';
+  const { products, isLoading } = useSelector((state) => state.productsSlice);
+  const category = useSelector((state) => state.categoriesSlice);
   useEffect(() => {
     const queryOptions = {
       conditions: [
@@ -20,6 +21,8 @@ function CardList() {
     };
     dispatch(fetchProducts({ collectionName: 'products', queryOptions }));
   }, [category]);
+
+  if (isLoading) return <CardSkeleton />;
 
   return (
     <ul className={styles.card_list}>

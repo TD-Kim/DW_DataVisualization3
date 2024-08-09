@@ -1,0 +1,142 @@
+.card_wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding: 5px;
+  gap: 50px;
+
+  @media (min-width: 576px) {
+    padding: 15px;
+  }
+  @media (min-width: 990px) {
+    flex-flow: row wrap;
+    padding: 5px;
+    gap: 0;
+  }
+}
+.card_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+
+  img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  @media (min-width: 990px) {
+    width: 50%;
+  }
+}
+.card_description {
+  width: 100%;
+  text-align: start;
+
+  h3 {
+    margin: 0;
+    margin-bottom: 20px;
+    color: rgb(206, 202, 202);
+    font-size: 25px;
+  }
+  h1 {
+    margin: 0;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 30px;
+  }
+  h4 {
+    margin: 0;
+    margin-bottom: 40px;
+    font-size: 35px;
+  }
+  p {
+    margin: 0;
+    margin-bottom: 50px;
+    color: rgb(153, 149, 149);
+    font-size: 20px;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  button {
+    border-radius: 4px;
+    padding: 15px 40px;
+    color: var(--main-color);
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid var(--main-color);
+    cursor: pointer;
+    transition: 0.3s all ease;
+
+    &:hover {
+      color: #fff;
+      background-color: var(--second-color);
+    }
+    &:disabled {
+      color: #fff;
+      background-color: var(--second-color);
+    }
+  }
+  a {
+    border-radius: 4px;
+    padding: 15px 40px;
+    margin-left: 20px;
+    color: var(--main-color);
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid var(--main-color);
+    cursor: pointer;
+    transition: 0.3s all ease;
+
+    &:hover {
+      color: #fff;
+      background-color: var(--second-color);
+    }
+  }
+
+  @media (min-width: 560px) {
+    width: 85%;
+
+    h3 {
+      font-size: 30px;
+    }
+    h1 {
+      font-size: 40px;
+    }
+    h4 {
+      font-size: 45px;
+    }
+    p {
+      font-size: 20px;
+    }
+    div {
+      //   justify-content: flex-start;
+      //   align-items: flex-start;
+    }
+    button {
+      font-size: 17px;
+      padding: 20px 60px;
+    }
+    a {
+      font-size: 17px;
+      padding: 20px 60px;
+    }
+  }
+
+  @media (min-width: 630px) {
+    width: 80%;
+  }
+
+  @media (min-width: 990px) {
+    // justify-content: space-between;
+    width: 50%;
+  }
+}

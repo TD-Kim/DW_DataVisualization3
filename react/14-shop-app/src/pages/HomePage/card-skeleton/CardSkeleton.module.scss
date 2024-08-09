@@ -1,0 +1,30 @@
+.card_skeleton_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  gap: 10px;
+
+  @media (min-width: 667px) {
+    align-items: flex-start;
+  }
+  @media (min-width: 785px) {
+    justify-content: flex-start;
+  }
+}
+.card_skeleton {
+  width: 80%;
+
+  @media (min-width: 480px) {
+    width: 50%;
+  }
+  @media (min-width: 667px) {
+    width: 40%;
+  }
+  @media (min-width: 798px) {
+    width: 30%;
+  }
+  @media (min-width: 1015px) {
+    width: 24%;
+  }
+}
