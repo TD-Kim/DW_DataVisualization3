@@ -1,0 +1,12 @@
+.nav_cart_list {
+  max-height: 255px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #a9abac;
+  }
+}
