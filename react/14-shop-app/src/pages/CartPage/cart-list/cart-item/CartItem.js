@@ -3,13 +3,19 @@ import styles from './CartItem.module.scss';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { incrementProduct } from '../../../../store/cart/cartSlice';
+import {
+  decrementProduct,
+  incrementProduct,
+} from '../../../../store/cart/cartSlice';
 
 function CartItem({ image, title, price, category, quantity, total, id }) {
   const dispatch = useDispatch();
 
   const incrementCount = () => {
     dispatch(incrementProduct(id));
+  };
+  const decrementCount = () => {
+    dispatch(decrementProduct(id));
   };
 
   return (
@@ -26,9 +32,13 @@ function CartItem({ image, title, price, category, quantity, total, id }) {
       </div>
       <div className={styles.cart_count}>
         <div>
-          <button>-</button>
+          <button disabled={quantity === 1} onClick={decrementCount}>
+            -
+          </button>
           <span>{quantity}</span>
-          <button onClick={incrementCount}>+</button>
+          <button disabled={quantity === 10} onClick={incrementCount}>
+            +
+          </button>
         </div>
       </div>
       <button className={styles.cart_delete}>

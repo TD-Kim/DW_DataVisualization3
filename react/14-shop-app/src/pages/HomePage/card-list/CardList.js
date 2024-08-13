@@ -27,7 +27,7 @@ function CardList() {
   return (
     <ul className={styles.card_list}>
       {products.map((product) => {
-        return <CardItem item={product} />;
+        return <CardItem key={product.id} item={product} />;
       })}
     </ul>
   );

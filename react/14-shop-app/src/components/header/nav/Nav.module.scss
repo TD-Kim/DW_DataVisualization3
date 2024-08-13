@@ -60,3 +60,9 @@
   visibility: visible;
   opacity: 1;
 }
+
+.nav_sign_out {
+  cursor: pointer;
+
+  @include hover-effect(blue);
+}

@@ -2,14 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CardItem.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../../../store/cart/cartSlice';
+import { addCartItem, addToCart } from '../../../../store/cart/cartSlice';
 
 function CardItem({ item }) {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.cartSlice);
   const productMatching = products.some((product) => product.id === item.id);
+  const { uid, isAuthenticated } = useSelector((state) => state.userSlice);
+
   const addItemToCart = () => {
-    dispatch(addToCart(item));
+    if (isAuthenticated) {
+      dispatch(
+        addCartItem({ collectionName: ['users', uid, 'cart'], product: item })
+      );
+    } else {
+      dispatch(addToCart(item));
+    }
   };
 
   return (
