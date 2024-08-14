@@ -2,20 +2,57 @@ import React from 'react';
 import styles from './CartItem.module.scss';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
+  calculateTotalAndQuantity,
   decrementProduct,
+  deleteCartItem,
+  deleteFromCart,
   incrementProduct,
 } from '../../../../store/cart/cartSlice';
 
 function CartItem({ image, title, price, category, quantity, total, id }) {
   const dispatch = useDispatch();
+  const { isAuthenticated, uid } = useSelector((state) => state.userSlice);
 
   const incrementCount = () => {
-    dispatch(incrementProduct(id));
+    if (isAuthenticated) {
+      dispatch(
+        calculateTotalAndQuantity({
+          uid,
+          productId: id,
+          operator: 'increment',
+        })
+      );
+    } else {
+      dispatch(incrementProduct(id));
+    }
   };
   const decrementCount = () => {
-    dispatch(decrementProduct(id));
+    if (isAuthenticated) {
+      dispatch(
+        calculateTotalAndQuantity({
+          uid,
+          productId: id,
+          operator: 'decrement',
+        })
+      );
+    } else {
+      dispatch(decrementProduct(id));
+    }
+  };
+
+  const deleteProduct = () => {
+    if (isAuthenticated) {
+      dispatch(
+        deleteCartItem({
+          collectionName: ['users', uid, 'cart'],
+          productId: id,
+        })
+      );
+    } else {
+      dispatch(deleteFromCart(id));
+    }
   };
 
   return (
@@ -41,7 +78,7 @@ function CartItem({ image, title, price, category, quantity, total, id }) {
           </button>
         </div>
       </div>
-      <button className={styles.cart_delete}>
+      <button className={styles.cart_delete} onClick={deleteProduct}>
         <AiOutlineDelete />
       </button>
     </div>

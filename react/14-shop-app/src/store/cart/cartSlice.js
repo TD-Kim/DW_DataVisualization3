@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { addCart, syncCart, deleteDatas } from '../../firebase';
+import {
+  addCart,
+  syncCart,
+  deleteDatas,
+  updateTotalAndQuantity,
+} from '../../firebase';
 
 const initialState = {
   products: localStorage.getItem('cartProducts')
@@ -43,6 +48,7 @@ const cartSlice = createSlice({
       );
       state.products[index].quantity += 1;
       state.products[index].total += state.products[index].price;
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
     decrementProduct: (state, action) => {
       const index = state.products.findIndex(
@@ -50,6 +56,7 @@ const cartSlice = createSlice({
       );
       state.products[index].quantity -= 1;
       state.products[index].total -= state.products[index].price;
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
   },
 });
@@ -93,6 +100,22 @@ export const deleteCartItem = createAsyncThunk(
       }
     } catch (error) {
       return thunkAPI.rejectWithValue('Error Delete CartItem');
+    }
+  }
+);
+
+export const calculateTotalAndQuantity = createAsyncThunk(
+  'cart/cartItemCalculate',
+  async ({ uid, productId, operator }, thunkAPI) => {
+    try {
+      await updateTotalAndQuantity(uid, productId, operator);
+      if (operator === 'increment') {
+        thunkAPI.dispatch(incrementProduct(productId));
+      } else {
+        thunkAPI.dispatch(decrementProduct(productId));
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 );

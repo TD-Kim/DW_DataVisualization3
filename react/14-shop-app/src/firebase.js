@@ -131,6 +131,28 @@ export async function updateQuantity(uid, cartItem) {
   }
 }
 
+export async function updateTotalAndQuantity(uid, docId, operator) {
+  const cartRef = getCollection('users', uid, 'cart');
+  const itemRef = doc(cartRef, docId.toString());
+
+  const itemDoc = await getDoc(itemRef);
+  const itemData = itemDoc.data();
+
+  let updatedQuantity;
+  if (operator == 'increment') {
+    updatedQuantity = itemData.quantity + 1;
+  } else {
+    updatedQuantity = itemData.quantity - 1;
+  }
+  const updatedTotal = itemData.price * updatedQuantity;
+
+  const updateObj = {
+    quantity: updatedQuantity,
+    total: updatedTotal,
+  };
+  await updateDoc(itemRef, updateObj);
+}
+
 export async function deleteDatas(collectionName, docId) {
   try {
     const cartRef = getCollection(collectionName);
