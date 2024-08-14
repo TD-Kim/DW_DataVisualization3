@@ -4,6 +4,7 @@ import {
   syncCart,
   deleteDatas,
   updateTotalAndQuantity,
+  createOrder,
 } from '../../firebase';
 
 const initialState = {
@@ -56,6 +57,10 @@ const cartSlice = createSlice({
       );
       state.products[index].quantity -= 1;
       state.products[index].total -= state.products[index].price;
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
+    },
+    sendOrder: (state) => {
+      state.products = [];
       localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
   },
@@ -120,6 +125,23 @@ export const calculateTotalAndQuantity = createAsyncThunk(
   }
 );
 
+export const postOrder = createAsyncThunk(
+  'cart/createOrder',
+  async ({ uid, cart }, thunkAPI) => {
+    try {
+      // createOrder 함수 호출
+      const result = await createOrder(uid, cart);
+      if (!result) {
+        return;
+      }
+      // cartSlice 의 products 초기화 및 로컬스토리지 초기화
+      thunkAPI.dispatch(sendOrder());
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
 export default cartSlice.reducer;
 export const {
   addToCart,
@@ -128,4 +150,5 @@ export const {
   getTotalPrice,
   incrementProduct,
   decrementProduct,
+  sendOrder,
 } = cartSlice.actions;

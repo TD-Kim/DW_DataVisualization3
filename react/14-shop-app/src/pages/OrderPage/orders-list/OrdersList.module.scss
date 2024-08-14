@@ -1,0 +1,25 @@
+.orders {
+  width: 100%;
+  text-align: start;
+}
+.order_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h3 {
+    color: #767a89;
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+.orders_list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  padding: 10px;
+  border: 1px solid #b6b3b3;
+}
