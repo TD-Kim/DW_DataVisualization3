@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { addCart, deleteDatas } from '../../firebase';
+import { addCart, syncCart, deleteDatas } from '../../firebase';
 
 const initialState = {
   products: localStorage.getItem('cartProducts')
@@ -27,6 +27,10 @@ const cartSlice = createSlice({
       );
       localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
+    syncCartAndSlice: (state, action) => {
+      state.products = action.payload;
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
+    },
     getTotalPrice: (state) => {
       state.totalPrice = state.products.reduce(
         (acc, product) => (acc += product.total),
@@ -49,6 +53,18 @@ const cartSlice = createSlice({
     },
   },
 });
+
+export const syncCartAndStorage = createAsyncThunk(
+  'cart/asyncCartItem',
+  async ({ uid, cartItems }, thunkAPI) => {
+    try {
+      const result = await syncCart(uid, cartItems);
+      thunkAPI.dispatch(syncCartAndSlice(result));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
 
 export const addCartItem = createAsyncThunk(
   'cart/addCartItem',
@@ -85,6 +101,7 @@ export default cartSlice.reducer;
 export const {
   addToCart,
   deleteFromCart,
+  syncCartAndSlice,
   getTotalPrice,
   incrementProduct,
   decrementProduct,
