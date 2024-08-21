@@ -40,7 +40,20 @@ function App() {
       },
     },
   });
-  console.log(theme);
+  // console.log(theme);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const apiKey = '9b43514a1ca3411aaada4dc62811db1d';
+
+    const startDate = '20200821';
+    const endDate = '20201003';
+    const result = await fetch(
+      `/api/Agree_WS/webservices/StockRestService/getInspctDataList/${apiKey}/${startDate}/${endDate}`,
+      { method: 'GET' }
+    );
+    const resultData = await result.json();
+    console.log(resultData);
+  };
   return (
     <ThemeProvider theme={theme}>
       <Container component='main' maxWidth='xs'>
@@ -56,7 +69,7 @@ function App() {
           <Typography component='h1' variant='h5'>
             회원가입
           </Typography>
-          <Box component='form' sx={{ mt: 3 }}>
+          <Box component='form' sx={{ mt: 3 }} onSubmit={handleSubmit}>
             <FormControl component='fieldset'>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
