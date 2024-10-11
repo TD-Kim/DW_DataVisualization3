@@ -14,6 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 import { purple, teal } from '@mui/material/colors';
+import { useEffect, useState } from 'react';
 
 const MyButton = styled(Button)`
   border: 2px solid red;
@@ -40,6 +41,12 @@ function App() {
       },
     },
   });
+  const [icon, setIcon] = useState();
+  const [forecastData, setForecastData] = useState([]);
+  const [weatherData, setWeatherData] = useState();
+  const [avgForecastData, setAvgForecastData] = useState();
+  const [groupedForecastData, setGroupedForecastData] = useState([]);
+
   // console.log(theme);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,8 +61,141 @@ function App() {
     const resultData = await result.json();
     console.log(resultData);
   };
+
+  const convertTime = (dtTxt) => {
+    const date = new Date(dtTxt * 1000);
+    const offset = date.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
+    const dateOffset = new Date(date.getTime() - offset);
+    const localDate = dateOffset.toISOString();
+    const splitArr = localDate.split('T');
+    const timeArr = splitArr[1].split('.');
+
+    return `${splitArr[0]} ${timeArr[0]}`;
+  };
+
+  // utc시간을 로컬 시간대로 변환하는 함수
+  const convertToLocalTime = (timeStamp) => {
+    const date = new Date(timeStamp * 1000);
+    const localDate = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+    return localDate.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    });
+  };
+
+  //40개의 데이터를 {5:[8]}로 만듬
+  const groupForecastData = (data) => {
+    const grouped = [];
+
+    // 처음에 들어가는 8개는 그냥 순서대로 8개 push
+    grouped.push(data.slice(0, 8));
+
+    // 그다음 들어가는 8개는 날짜(내일꺼부터)별로 묶어서 8개 push
+
+    // 오늘이 몇일인지 알아야함
+    const today = new Date().getTime();
+    const yyyyMMdd = convertTime(today / 1000);
+    const todayDate = yyyyMMdd.split(' ')[0];
+    console.log(todayDate);
+
+    // 반복문을 통해서 걸러내야하는데 오늘날짜인거 빼고,
+    const filterdList = data.filter((item) => !item.dt_txt.includes(todayDate));
+    for (let i = 0; i < filterdList.length; i += 8) {
+      if (grouped.length == 5) break;
+      const group = filterdList.slice(i, i + 8);
+      grouped.push(group);
+    }
+
+    return grouped;
+  };
+
+  console.log(groupedForecastData);
+
+  const aggregateForecastData = (data) => {
+    const grouped = {};
+    data.forEach((entry) => {
+      const time = convertToLocalTime(entry.dt);
+      const date = entry.dt_txt.split(' ')[0];
+      if (!grouped[date]) {
+        grouped[date] = {
+          minTemp: entry.main.temp_min,
+          maxTemp: entry.main.temp_max,
+          weatherIcon: entry.weather[0].icon,
+        };
+      } else {
+        grouped[date].minTemp = Math.min(
+          grouped[date].minTemp,
+          entry.main.temp_min
+        );
+        grouped[date].maxTemp = Math.max(
+          grouped[date].maxTemp,
+          entry.main.temp_max
+        );
+        grouped[date].weatherIcon = entry.weather[0].icon;
+      }
+      // grouped[date].push(entry);
+    });
+
+    return Object.keys(grouped)
+      .slice(0, 4)
+      .map((date) => ({
+        date,
+        minTemp: grouped[date].minTemp,
+        maxTemp: grouped[date].maxTemp,
+        weatherIcon: grouped[date].weatherIcon,
+      }));
+  };
+
+  const handleWeather = async (lat, lon) => {
+    const APIkey = '3bd960b544d8e85c3f24e4e2d139794c';
+    const url = `/weather/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`;
+    const url2 = `/weather/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`;
+
+    const response = fetch(url)
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        const changedList = json.list.map((item) => ({
+          ...item,
+          dt: item.dt * 1000,
+          dt_txt: convertTime(item.dt),
+        }));
+        console.log(changedList);
+        setForecastData(changedList);
+        setGroupedForecastData(groupForecastData(changedList));
+
+        const result = aggregateForecastData(changedList);
+        setAvgForecastData(result);
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+    const response2 = fetch(url2)
+      .then((response) => response.json())
+      .then((json) => {
+        setWeatherData(json);
+        setIcon(json.weather[0].icon);
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  };
+
+  const handleClick = (idx) => {
+    console.log(groupedForecastData[idx]);
+  };
+
+  useEffect(() => {
+    //   대전 선화동 위도 경도
+    const latitude = 36.328799;
+    const longitude = 127.4230707;
+    handleWeather(latitude, longitude);
+  }, []);
   return (
     <ThemeProvider theme={theme}>
+      {groupedForecastData.map((forecastData, idx) => (
+        <button key={idx} onClick={() => handleClick(idx)}>
+          {idx}
+        </button>
+      ))}
+      <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />
       <Container component='main' maxWidth='xs'>
         <Box
           sx={{
